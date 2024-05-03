@@ -1,3 +1,4 @@
+import 'package:binny_application/bindings/general_bindings.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,6 +31,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: GeneralBindings(),
       home: const Scaffold(
           backgroundColor: Color.fromARGB(183, 31, 188, 0),
           body: Center(

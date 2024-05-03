@@ -11,30 +11,22 @@ class katooPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final panelHeightOpen = MediaQuery.of(context).size.height * 0.78;
     final panelHeightClose = MediaQuery.of(context).size.height * 0.52;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Side Scroll List View',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
-            ),
-            backgroundColor: Colors.black,
+    return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
           ),
-          body: SlidingUpPanel(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-              minHeight: panelHeightClose,
-              maxHeight: panelHeightOpen,
-              body: QAPage(),
-              panelBuilder: (controller) =>
-                  PanelWidget(controller: controller))),
-    );
+          backgroundColor: Colors.black,
+        ),
+        body: SlidingUpPanel(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            minHeight: panelHeightClose,
+            maxHeight: panelHeightOpen,
+            body: QAPage(),
+            panelBuilder: (controller) => PanelWidget(controller: controller)));
   }
 }
 
