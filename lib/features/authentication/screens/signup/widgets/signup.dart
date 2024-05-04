@@ -13,17 +13,16 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
-  final double _space = 35;
+  final double _space = 20;
 
   final SignupController controller = SignupController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Form(
+    return Form(
       key: controller.signupFormKey,
       child: Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -174,6 +173,6 @@ class _SignupFormState extends State<SignupForm> {
               )
             ],
           )),
-    ));
+    );
   }
 }

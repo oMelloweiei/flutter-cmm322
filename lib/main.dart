@@ -25,6 +25,8 @@ Future<void> main() async {
   runApp(const MainApp());
 }
 
+//ควยแม่ง build นานจังวะ
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

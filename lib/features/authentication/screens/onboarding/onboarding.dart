@@ -1,7 +1,6 @@
 import 'package:binny_application/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:binny_application/welcome.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   final OnBoardingController _controller = Get.put(OnBoardingController());

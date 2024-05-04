@@ -5,7 +5,6 @@ import 'package:binny_application/features/authentication/screens/verify_email/v
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
