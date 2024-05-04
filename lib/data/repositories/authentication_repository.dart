@@ -1,3 +1,5 @@
+import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
+import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/utils/exceptions/firebase_auth_exception.dart';
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
@@ -26,14 +28,24 @@ class AuthenticationRepository extends GetxController {
 
   //Funtion to show Relevant Screen
   screenRedirect() async {
-    //Debug
-    if (kDebugMode) {
-      print("====================================================");
-      print("Go to HomePage");
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => const HomePage());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(
+              email: _auth.currentUser?.email,
+            ));
+      }
+    } else {
+      Get.offAll(() => WelcomePage());
     }
 
-    //local storage
-    Get.offAll(() => WelcomePage());
+    //Debug
+    // if (kDebugMode) {
+    //   print("====================================================");
+    //   print("Go to HomePage");
+    // }
   }
 
   /*--------------------------- Email & Password sign-in ----------------------------*/
@@ -59,9 +71,28 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //Email Authentication - Verification
   Future<void> sendEmailVerification() async {
     try {
       await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw "Somethins went wrong. Please try again";
+    }
+  }
+
+/*------------------------------ ./end Federated identity & social sign-in ----------------------------------*/
+  //Logout - Valid for any authentication
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {

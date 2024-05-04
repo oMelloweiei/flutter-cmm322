@@ -32,4 +32,19 @@ class Loaders {
           color: Colors.white,
         ));
   }
+
+  static errorSnackBar({required String title, String message = ''}) {
+    Get.snackbar(title, message,
+        isDismissible: true,
+        shouldIconPulse: true,
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 3),
+        margin: EdgeInsets.all(20),
+        icon: FaIcon(
+          FontAwesomeIcons.bell,
+          color: Colors.white,
+        ));
+  }
 }

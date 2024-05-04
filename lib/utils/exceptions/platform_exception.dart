@@ -1,34 +1,34 @@
 class TPlatformException implements Exception {
-  final String message;
+  final String code;
 
-  TFormatException(
-      [this.message =
-          'An unexpected format error occurred. Please check your input.']);
+  TPlatformException(this.code);
 
-  factory TFormatException.fromMessage(String message) {
-    return TFormatException(message);
-  }
-
-  factory TFormatException.fromCode(String code) {
+  String get message {
     switch (code) {
-      case 'invalid-email-format':
-        return const TFormatException(
-            'The email address format is invalid. Please enter a valid email.');
-      case 'invalid-phone-number-format':
-        return const TFormatException(
-            'The provided phone number format is invalid. Please enter a valid number.');
-      case 'invalid-date-format':
-        return const TFormatException(
-            'The date format format is invalid. Please enter a valid date.');
-      case 'invalid-url-format':
-        return const TFormatException(
-            'The URL format format is invalid. Please enter a valid URL.');
-      case 'invalid-credit-card-format':
-        return const TFormatException(
-            'The credit card format format is invalid. Please enter a valid credit card.');
-      case 'invalid-card-card-format':
-        return const TFormatException(
-            'The credit card format format is invalid. Please enter a valid credit card.');
+      case 'INVALID_LOGIN_CREDENTIALS':
+        return 'Invalid login credentials. Please double-check your information.';
+      case 'too-many-requests':
+        return 'Too many requests. Please try again later.';
+      case 'invalid-argument':
+        return 'Invalid argument provided to the authentication method.';
+      case 'invalid-password':
+        return 'Invalid password. Please try again.';
+      case 'invalid-phone-number':
+        return 'The provided phone number is invalid.';
+      case 'operation-not-allowed':
+        return 'The sign-in provider is disabled for your Firebase project.';
+      case 'session-cookie-expired':
+        return 'The Firebase session cookie has expired. Please sign in again.';
+      case 'uid-already-exists':
+        return 'The provided user ID is already in use by another user.';
+      case 'sign_in_failed':
+        return 'Sign-in failed. Please try again.';
+      case 'network-request-failed':
+        return 'Network request failed. Please check your internet connection.';
+      case 'internal-error':
+        return 'Internal error. Please try again later.';
+      default:
+        return 'An unknown error occurred.';
     }
   }
 }
