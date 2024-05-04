@@ -1,5 +1,4 @@
 import 'package:binny_application/data/models/user/userModel.dart';
-import 'package:binny_application/utils/exceptions/firebase_auth_exception.dart';
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

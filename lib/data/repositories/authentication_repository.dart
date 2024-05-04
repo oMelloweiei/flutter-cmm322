@@ -1,3 +1,4 @@
+import 'package:binny_application/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
 import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/utils/exceptions/firebase_auth_exception.dart';
@@ -5,7 +6,6 @@ import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
 import 'package:binny_application/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -38,7 +38,10 @@ class AuthenticationRepository extends GetxController {
             ));
       }
     } else {
-      Get.offAll(() => WelcomePage());
+      deviceStorage.writeIfNull('IsFirstTime', true);
+      deviceStorage.read('IsFirstTime') != true
+          ? Get.offAll(const WelcomePage())
+          : Get.offAll(OnBoardingScreen());
     }
 
     //Debug

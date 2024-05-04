@@ -1,7 +1,6 @@
 import 'package:binny_application/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -169,7 +168,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     textStyle: TextStyle(fontSize: 16),
                   ),
                   onPressed: () => controller.signup(),
-                  child: Text('Confirm'),
+                  child: Text('Create Account'),
                 ),
               )
             ],

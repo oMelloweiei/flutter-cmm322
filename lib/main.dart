@@ -1,6 +1,7 @@
 import 'package:binny_application/bindings/general_bindings.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/firebase_options.dart';
+import 'package:binny_application/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -31,6 +32,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: '/WelcomePage',
+      getPages: [
+        GetPage(name: '/WelcomePage', page: () => WelcomePage()),
+        // Add other routes here if needed
+      ],
       initialBinding: GeneralBindings(),
       home: const Scaffold(
           backgroundColor: Color.fromARGB(183, 31, 188, 0),
