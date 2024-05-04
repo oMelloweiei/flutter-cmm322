@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
       deviceStorage.read('IsFirstTime') != true
-          ? Get.offAll(const WelcomePage())
+          ? Get.offAll(() => WelcomePage())
           : Get.offAll(OnBoardingScreen());
     }
 
@@ -96,6 +96,7 @@ class AuthenticationRepository extends GetxController {
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
+      Get.offAll(() => const WelcomePage());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {

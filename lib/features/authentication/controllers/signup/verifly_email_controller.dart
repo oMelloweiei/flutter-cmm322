@@ -35,8 +35,7 @@ class VerifyEmailController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.off(() => SuccessScreen(
-            image:
-                'https://lottie.host/b3785379-65ae-4555-9277-321c4d033d16/6OTlnQ3iw2.json',
+            image: 'assets/lottie/checked.json',
             title: 'Your account has been created',
             subTitle: 'Your account has been created subtitle',
             onPressed: () =>
@@ -50,8 +49,7 @@ class VerifyEmailController extends GetxController {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(() => SuccessScreen(
-          image:
-              'https://lottie.host/b3785379-65ae-4555-9277-321c4d033d16/6OTlnQ3iw2.json',
+          image: '/assets/lottie/checked.json',
           title: 'Your account has been created',
           subTitle: 'Your account has been created subtitle',
           onPressed: () => AuthenticationRepository.instance.screenRedirect()));

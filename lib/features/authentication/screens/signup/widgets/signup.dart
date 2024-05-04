@@ -5,21 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SignupForm extends StatefulWidget {
+  const SignupForm({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SignupForm> createState() => _SignupFormState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SignupFormState extends State<SignupForm> {
   final double _space = 35;
 
   final SignupController controller = SignupController();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
+        body: Form(
       key: controller.signupFormKey,
       child: Container(
           padding: EdgeInsets.all(30),
@@ -173,6 +174,6 @@ class _SignupScreenState extends State<SignupScreen> {
               )
             ],
           )),
-    );
+    ));
   }
 }

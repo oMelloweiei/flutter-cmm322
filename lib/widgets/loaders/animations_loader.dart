@@ -21,6 +21,7 @@ class AnimationLoaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset(animation,
               width: MediaQuery.of(context).size.width * 0.8),

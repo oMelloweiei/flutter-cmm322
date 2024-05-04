@@ -20,7 +20,7 @@ class SuccessScreen extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              Lottie.network(image,
+              Lottie.asset(image,
                   width: MediaQuery.of(context).size.width * 0.6),
               const SizedBox(height: 20),
               Text(

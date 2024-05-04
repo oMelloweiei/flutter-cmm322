@@ -1,6 +1,7 @@
 class Validator {
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
+      print('$fieldName is required');
       return '$fieldName is required';
     }
 
@@ -9,6 +10,7 @@ class Validator {
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
+      print('Email is required');
       return 'E-mail is required';
     }
 
@@ -25,6 +27,7 @@ class Validator {
     String? password,
   ) {
     if (password == null || password.isEmpty) {
+      print('Email is required');
       return 'Password is required';
     }
 
@@ -43,7 +46,7 @@ class Validator {
     }
 
     //Check for special characters
-    if (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+    if (!password.contains(RegExp(r'[!@#$%^&*(),_.?":{}|<>]'))) {
       return 'Password much be contain at least one special characters letter.';
     }
     return null;
@@ -52,7 +55,7 @@ class Validator {
   static String? validateConfirmpassword(
       String? confirmpassword, String? password) {
     if (confirmpassword == null || confirmpassword.isEmpty) {
-      return 'Confirmpassword is required';
+      return 'Confirm password is required';
     }
 
     if (confirmpassword != password) {

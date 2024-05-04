@@ -25,26 +25,30 @@ class SignupController extends GetxController {
   ///-SignUp
   void signup() async {
     try {
-      FullScreenLoader.openLoadingDialog('We are processing your information',
-          'https://lottie.host/4ebfe8ac-255b-4829-b23f-476f392d51d1/KeNyd5hAit.json');
+      FullScreenLoader.openLoadingDialog(
+          'We are processing your information', 'assets/lottie/loading.json');
+
+      print("Signup Button Pressed");
 
       //Form validation
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        FullScreenLoader.stopLoading();
+        // FullScreenLoader.stopLoading();
+        print("No Internet Connection");
         return;
       }
 
       //Form validation
       if (!signupFormKey.currentState!.validate()) {
-        FullScreenLoader.stopLoading();
+        // FullScreenLoader.stopLoading();
+        print("Form Validation Failed");
         return;
       }
 
       //Privacy Policy Check
 
       //Register user in the Firebase Authentication & Save user data in the Firebase
-      UserCredential userCredential = await AuthenticationRepository.instance
+      final userCredential = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
               email.text.trim(), password.text.trim());
 
@@ -57,8 +61,7 @@ class SignupController extends GetxController {
           profilePicture: '');
 
       final userRepository = Get.put(UserRepository());
-      await userRepository.saveUserRecord(
-          newUser); // Make sure to await the saveUserRecord method
+      await userRepository.saveUserRecord(newUser);
 
       //Remove loader
       FullScreenLoader.stopLoading();

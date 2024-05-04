@@ -1,6 +1,7 @@
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Lottie.asset('assets/lottie/checked.json'),
             Text(
               'Welcome to Binny Application!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -22,7 +24,10 @@ class WelcomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                SignupScreen();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignupForm()),
+                );
               },
               child: Text('Get Started'),
             ),

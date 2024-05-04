@@ -45,6 +45,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/lottie/
     - assets/donationpage/
     - assets/garden/
     - assets/homepage/
