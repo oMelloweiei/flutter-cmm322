@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
       deviceStorage.read('IsFirstTime') != true
-          ? Get.offAll(() => OnBoardingScreen())
+          ? Get.offAll(() => WelcomePage())
           : Get.offAll(OnBoardingScreen());
     }
 
@@ -53,7 +53,24 @@ class AuthenticationRepository extends GetxController {
 
   /*--------------------------- Email & Password sign-in ----------------------------*/
 
-  //Email Authentication - SignIn
+  //Email Authentication - Login
+  Future<UserCredential> loginWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw "Somethins went wrong. Please try again";
+    }
+  }
 
   //Email Authentication - Register
   Future<UserCredential> registerWithEmailAndPassword(

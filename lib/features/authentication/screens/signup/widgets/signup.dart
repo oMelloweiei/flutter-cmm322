@@ -5,14 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-class SignupForm extends StatefulWidget {
-  const SignupForm({super.key});
+class SignupForm extends StatelessWidget {
+  SignupForm({Key? key, required this.pageController}) : super(key: key);
+  final PageController pageController;
 
-  @override
-  State<SignupForm> createState() => _SignupFormState();
-}
-
-class _SignupFormState extends State<SignupForm> {
   final double _space = 20;
 
   final SignupController controller = SignupController();
@@ -22,6 +18,7 @@ class _SignupFormState extends State<SignupForm> {
     return Form(
       key: controller.signupFormKey,
       child: Container(
+          margin: EdgeInsets.only(top: 20),
           padding: EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -164,12 +161,79 @@ class _SignupFormState extends State<SignupForm> {
                 width: double.infinity,
                 child: TextButton(
                   style: TextButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  onPressed: () => controller.signup(),
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 7),
+                      child: Text(
+                        'Create Account',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w700),
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: _space,
+              ),
+              Center(
+                  child: Text(
+                'or continue with',
+                style: TextStyle(color: Colors.white),
+              )),
+              SizedBox(
+                height: _space,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  style: TextButton.styleFrom(
                     backgroundColor: Colors.white,
                     textStyle: TextStyle(fontSize: 16),
                   ),
-                  onPressed: () => controller.signup(),
-                  child: Text('Create Account'),
+                  onPressed: () {},
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 7),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/icons/google.png',
+                              fit: BoxFit.cover,
+                              height: 25,
+                            ),
+                            SizedBox(width: 5),
+                            Text(
+                              'Google',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ])),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account!',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                          textStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                      )),
+                      onPressed: () => pageController.jumpToPage(0),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ))
+                ],
               )
             ],
           )),

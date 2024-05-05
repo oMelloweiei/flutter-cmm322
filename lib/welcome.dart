@@ -1,3 +1,4 @@
+import 'package:binny_application/features/authentication/screens/login/login.dart';
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,12 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   late PageController _pageController;
-  int _currentPageIndex = 0;
+  int _currentPageIndex = 1;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = PageController(initialPage: _currentPageIndex);
   }
 
   @override
@@ -31,9 +32,9 @@ class _WelcomePageState extends State<WelcomePage> {
     });
   }
 
-  void _navigateToSignUpPage() {
+  void _navigateToPage(int index) {
     _pageController.animateToPage(
-      1,
+      index,
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
     );
@@ -45,11 +46,11 @@ class _WelcomePageState extends State<WelcomePage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: _currentPageIndex != 0
+          leading: _currentPageIndex != 1
               ? IconButton(
                   onPressed: () {
                     _pageController.animateToPage(
-                      0,
+                      1,
                       duration: Duration(milliseconds: 500),
                       curve: Curves.ease,
                     );
@@ -87,10 +88,11 @@ class _WelcomePageState extends State<WelcomePage> {
             controller: _pageController,
             onPageChanged: _handlePageChange,
             children: <Widget>[
+              LoginForm(pageController: _pageController),
               WelcomeContent(
-                onSignUpPressed: _navigateToSignUpPage,
+                onSignUpPressed: (index) => _navigateToPage(index),
               ),
-              SignupForm(),
+              SignupForm(pageController: _pageController),
             ],
           ),
         ],
@@ -99,7 +101,7 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   Widget cloud(double _top, double _right, int index) {
-    if (index != 0) {
+    if (index != 1) {
       return Positioned(
         top: _top,
         right: _right,
@@ -116,7 +118,7 @@ class _WelcomePageState extends State<WelcomePage> {
 }
 
 class WelcomeContent extends StatelessWidget {
-  final VoidCallback onSignUpPressed;
+  final void Function(int) onSignUpPressed;
 
   const WelcomeContent({Key? key, required this.onSignUpPressed})
       : super(key: key);
@@ -142,7 +144,7 @@ class WelcomeContent extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => onSignUpPressed(0),
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.black,
                     textStyle: TextStyle(fontSize: 16),
@@ -161,7 +163,7 @@ class WelcomeContent extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TextButton(
-                  onPressed: onSignUpPressed,
+                  onPressed: () => onSignUpPressed(2),
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.white,
                     textStyle: TextStyle(fontSize: 16),
