@@ -1,76 +1,59 @@
 import 'package:binny_application/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:binny_application/widgets/onboarding/onboarding_nav.dart';
+import 'package:binny_application/widgets/onboarding/onboarding_next.dart';
+import 'package:binny_application/widgets/onboarding/onboarding_page.dart';
+import 'package:binny_application/widgets/onboarding/onboarding_skip.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  final OnBoardingController _controller = Get.put(OnBoardingController());
+  final _onboardItem = [
+    {
+      'head': 'ติดต่อขายขยะ',
+      'detail': 'สามารถสร้างรายได้เพิ่มเติมจากการขายขยะที่ไม่ใช้แล้ว',
+      'image': 'contact.png'
+    },
+    {
+      'head': 'คู่มือการแยกขยะ',
+      'detail': 'คู่มือแยกขยะสามารถช่วยให้ทิ้งขยะลงถังได้ถูกประเภท',
+      'image': 'bin.png'
+    },
+    {
+      'head': 'สะสมแต้มแลกของ',
+      'detail': 'แต้มสะสมจากการขายขยะสามารถนำไปแลกของได้',
+      'image': 'reward.png'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnBoardingController());
     return Scaffold(
       body: Stack(
         children: [
-          PageView.builder(
-            controller: _controller.pageController,
-            itemCount: 3, // Number of onboarding pages
-            onPageChanged: (index) {
-              _controller.updatePageIndicator(index);
-            },
-            itemBuilder: (context, index) {
-              // You can replace this with your custom onboarding pages
-              return Container(
-                color: Colors.blue,
-                child: Center(
-                  child: Text(
-                    'Onboarding Page ${index + 1}',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              );
-            },
-          ),
-          Positioned(
-            bottom: 50,
-            left: 0,
-            right: 0,
-            child: Obx(
-              () => Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  3, // Number of dots
-                  (index) => GestureDetector(
-                    onTap: () => _controller.dotNavigationClick(index),
-                    child: Container(
-                      width: 10,
-                      height: 10,
-                      margin: EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _controller.currentPageIndex.value == index
-                            ? Colors.blue
-                            : Colors.grey,
-                      ),
-                    ),
-                  ),
-                ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFF02C275), Color(0xFFFFFFFF)],
               ),
             ),
           ),
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () => _controller.nextPage(),
-                child: Text(
-                  _controller.currentPageIndex.value == 2
-                      ? 'Get Started'
-                      : 'Next',
-                ),
-              ),
-            ),
+          PageView(
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
+            children: List.generate(_onboardItem.length,
+                (index) => OnboardingPage(item: _onboardItem[index])),
           ),
+          OnboardingSkip(),
+          OnboardingNavigation(
+            onboardItems: _onboardItem,
+          ),
+          OnboardingNext()
         ],
       ),
     );

@@ -1,42 +1,6 @@
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
-// class WelcomePage extends StatelessWidget {
-//   const WelcomePage({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Welcome'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Lottie.asset('assets/lottie/checked.json'),
-//             Text(
-//               'Welcome to Binny Application!',
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//             ),
-//             SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.push(
-//                   context,
-//                   MaterialPageRoute(builder: (context) => SignupForm()),
-//                 );
-//               },
-//               child: Text('Get Started'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -78,6 +42,25 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: _currentPageIndex != 0
+              ? IconButton(
+                  onPressed: () {
+                    _pageController.animateToPage(
+                      0,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                )
+              : SizedBox()),
       body: Stack(
         children: [
           Positioned.fill(

@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
       deviceStorage.read('IsFirstTime') != true
-          ? Get.offAll(() => WelcomePage())
+          ? Get.offAll(() => OnBoardingScreen())
           : Get.offAll(OnBoardingScreen());
     }
 

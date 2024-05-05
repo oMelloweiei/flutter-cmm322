@@ -34,6 +34,7 @@ dependencies:
   flutter_native_splash: ^2.4.0
   lottie: ^3.1.0
   connectivity_plus: ^6.0.3
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +46,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/onboarding/
     - assets/lottie/
     - assets/donationpage/
     - assets/garden/
