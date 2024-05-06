@@ -6,7 +6,7 @@ import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/scanpage.dart';
+import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                 homePage(),
                 ScanPage(
                   cameras: widget.cameras,
+                  pageController: _pageController,
                 ),
                 PointPage(),
                 profilePage(),
@@ -89,8 +90,15 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                       )
-                    : Container(
-                        height: double.minPositive,
+                    : myBottomNavbar(
+                        selectedIndex: _currentIndex,
+                        onIndexChanged: (index) {
+                          _pageController.animateToPage(
+                            index,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
                       ))
           ])),
     );
