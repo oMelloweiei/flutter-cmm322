@@ -11,12 +11,14 @@ import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/listbox.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final List<CameraDescription> cameras;
+  const HomePage({Key? key, required this.cameras}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -35,7 +37,11 @@ class _HomePageState extends State<HomePage> {
         pageController: _pageController,
       ),
       body: Container(
-          padding: EdgeInsets.only(top: 120),
+          padding: _currentIndex == 1
+              ? EdgeInsets.zero
+              : (_currentIndex == 0
+                  ? EdgeInsets.only(top: kToolbarHeight)
+                  : EdgeInsets.only(top: kToolbarHeight + 40)),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -61,7 +67,9 @@ class _HomePageState extends State<HomePage> {
               },
               children: [
                 homePage(),
-                ScanPage(),
+                ScanPage(
+                  cameras: widget.cameras,
+                ),
                 PointPage(),
                 profilePage(),
               ],

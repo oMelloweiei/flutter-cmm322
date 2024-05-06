@@ -32,14 +32,14 @@ class SignupController extends GetxController {
       //Form validation
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        // FullScreenLoader.stopLoading();
+        FullScreenLoader.stopLoading();
         print("No Internet Connection");
         return;
       }
 
       //Form validation
       if (!signupFormKey.currentState!.validate()) {
-        // FullScreenLoader.stopLoading();
+        FullScreenLoader.stopLoading();
         print("Form Validation Failed");
         return;
       }
@@ -75,9 +75,10 @@ class SignupController extends GetxController {
             email: email.text.trim(),
           ));
     } catch (e) {
+      FullScreenLoader.stopLoading();
       Loaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
-      FullScreenLoader.stopLoading();
+      // FullScreenLoader.stopLoading();
     }
   }
 }
