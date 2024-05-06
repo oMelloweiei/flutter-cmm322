@@ -37,7 +37,11 @@ class _HomePageState extends State<HomePage> {
               currentPageIndex: _currentIndex, pageController: _pageController)
           : null,
       body: Container(
-          padding: EdgeInsets.only(top: 120),
+          padding: _currentIndex == 1
+              ? EdgeInsets.zero
+              : (_currentIndex == 0
+                  ? EdgeInsets.only(top: kToolbarHeight)
+                  : EdgeInsets.only(top: kToolbarHeight + 40)),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,

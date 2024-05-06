@@ -2,6 +2,7 @@ import 'package:binny_application/features/authentication/screens/login/login.da
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -43,6 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -84,17 +86,21 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           cloud(100, 60, _currentPageIndex),
           cloud(180, -30, _currentPageIndex),
-          PageView(
-            controller: _pageController,
-            onPageChanged: _handlePageChange,
-            children: <Widget>[
-              LoginForm(pageController: _pageController),
-              WelcomeContent(
-                onSignUpPressed: (index) => _navigateToPage(index),
-              ),
-              SignupForm(pageController: _pageController),
-            ],
-          ),
+          SingleChildScrollView(
+              child: SizedBox(
+            height: MediaQuery.of(context).size.height + 150,
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: _handlePageChange,
+              children: <Widget>[
+                LoginForm(pageController: _pageController),
+                WelcomeContent(
+                  onSignUpPressed: (index) => _navigateToPage(index),
+                ),
+                SignupForm(pageController: _pageController),
+              ],
+            ),
+          )),
         ],
       ),
     );
@@ -130,7 +136,7 @@ class WelcomeContent extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             'assets/icons/binny-100px.png',

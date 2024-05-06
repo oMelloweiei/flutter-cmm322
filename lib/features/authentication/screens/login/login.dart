@@ -1,4 +1,5 @@
 import 'package:binny_application/features/authentication/controllers/login/login_controller.dart';
+import 'package:binny_application/features/authentication/screens/password_config/forgot_password.dart';
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/button/google_btn.dart';
@@ -104,13 +105,12 @@ class LoginForm extends StatelessWidget {
                     ],
                   ),
                   TextButton(
-                      // onPressed: () => Get.to(() => const ForgetPassword()),
+                      onPressed: () => Get.to(() => const ForgotPassword()),
                       style: TextButton.styleFrom(
                           textStyle: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w800,
                       )),
-                      onPressed: () {},
                       child: const Text(
                         'Forget Password?',
                         style: TextStyle(color: Colors.white),

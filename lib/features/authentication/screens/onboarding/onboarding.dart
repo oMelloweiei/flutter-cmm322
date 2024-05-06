@@ -33,13 +33,18 @@ class OnBoardingScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0xFF02C275), Color(0xFFFFFFFF)],
+                colors: [
+                  Color(0xFF4795DD),
+                  Color(0xFF4DC5DD),
+                  Color(0xFF52D3DB),
+                  Color(0xFF3AB589),
+                  Color(0xFF42BD6C),
+                  Color(0xFF5AD255),
+                ],
               ),
             ),
           ),
