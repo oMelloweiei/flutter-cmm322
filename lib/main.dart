@@ -1,6 +1,7 @@
 import 'package:binny_application/bindings/general_bindings.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/firebase_options.dart';
+import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -17,11 +18,14 @@ Future<void> main() async {
 
   //Await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
+  //get cameras
+  final cameras = await availableCameras();
   //Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+      .then((FirebaseApp value) =>
+          Get.put(AuthenticationRepository(cameras: cameras)));
 
+  //pass cameras to Authentication
   runApp(const MainApp());
 }
 
