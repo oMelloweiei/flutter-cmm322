@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 
 class AnimationLoaderWidget extends StatelessWidget {
@@ -26,10 +27,12 @@ class AnimationLoaderWidget extends StatelessWidget {
           Lottie.asset(animation,
               width: MediaQuery.of(context).size.width * 0.8),
           SizedBox(height: 20),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-          ),
+          DefaultTextStyle(
+              style: TextStyle(),
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+              )),
           SizedBox(height: 20),
           showAction
               ? SizedBox(
