@@ -32,10 +32,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: MyAppBar(
-        currentPageIndex: _currentIndex,
-        pageController: _pageController,
-      ),
+      appBar: _currentIndex != 1
+          ? MyAppBar(
+              currentPageIndex: _currentIndex, pageController: _pageController)
+          : null,
       body: Container(
           padding: EdgeInsets.only(top: 120),
           decoration: BoxDecoration(
@@ -74,16 +74,20 @@ class _HomePageState extends State<HomePage> {
                 bottom: 10,
                 left: 0,
                 right: 0,
-                child: myBottomNavbar(
-                  selectedIndex: _currentIndex,
-                  onIndexChanged: (index) {
-                    _pageController.animateToPage(
-                      index,
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                ))
+                child: _currentIndex != 1
+                    ? myBottomNavbar(
+                        selectedIndex: _currentIndex,
+                        onIndexChanged: (index) {
+                          _pageController.animateToPage(
+                            index,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                      )
+                    : Container(
+                        height: double.minPositive,
+                      ))
           ])),
     );
   }
