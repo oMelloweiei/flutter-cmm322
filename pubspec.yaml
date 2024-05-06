@@ -50,13 +50,13 @@ flutter:
     - assets/
     - assets/onboarding/
     - assets/lottie/
-    - assets/donationpage/
+    - assets/community/
     - assets/garden/
-    - assets/homepage/
+    - assets/obj/
     - assets/trash/
-    - assets/katoo/
-    - assets/profile/
+    - assets/shop/
+    - assets/scan/
     - assets/icons/
-    - assets/images/
-    - assets/images/rewards/
     - assets/scanpage/
+    - assets/product/
+    - assets/person/
