@@ -1,3 +1,4 @@
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -33,7 +34,7 @@ class BinnyBunWidget extends StatelessWidget {
               ),
               SizedBox(width: 2),
               Image.asset(
-                'assets/profile/ci_copy.png',
+                TImages.iconcopy,
                 width: 18,
                 height: 18,
                 color: Colors.black,

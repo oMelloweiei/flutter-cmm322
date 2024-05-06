@@ -1,3 +1,4 @@
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:binny_application/widgets/user.dart';
@@ -29,12 +30,12 @@ class _profilePageState extends State<profilePage> {
           children: [
             //ส่วนเเสดงพื้นหลัง โดยล็อคตำแหน่งเอาไว้
             Positioned(
-              top: 40,
-              left: -5,
-              right: -55,
+              top: 0,
+              left: 0,
+              right: -10,
               child: Container(
                 child: Image.asset(
-                  'assets/profile/BG_img.png',
+                  TImages.bgprofile,
                 ),
               ),
             ),
@@ -89,13 +90,13 @@ class _profilePageState extends State<profilePage> {
               right: 0,
               child: Center(
                 child: Container(
-                  width: 160,
-                  height: 160,
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                   ),
                   child: Image.asset(
-                    'assets/profile/Group119.png',
+                    TImages.profilerabbit,
                     width: 175,
                     height: 175,
                   ),
@@ -114,7 +115,7 @@ class _profilePageState extends State<profilePage> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'assets/profile/akar-icons.png',
+                      TImages.iconedit,
                       width: 18,
                       height: 18,
                       color: Color(0xFF29D062),

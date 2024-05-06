@@ -1,3 +1,4 @@
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 var data = [
   {
     'name': 'Apple iPad Gen10 (64 GB)',
-    'imgpath': Image.asset('assets/images/rewards/AppleiPadGen.jpeg'),
+    'imgpath': Image.asset(TImages.iconcopy),
     'score': "55,555 คะแนน"
   },
   {
