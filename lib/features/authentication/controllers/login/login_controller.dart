@@ -1,4 +1,5 @@
 import 'package:binny_application/data/repositories/authentication_repository.dart';
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
@@ -15,6 +16,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -23,11 +25,12 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
+  //Email and Password Sign in
   Future<void> emailAndPasswordSignIn() async {
     try {
       //Start Loading
       FullScreenLoader.openLoadingDialog(
-          'Logging you in...', 'assets/lottie/loading.png');
+          'Logging you in...', 'assets/lottie/loading.json');
 
       //Check Internet Connection
       final isConnected = await NetworkManager.instance.isConnected();
@@ -51,6 +54,37 @@ class LoginController extends GetxController {
       //Login user using email & password Authentication
       final userCredential = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+
+      //Remove Loader
+      FullScreenLoader.stopLoading();
+
+      //Redirect
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'On Snap', message: e.toString());
+    }
+  }
+
+  //Google Sign in
+  Future<void> googleSignIn() async {
+    try {
+      FullScreenLoader.openLoadingDialog(
+          'Logging you in...', 'assets/lottie/loading.json');
+
+      //Check internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+
+      //Google Authentication
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      //User record
+      await userController.saveUserRecord(userCredentials);
 
       //Remove Loader
       FullScreenLoader.stopLoading();

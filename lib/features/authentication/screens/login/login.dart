@@ -1,6 +1,7 @@
 import 'package:binny_application/features/authentication/controllers/login/login_controller.dart';
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:binny_application/utils/validators/validations.dart';
+import 'package:binny_application/widgets/button/google_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -152,31 +153,7 @@ class LoginForm extends StatelessWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    textStyle: TextStyle(fontSize: 16),
-                  ),
-                  onPressed: () {},
-                  child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 7),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/icons/google.png',
-                              fit: BoxFit.cover,
-                              height: 25,
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              'Google',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ])),
-                ),
+                child: googleBTN(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -10,9 +10,8 @@ class FullScreenLoader {
         builder: (_) => PopScope(
             canPop: false,
             child: Container(
-              color: Colors.amber,
-              width: double.infinity,
-              height: double.infinity,
+              // width: double.infinity,
+              // height: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

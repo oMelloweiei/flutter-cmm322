@@ -11,6 +11,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -108,10 +109,41 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+/*------------------------------ Federated identity & social sign-in ----------------------------------*/
+  //GoogleAuthentication - Google
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      //Trigger the authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      //Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      //Create a new credential
+      final credentials = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      //Once signed in, return Usercredential
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw "Somethins went wrong. Please try again";
+    }
+  }
+
 /*------------------------------ ./end Federated identity & social sign-in ----------------------------------*/
   //Logout - Valid for any authentication
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const WelcomePage());
     } on FirebaseAuthException catch (e) {

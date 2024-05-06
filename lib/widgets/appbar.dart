@@ -1,3 +1,4 @@
+import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -68,14 +69,18 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             : SizedBox(),
         Padding(
           padding: EdgeInsets.only(right: 30),
-          child: FaIcon(
-              currentPageIndex == 3
-                  ? FontAwesomeIcons.gear
-                  : (currentPageIndex != 0
-                      ? FontAwesomeIcons.gift
-                      : FontAwesomeIcons.bell),
-              size: 32,
-              color: currentPageIndex == 0 ? Colors.white : Color(0xFF242424)),
+          child: IconButton(
+              onPressed: () => AuthenticationRepository.instance.logout(),
+              icon: FaIcon(
+                  currentPageIndex == 3
+                      ? FontAwesomeIcons.gear
+                      : (currentPageIndex != 0
+                          ? FontAwesomeIcons.gift
+                          : FontAwesomeIcons.bell),
+                  size: 32,
+                  color: currentPageIndex == 0
+                      ? Colors.white
+                      : Color(0xFF242424))),
         )
       ],
     );
