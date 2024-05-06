@@ -5,6 +5,7 @@ import 'package:binny_application/utils/exceptions/firebase_auth_exception.dart'
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
 import 'package:binny_application/welcome.dart';
+import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -19,7 +20,9 @@ class AuthenticationRepository extends GetxController {
   //Variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-
+  final List<CameraDescription> cameras;
+  //get cameras
+  AuthenticationRepository({required this.cameras});
   //Call from main.dart an app launch
   @override
   void onReady() {
@@ -32,7 +35,7 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAll(() => const HomePage());
+        Get.offAll(() => HomePage(cameras: cameras));
       } else {
         Get.offAll(() => VerifyEmailScreen(
               email: _auth.currentUser?.email,
