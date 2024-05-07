@@ -1,36 +1,25 @@
 import 'package:flutter/cupertino.dart';
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 var data = [
-  {'name': 'KFC', 'imgpath': Image.asset('assets/images/KFC.png')},
-  {'name': 'โอ้กะจู๋', 'imgpath': Image.asset('assets/images/ohkraju.jpeg')},
-  {
-    'name': "Chester's",
-    'imgpath': Image.asset('assets/images/chester-logo.png')
-  },
-  {
-    'name': 'DairyQueen',
-    'imgpath': Image.asset('assets/images/Dairy_Queen_logo.png')
-  },
-  {'name': 'MIXUE', 'imgpath': Image.asset('assets/images/mixue.jpeg')},
-  {
-    'name': "Jones'Salad",
-    'imgpath': Image.asset('assets/images/Jonessalad.png')
-  },
+  {'name': 'KFC', 'imgpath': Image.asset(TImages.kfc)},
+  {'name': 'โอ้กะจู๋', 'imgpath': Image.asset(TImages.ohkaju)},
+  {'name': "Chester's", 'imgpath': Image.asset(TImages.chester)},
+  {'name': 'DairyQueen', 'imgpath': Image.asset(TImages.dailyqueen)},
+  {'name': 'MIXUE', 'imgpath': Image.asset(TImages.mixue)},
+  {'name': "Jones'Salad", 'imgpath': Image.asset(TImages.jones)},
 ];
 
 var data1 = [
-  {'name': 'Tops', 'imgpath': Image.asset('assets/images/topdaily.png')},
-  {'name': 'Big C', 'imgpath': Image.asset('assets/images/bigc.png')},
-  {'name': "Maxvalu", 'imgpath': Image.asset('assets/images/MaxValu.png')},
-  {'name': 'Boots', 'imgpath': Image.asset('assets/images/boots.png')},
-  {'name': 'Tops Market', 'imgpath': Image.asset('assets/images/top.png')},
-  {'name': "Lotus's", 'imgpath': Image.asset('assets/images/lotus.png')},
-  {
-    'name': "Maxvalu Supermaket",
-    'imgpath': Image.asset('assets/images/maxvalu_supermarket.png')
-  },
+  {'name': 'Tops', 'imgpath': Image.asset(TImages.tops)},
+  {'name': 'Big C', 'imgpath': Image.asset(TImages.bigC)},
+  {'name': "Maxvalu", 'imgpath': Image.asset(TImages.maxvalu)},
+  {'name': 'Boots', 'imgpath': Image.asset(TImages.boots)},
+  {'name': 'Tops Market', 'imgpath': Image.asset(TImages.topsdaily)},
+  {'name': "Lotus's", 'imgpath': Image.asset(TImages.lotus)},
+  {'name': "Maxvalu Supermaket", 'imgpath': Image.asset(TImages.maxvalu)},
 ];
 
 class Tab1 extends StatelessWidget {

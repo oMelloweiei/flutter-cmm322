@@ -7,6 +7,7 @@ import 'package:binny_application/pages/raklok.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:binny_application/widgets/listbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -65,12 +66,12 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Positioned(
-        top: 0,
+        top: 55,
         left: 0,
         right: 0,
         child: Container(
           child: Image.asset(
-            'assets/homepage/bg.png', // Replace 'your_image.png' with your image path
+            TImages.bghome, // Replace 'your_image.png' with your image path
           ),
         ),
       ),
@@ -87,7 +88,7 @@ class _homePageState extends State<homePage> {
               child: Container(
                 padding: EdgeInsets.all(10),
                 color: Colors.black.withOpacity(0.6),
-                child: Image.asset('assets/homepage/Group_111.png'),
+                child: Image.asset(TImages.the_amount_of_trash),
               )),
         )
     ]);
@@ -98,15 +99,15 @@ class HomePagecontent extends StatelessWidget {
   final Function(bool) onShowChanged;
   HomePagecontent({Key? key, required this.onShowChanged});
 
-  Widget myIcon(String img, bool big, BuildContext context, String topic) {
-    final String imgPath = 'assets/homepage/$img';
+  Widget myIcon(String img, String head, BuildContext context, String topic) {
+    final String imgPath = img;
     return GestureDetector(
         onTap: () {
           if (topic == 'donation') {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => donationPage(),
+                builder: (context) => Donation(),
               ),
             );
           } else if (topic == 'katoo') {
@@ -132,10 +133,18 @@ class HomePagecontent extends StatelessWidget {
             );
           }
         },
-        child: Image.asset(
-          imgPath,
-          fit: BoxFit.cover,
-          width: big ? 85 : 90,
+        child: Column(
+          children: [
+            Container(
+              width: 35, // Set the desired width
+              height: 35, // Set the desired height
+              child: Image.asset(
+                imgPath,
+                fit: BoxFit.cover, // Adjust the fit to your requirement
+              ),
+            ),
+            Text(head),
+          ],
         ));
   }
 
@@ -163,15 +172,18 @@ class HomePagecontent extends StatelessWidget {
                   padding: EdgeInsets.only(
                       left: 10.0,
                       right: 10.0,
-                      top: 15.0,
+                      top: 25.0,
                       bottom: 0.0), // Adjust the horizontal padding as needed
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      myIcon('201.png', false, context, 'sell'),
-                      myIcon('202.png', true, context, 'katoo'),
-                      myIcon('203.png', false, context, 'manual'),
-                      myIcon('204.png', true, context, 'donation'),
+                      myIcon(TImages.sell_garbage, "ติดต่อขายขยะ", context,
+                          'sell'),
+                      myIcon(TImages.q_and_a, "ถามตอบ", context, 'katoo'),
+                      myIcon(TImages.garbage_separation, "คู่มือแยกขยะ",
+                          context, 'manual'),
+                      myIcon(TImages.donate_garbage, "บริจาคขยะ", context,
+                          'donation'),
                     ],
                   ),
                 ),
@@ -190,9 +202,10 @@ class HomePagecontent extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          interact_content('303.png', 'Raklok', context),
+                          interact_content(
+                              TImages.eco_friendly, 'Raklok', context),
                           SizedBox(width: 12),
-                          interact_content('304.png', 'myGarden', context)
+                          interact_content(TImages.chair, 'myGarden', context)
                         ],
                       ),
                       SizedBox(
@@ -214,7 +227,7 @@ class HomePagecontent extends StatelessWidget {
                           );
                         },
                         child: Image.asset(
-                          'assets/homepage/401.png',
+                          TImages.homecard,
                           height: 185,
                           width: 360,
                         ),
@@ -281,7 +294,7 @@ class HomePagecontent extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                      'assets/homepage/301.png',
+                      TImages.homelevel,
                       width: 71,
                       height: 22,
                     ),
@@ -335,7 +348,7 @@ class HomePagecontent extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/homepage/302.png',
+                      TImages.homeiconscan,
                       width: 15,
                       height: 15,
                     ),
@@ -358,7 +371,7 @@ class HomePagecontent extends StatelessWidget {
   }
 
   Widget interact_content(String img, String topic, BuildContext context) {
-    final imgPath = 'assets/homepage/$img';
+    final imgPath = img;
     return GestureDetector(
       onTap: () {
         if (topic == 'myGarden') {

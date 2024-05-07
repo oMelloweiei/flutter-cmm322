@@ -6,17 +6,17 @@ import 'package:google_fonts/google_fonts.dart';
 var data = [
   {
     'name': 'Apple iPad Gen10 (64 GB)',
-    'imgpath': Image.asset(TImages.iconcopy),
+    'imgpath': Image.asset(TImages.appleiPadGen10_64GB),
     'score': "55,555 คะแนน"
   },
   {
     'name': 'เมาส์ไม้ไผ่ “Icemouse2”',
-    'imgpath': Image.asset('assets/images/rewards/Icemouse2.jpeg'),
+    'imgpath': Image.asset(TImages.Icemouse2),
     'score': "3,555 คะแนน"
   },
   {
     'name': 'หูฟังไร้สายแบบครอบหู Sony รุ่น WH-CH520”',
-    'imgpath': Image.asset('assets/images/rewards/Sony.jpeg'),
+    'imgpath': Image.asset(TImages.over_earwirelessheadphones),
     'score': "35,000 คะแนน"
   },
 ];
@@ -24,17 +24,17 @@ var data = [
 var data1 = [
   {
     'name': 'Revife Fiber jackget',
-    'imgpath': Image.asset('assets/images/rewards/RevifeFiber.jpg'),
+    'imgpath': Image.asset(TImages.revifeFiberjackget),
     'score': "800 คะแนน"
   },
   {
     'name': 'Happy Typo Tote Bag',
-    'imgpath': Image.asset('assets/images/rewards/HappyTypoToteBag.jpg'),
+    'imgpath': Image.asset(TImages.happyTypoToteBag),
     'score': "700 คะแนน"
   },
   {
     'name': "T-shirt collection Pomme",
-    'imgpath': Image.asset('assets/images/rewards/T-shirtcollectionPomme.jpg'),
+    'imgpath': Image.asset(TImages.t_shirtcollectionPomme),
     'score': "555 คะแนน"
   },
 ];
@@ -42,17 +42,17 @@ var data1 = [
 var data2 = [
   {
     'name': 'ชุดออกกำลังกาย Adidas x Marimeko',
-    'imgpath': Image.asset('assets/images/rewards/swimsuit.jpeg'),
+    'imgpath': Image.asset(TImages.adidasxMarimeko),
     'score': "4,550 คะแนน"
   },
   {
     'name': 'จักรยานไฟฟ้า EM ECO',
-    'imgpath': Image.asset('assets/images/rewards/EMECO.jpeg'),
+    'imgpath': Image.asset(TImages.emeco),
     'score': "5,555 คะแนน"
   },
   {
     'name': "Kurma Classic Professional Yoga Mat",
-    'imgpath': Image.asset('assets/images/rewards/Kurma.jpeg'),
+    'imgpath': Image.asset(TImages.kurmaClassicProfessionalYogaMat),
     'score': "2,000 คะแนน"
   },
 ];
@@ -60,17 +60,17 @@ var data2 = [
 var data3 = [
   {
     'name': 'Penguin Mug – แก้วมัค พร้อมฝาปิด รุ่น แพนกวิน',
-    'imgpath': Image.asset('assets/images/rewards/Penguin.jpeg'),
+    'imgpath': Image.asset(TImages.penguinMug),
     'score': "500 คะแนน"
   },
   {
     'name': 'Save Turtle Soap Tray',
-    'imgpath': Image.asset('assets/images/rewards/SaveTurtle.jpeg'),
+    'imgpath': Image.asset(TImages.saveTurtleSoapTray),
     'score': "250 คะแนน"
   },
   {
     'name': "ที่รองแก้ว “BOPE”",
-    'imgpath': Image.asset('assets/images/rewards/BOPE.jpeg'),
+    'imgpath': Image.asset(TImages.coasters_BOPE),
     'score': "500 คะแนน"
   },
 ];
