@@ -4,16 +4,54 @@
 
 # Test Readme
 
-# Foobar
+# Binny
 
-Foobar is a Python library for dealing with word pluralization.
+Foobar is a Application for something...
 
-## Installation
+## Packages
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager.
 
 ```bash
-pip install foobar
+ #Widget
+  carousel_slider: ^4.2.1
+  sliding_up_panel: ^2.0.0+1
+
+  #Icons
+  cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^10.7.0
+
+  flutter:
+    sdk: flutter
+
+  #Font
+  google_fonts: ^6.2.1
+
+  #Firebase
+  firebase_core: ^2.30.1
+  firebase_auth: ^4.19.4
+  cloud_firestore: ^4.17.2
+  google_sign_in: ^6.2.1
+
+  #State management
+  get_storage: ^2.1.1
+  get: ^4.6.6
+
+  #Utility package
+  flutter_native_splash: ^2.4.0
+  lottie: ^3.1.0
+  connectivity_plus: ^6.0.3
+  smooth_page_indicator: ^1.1.0
+  camera: ^0.10.5+9
+  shimmer: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
 ```
 
 ## Usage
