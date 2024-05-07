@@ -6,7 +6,7 @@ import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/scanpage.dart';
+import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
@@ -33,10 +33,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: MyAppBar(
-        currentPageIndex: _currentIndex,
-        pageController: _pageController,
-      ),
+      appBar: _currentIndex != 1
+          ? MyAppBar(
+              currentPageIndex: _currentIndex, pageController: _pageController)
+          : null,
       body: Container(
           padding: _currentIndex == 1
               ? EdgeInsets.zero
@@ -70,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                 homePage(),
                 ScanPage(
                   cameras: widget.cameras,
+                  pageController: _pageController,
                 ),
                 PointPage(),
                 profilePage(),
@@ -79,16 +80,27 @@ class _HomePageState extends State<HomePage> {
                 bottom: 10,
                 left: 0,
                 right: 0,
-                child: myBottomNavbar(
-                  selectedIndex: _currentIndex,
-                  onIndexChanged: (index) {
-                    _pageController.animateToPage(
-                      index,
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                ))
+                child: _currentIndex != 1
+                    ? myBottomNavbar(
+                        selectedIndex: _currentIndex,
+                        onIndexChanged: (index) {
+                          _pageController.animateToPage(
+                            index,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                      )
+                    : myBottomNavbar(
+                        selectedIndex: _currentIndex,
+                        onIndexChanged: (index) {
+                          _pageController.animateToPage(
+                            index,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                      ))
           ])),
     );
   }

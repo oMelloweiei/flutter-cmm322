@@ -57,6 +57,7 @@ flutter:
     - assets/shop/
     - assets/scan/
     - assets/icons/
+    - assets/scanpage/
     - assets/product/
     - assets/person/
     - assets/donate/

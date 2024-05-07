@@ -1,31 +1,55 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailScan extends StatefulWidget {
-  const DetailScan({Key? key}) : super(key: key);
+  final String barcode;
+  final String picture;
+  final String name;
+  DetailScan(
+      {Key? key,
+      required this.barcode,
+      required this.picture,
+      required this.name})
+      : super(key: key);
   @override
   State<DetailScan> createState() => _DetailScanState();
 }
 
 class _DetailScanState extends State<DetailScan> {
-  bool isLiked = false;
-  bool isDisliked = false;
+  bool _isLiked = false;
+  bool _isDisliked = false;
+
+  late String name;
+  late String picture;
+  late String barcode;
+
+  @override
+  void initState() {
+    super.initState();
+
+    //Properties here
+    name = widget.name;
+    picture = widget.picture;
+    barcode = widget.barcode;
+  }
 
   void toggleLike() {
     setState(() {
-      isLiked = !isLiked;
-      if (isLiked) {
-        isDisliked = false; // ให้ปุ่ม dislike หากเปิดอยู่ในสถานะปิด
+      _isLiked = !_isLiked;
+      if (_isLiked) {
+        _isDisliked = false; // ให้ปุ่ม dislike หากเปิดอยู่ในสถานะปิด
       }
     });
   }
 
   void toggleDislike() {
     setState(() {
-      isDisliked = !isDisliked;
-      if (isDisliked) {
-        isLiked = false; // ให้ปุ่ม like หากเปิดอยู่ในสถานะปิด
+      _isDisliked = !_isDisliked;
+      if (_isDisliked) {
+        _isLiked = false; // ให้ปุ่ม like หากเปิดอยู่ในสถานะปิด
       }
     });
   }
@@ -34,11 +58,16 @@ class _DetailScanState extends State<DetailScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF6F9FD),
-      appBar: DetailScanAppBar(),
+      appBar: DetailScanAppBar(
+        name: widget.name,
+        barcode: widget.barcode,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            BinProduct(),
+            BinProduct(
+              picture: picture,
+            ),
             LikeDislikeBar(
               onLikePressed: toggleLike,
               onDislikePressed: toggleDislike,
@@ -53,6 +82,10 @@ class _DetailScanState extends State<DetailScan> {
 }
 
 class DetailScanAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String barcode;
+  final String name;
+
+  DetailScanAppBar({required this.name, required this.barcode});
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -61,10 +94,25 @@ class DetailScanAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Color.fromARGB(0, 255, 255, 255),
       elevation: 0,
-      title: Text(
-        'Binny',
-        style: TextStyle(
-            fontSize: 26, fontWeight: FontWeight.w700, color: Colors.black),
+      title: Center(
+        child: Column(
+          children: [
+            Text(
+              name,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black),
+            ),
+            Text(
+              barcode,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.black),
+            )
+          ],
+        ),
       ),
       leading: IconButton(
         onPressed: () {
@@ -87,10 +135,12 @@ class DetailScanAppBar extends StatelessWidget implements PreferredSizeWidget {
 class BinProductDetail extends StatelessWidget {
   final bool isFavorited;
   final VoidCallback toggleFavorite;
+  final String picture;
 
   BinProductDetail({
     required this.isFavorited,
     required this.toggleFavorite,
+    required this.picture,
   });
 
   @override
@@ -106,7 +156,7 @@ class BinProductDetail extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Image.asset(
-            'assets/trash/demoTrash.png',
+            picture,
             width: 300,
             height: 300,
             fit: BoxFit.contain,
@@ -130,6 +180,9 @@ class BinProductDetail extends StatelessWidget {
 }
 
 class BinProduct extends StatefulWidget {
+  final String picture;
+
+  BinProduct({required this.picture});
   @override
   _BinProductState createState() => _BinProductState();
 }
@@ -153,6 +206,7 @@ class _BinProductState extends State<BinProduct> {
           BinProductDetail(
             isFavorited: isFavorited,
             toggleFavorite: toggleFavorite,
+            picture: widget.picture,
           ),
           SizedBox(height: 16),
           BinProductText(),
@@ -333,6 +387,8 @@ class LikeDislikeBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _isLiked = false;
+    bool _isDisliked = false;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: Row(
