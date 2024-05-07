@@ -7,7 +7,8 @@ import 'package:binny_application/pages/raklok.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/class/Color.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/listbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +22,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(),
+      backgroundColor: Ticolor.blackMain2,
+      // extendBodyBehindAppBar: true,
+      appBar: MyAppBar(
+        currentPageIndex: 0,
+      ),
       body: Container(
-        padding: EdgeInsets.only(top: kToolbarHeight + 40),
         child: Stack(
           children: [
             homePage(),
@@ -37,7 +38,9 @@ class _HomePageState extends State<HomePage> {
               bottom: 10,
               left: 0,
               right: 0,
-              child: MyBottomNavbar(),
+              child: MyBottomNavbar(
+                currentPage: 0,
+              ),
             ),
           ],
         ),
@@ -66,7 +69,7 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Positioned(
-        top: 55,
+        top: 30,
         left: 0,
         right: 0,
         child: Container(
@@ -140,7 +143,8 @@ class HomePagecontent extends StatelessWidget {
               height: 35, // Set the desired height
               child: Image.asset(
                 imgPath,
-                fit: BoxFit.cover, // Adjust the fit to your requirement
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width + 100,
               ),
             ),
             Text(head),
@@ -154,7 +158,7 @@ class HomePagecontent extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 172 - AppBar().preferredSize.height,
+            height: 150 - kToolbarHeight,
           ), // Spacer to account for app bar height
           Container(
             padding: EdgeInsets.only(
@@ -260,7 +264,7 @@ class HomePagecontent extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       carpet(
-                          picture: 'demoTrash.png',
+                          picture: TImages.picture_6,
                           carpetTitle: 'carpetTitle',
                           description: 'description',
                           hashtag: 'hashtag')

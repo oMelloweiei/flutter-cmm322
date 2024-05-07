@@ -1,5 +1,5 @@
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/loaders/shimmer_eff.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +46,7 @@ class BinnyBunWidget extends StatelessWidget {
   //ชื่อโปรไฟล์ของผู้ใช้
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserController());
+    final controller = UserController.instance;
     return Column(
       mainAxisAlignment: MainAxisAlignment
           .center, // จัดให้ส่วนของ InkWell อยู่ตรงกลางตามแนวแกนตั้ง

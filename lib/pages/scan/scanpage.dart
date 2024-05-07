@@ -8,13 +8,8 @@ import 'package:flutter/widgets.dart';
 import 'package:binny_application/theme/text.dart';
 
 class ScanPage extends StatefulWidget {
-  // final List<CameraDescription> cameras;
-  // final PageController pageController;
-
   const ScanPage({
     Key? key,
-    // required this.cameras,
-    // required this.pageController,
   }) : super(key: key);
 
   @override
@@ -59,16 +54,21 @@ class _ScanPageState extends State<ScanPage>
       return Center(child: CircularProgressIndicator());
     }
 
-    return FutureBuilder<void>(
-      future: cameraInitialization,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return buildCameraPreview();
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
-    );
+    return Scaffold(
+        appBar: TabBar(
+          controller: _tabController,
+          tabs: myTabs,
+        ),
+        body: FutureBuilder<void>(
+          future: cameraInitialization,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return buildCameraPreview();
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ));
   }
 
   Widget buildCameraPreview() {
@@ -76,19 +76,23 @@ class _ScanPageState extends State<ScanPage>
       return Center(child: Text('No camera available'));
     }
 
-    return Column(
+    return TabBarView(
+      controller: _tabController,
       children: [
-        TabBar(
-          controller: _tabController,
-          tabs: myTabs,
-        ),
         Container(
-            height: MediaQuery.of(context).size.height,
-            child: CameraPreview(cameraController!))
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: CameraPreview(cameraController!)),
+        Center(child: Text('Second Tab')),
       ],
     );
   }
 }
+        // Container(
+        //     padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+        //     height: MediaQuery.of(context).size.height * 0.8,
+        //     child: CameraPreview(cameraController!))
+
 
 
 // class ScanPage extends StatefulWidget {

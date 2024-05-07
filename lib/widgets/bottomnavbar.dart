@@ -2,24 +2,37 @@ import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/scan/scanpage.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 
 var myIcon = [
-  {'title': 'หน้าแรก', 'icon': FontAwesomeIcons.house, 'page': HomePage()},
-  {'title': 'สแกนขยะ', 'icon': FontAwesomeIcons.barcode, 'page': ScanPage()},
-  {'title': 'แต้มสะสม', 'icon': FontAwesomeIcons.gift, 'page': PointPage()},
-  {'title': 'โปรไฟล์', 'icon': FontAwesomeIcons.user, 'page': profilePage()},
+  {
+    'title': 'หน้าแรก',
+    'icon': FontAwesomeIcons.house,
+    'page': HomePage(),
+  },
+  {
+    'title': 'สแกนขยะ',
+    'icon': FontAwesomeIcons.barcode,
+    'page': ScanPage(),
+  },
+  {
+    'title': 'แต้มสะสม',
+    'icon': FontAwesomeIcons.gift,
+    'page': PointPage(),
+  },
+  {
+    'title': 'โปรไฟล์',
+    'icon': FontAwesomeIcons.user,
+    'page': profilePage(),
+  },
 ];
 
 class MyBottomNavbar extends StatelessWidget {
-  // final int selectedIndex;
+  final int currentPage;
 
-  const MyBottomNavbar({
-    Key? key,
-    // required this.selectedIndex
-  }) : super(key: key);
+  const MyBottomNavbar({Key? key, required this.currentPage}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,30 +65,31 @@ class MyBottomNavbar extends StatelessWidget {
           var page = item['page'] as Widget;
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => page),
-              );
+              if (index != currentPage) {
+                if (currentPage != 0) {
+                  Navigator.pop(context);
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => page),
+                  );
+                }
+              }
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                FaIcon(icon,
-                    color:
-                        //  selectedIndex == index
-                        //     ?
-                        Color(0xFF29D062)
-                    // : Colors.grey,
-                    ),
+                FaIcon(
+                  icon,
+                  color:
+                      currentPage == index ? Ticolor.greenMain3 : Colors.grey,
+                ),
                 Text(
                   title,
                   style: TextStyle(
-                      color:
-                          // selectedIndex == index
-                          //     ?
-                          Color(0xFF29D062)
-                      // : Colors.grey,
-                      ),
+                    color:
+                        currentPage == index ? Ticolor.greenMain3 : Colors.grey,
+                  ),
                 ),
               ],
             ),

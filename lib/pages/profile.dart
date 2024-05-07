@@ -2,8 +2,8 @@ import 'package:binny_application/features/authentication/screens/settings/editp
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:binny_application/widgets/class/Color.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:binny_application/widgets/user.dart';
@@ -32,7 +32,7 @@ class _profilePageState extends State<profilePage> {
 
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: MyAppBar(currentPageIndex: 4),
+        appBar: MyAppBar(currentPageIndex: 3),
         body: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -147,13 +147,13 @@ class _profilePageState extends State<profilePage> {
                           TImages.iconedit,
                           width: 18,
                           height: 18,
-                          color: Color(0xFF29D062),
+                          color: Ticolor.greenMain2,
                         ),
                         SizedBox(width: 1),
                         Text(
                           'แก้ไขโปรไฟล์',
                           style: TextStyle(
-                              color: Color(0xFF29D062),
+                              color: Ticolor.greenMain2,
                               fontSize: 12,
                               fontWeight: FontWeight.bold),
                         ),
@@ -165,7 +165,9 @@ class _profilePageState extends State<profilePage> {
                   bottom: 10,
                   left: 0,
                   right: 0,
-                  child: MyBottomNavbar(),
+                  child: MyBottomNavbar(
+                    currentPage: 3,
+                  ),
                 ),
               ],
             ),

@@ -1,0 +1,9 @@
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: /Users/azballkung/Desktop/MyFirstFlutter/flutter-cmm322/assets/obj/OBJ_LOGO_B.png
+
+  android_12:
+    color: "#FFFFFF"
+    image: /Users/azballkung/Desktop/MyFirstFlutter/flutter-cmm322/assets/obj/OBJ_LOGO_B.png
+
+  web: false

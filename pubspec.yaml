@@ -50,6 +50,7 @@ flutter:
   assets:
     - assets/
     - assets/onboarding/
+    - assets/avatar/
     - assets/lottie/
     - assets/community/
     - assets/garden/

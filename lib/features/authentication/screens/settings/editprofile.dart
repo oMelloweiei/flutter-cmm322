@@ -1,8 +1,8 @@
 import 'package:binny_application/features/authentication/controllers/setting/edit_profile_controller.dart';
+import 'package:binny_application/features/authentication/screens/settings/re_auth_user_login_form.dart';
 import 'package:binny_application/utils/validators/validations.dart';
-import 'package:binny_application/widgets/class/Ticolor.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
-import 'package:flutter/foundation.dart';
+import 'package:binny_application/widgets/class/Color.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,7 +53,7 @@ class EditProfile extends StatelessWidget {
                 ),
               ),
             ),
-            // //ส่วนเเสดงพื้นหลัง โดยล็อคตำแหน่งเอาไว้
+
             Positioned(
               top: MediaQuery.of(context).size.height * 0.16,
               left: 0,
@@ -142,39 +142,7 @@ class EditProfile extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            // TextFormField(
-                            //     controller: controller.email,
-                            //     expands: false,
-                            //     validator: (value) =>
-                            //         Validator.validateEmail(value),
-                            //     decoration: InputDecoration(
-                            //         contentPadding: EdgeInsets.symmetric(
-                            //             vertical: 10, horizontal: 25),
-                            //         hintText: 'E-mail address',
-                            //         filled: true,
-                            //         fillColor: Ticolor.greenMaininput,
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(10),
-                            //           borderSide: BorderSide.none,
-                            //         ))),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            // TextFormField(
-                            //     controller: controller.number,
-                            //     expands: false,
-                            //     validator: (value) =>
-                            //         Validator.validateMobile(value),
-                            //     decoration: InputDecoration(
-                            //         contentPadding: EdgeInsets.symmetric(
-                            //             vertical: 10, horizontal: 25),
-                            //         hintText: 'Phone number',
-                            //         filled: true,
-                            //         fillColor: Ticolor.greenMaininput,
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(10),
-                            //           borderSide: BorderSide.none,
-                            //         ))),
+                            ReAuthLoginForm(),
                             SizedBox(
                               height: 20,
                             ),

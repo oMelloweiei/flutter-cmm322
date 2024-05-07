@@ -1,7 +1,13 @@
 import 'package:binny_application/data/models/user/userModel.dart';
+import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/data/repositories/user/user_repository.dart';
+import 'package:binny_application/features/authentication/screens/settings/editprofile.dart';
+import 'package:binny_application/network_manager.dart';
+import 'package:binny_application/utils/popups/full_screen_loader.dart';
+import 'package:binny_application/welcome.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
@@ -10,6 +16,12 @@ class UserController extends GetxController {
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   final userRepository = Get.put(UserRepository());
+
+  final hidePassword = false.obs;
+  final verifyEmail = TextEditingController();
+  final verifyPhone = TextEditingController();
+  final verifyPassword = TextEditingController();
+  GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
@@ -56,6 +68,79 @@ class UserController extends GetxController {
           title: 'Data not saved',
           message:
               'Something went wrong while saving your infomation. You can re-save your data in your Profile');
+    }
+  }
+
+  void deleteAccountWarningPopup() {
+    Get.defaultDialog(
+        contentPadding: EdgeInsets.all(20),
+        title: 'Delete Account',
+        middleText:
+            'Are you sure you want to delete your account permanently? this action is not reversible and all of your data will be removed permanently.',
+        confirm: ElevatedButton(
+            onPressed: () async => deleteUserAccount(),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text('Delete'),
+            )),
+        cancel: OutlinedButton(
+            onPressed: () => Navigator.of(Get.overlayContext!).pop(),
+            child: const Text('Cancel')));
+  }
+
+  void deleteUserAccount() async {
+    try {
+      FullScreenLoader.openLoadingDialog(
+          'Processing', 'assets/lottie/loading.json');
+
+      final auth = AuthenticationRepository.instance;
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
+
+      if (provider.isNotEmpty) {
+        if (provider == 'google.com') {
+          await auth.signInWithGoogle();
+          await auth.deleteAccount();
+          FullScreenLoader.stopLoading();
+          Get.offAll(() => const WelcomePage());
+        } else if (provider == 'password') {
+          FullScreenLoader.stopLoading();
+          Get.offAll(() => const EditProfile());
+        }
+      }
+    } catch (e) {
+      FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    }
+  }
+
+  Future<void> reAuthenticationEmailAndPassword() async {
+    try {
+      FullScreenLoader.openLoadingDialog(
+          'Processing', 'assets/lottie/loading.json');
+
+      //check internet
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+
+      if (!reAuthFormKey.currentState!.validate()) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+
+      await AuthenticationRepository.instance.reAuthenticationEmailAndPassword(
+          verifyEmail.text.trim(), verifyPassword.text.trim());
+
+      await AuthenticationRepository.instance.deleteAccount();
+
+      FullScreenLoader.stopLoading();
+      Get.offAll(() => const WelcomePage());
+    } catch (e) {
+      FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
     }
   }
 }

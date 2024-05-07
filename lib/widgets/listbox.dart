@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
 
 const TextStyle topCommentText = TextStyle(
@@ -117,7 +118,7 @@ class squareBox extends StatelessWidget {
                           width: 45,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
-                            image: AssetImage('assets/logo1.png'),
+                            image: AssetImage(TImages.logoOval),
                             fit: BoxFit.contain,
                           )),
                         )
@@ -144,8 +145,6 @@ class carpet extends StatelessWidget {
       required this.description,
       required this.hashtag});
 
-  final String imgPath = 'assets/trash/';
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -159,7 +158,7 @@ class carpet extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                    '$imgPath$picture'), // Replace 'demoTrash.png' with your image asset path
+                    picture), // Replace 'demoTrash.png' with your image asset path
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(10),

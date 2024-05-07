@@ -1,3 +1,4 @@
+import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/reward.dart';
 import 'package:binny_application/widgets/score.dart';
@@ -30,7 +31,7 @@ class _PointPageState extends State<PointPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: MyAppBar(currentPageIndex: 2),
         body: Stack(children: [
           DefaultTabController(
             length: 2, // Specify the length of tabs
@@ -72,7 +73,9 @@ class _PointPageState extends State<PointPage>
             bottom: 10,
             left: 0,
             right: 0,
-            child: MyBottomNavbar(),
+            child: MyBottomNavbar(
+              currentPage: 2,
+            ),
           ),
         ]));
   }

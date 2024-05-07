@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 
 void main() {
   runApp(const Donation());
