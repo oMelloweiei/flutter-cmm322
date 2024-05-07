@@ -19,11 +19,10 @@ Future<void> main() async {
   //Await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   //get cameras
-  final cameras = await availableCameras();
+  // final cameras = await availableCameras();
   //Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((FirebaseApp value) =>
-          Get.put(AuthenticationRepository(cameras: cameras)));
+      .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
   //pass cameras to Authentication
   runApp(const MainApp());

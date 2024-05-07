@@ -20,9 +20,12 @@ class AuthenticationRepository extends GetxController {
   //Variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-  final List<CameraDescription> cameras;
+
+  // final List<CameraDescription> cameras;
+
+  User? get authUser => _auth.currentUser;
   //get cameras
-  AuthenticationRepository({required this.cameras});
+  // AuthenticationRepository({required this.cameras});
   //Call from main.dart an app launch
   @override
   void onReady() {
@@ -35,7 +38,7 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAll(() => HomePage(cameras: cameras));
+        Get.offAll(() => HomePage());
       } else {
         Get.offAll(() => VerifyEmailScreen(
               email: _auth.currentUser?.email,

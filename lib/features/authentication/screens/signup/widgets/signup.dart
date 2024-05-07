@@ -81,6 +81,25 @@ class SignupForm extends StatelessWidget {
                 height: _space,
               ),
               TextFormField(
+                  controller: controller.username,
+                  expands: false,
+                  validator: (value) =>
+                      Validator.validateEmptyText('Username', value),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: Colors.grey),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      hintText: 'Username',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide.none,
+                      ))),
+              SizedBox(
+                height: _space,
+              ),
+              TextFormField(
                   controller: controller.email,
                   expands: false,
                   validator: (value) => Validator.validateEmail(value),
@@ -90,6 +109,24 @@ class SignupForm extends StatelessWidget {
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                       hintText: 'E-mail',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide.none,
+                      ))),
+              SizedBox(
+                height: _space,
+              ),
+              TextFormField(
+                  controller: controller.number,
+                  expands: false,
+                  validator: (value) => Validator.validateMobile(value),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone, color: Colors.grey),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      hintText: 'Phone number',
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(

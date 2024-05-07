@@ -1,42 +1,26 @@
-import 'package:flutter/cupertino.dart';
+import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/pointpage.dart';
+import 'package:binny_application/pages/profile.dart';
+import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 var myIcon = [
-  {
-    'title': 'หน้าแรก',
-    'icon': FontAwesomeIcons.house,
-  },
-  {
-    'title': 'สแกนขยะ',
-    'icon': FontAwesomeIcons.barcode,
-  },
-  {
-    'title': 'แต้มสะสม',
-    'icon': FontAwesomeIcons.gift,
-  },
-  {
-    'title': 'โปรไฟล์',
-    'icon': FontAwesomeIcons.user,
-  },
+  {'title': 'หน้าแรก', 'icon': FontAwesomeIcons.house, 'page': HomePage()},
+  {'title': 'สแกนขยะ', 'icon': FontAwesomeIcons.barcode, 'page': ScanPage()},
+  {'title': 'แต้มสะสม', 'icon': FontAwesomeIcons.gift, 'page': PointPage()},
+  {'title': 'โปรไฟล์', 'icon': FontAwesomeIcons.user, 'page': profilePage()},
 ];
 
-class myBottomNavbar extends StatefulWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onIndexChanged;
+class MyBottomNavbar extends StatelessWidget {
+  // final int selectedIndex;
 
-  const myBottomNavbar({
+  const MyBottomNavbar({
     Key? key,
-    required this.selectedIndex,
-    required this.onIndexChanged,
+    // required this.selectedIndex
   }) : super(key: key);
 
-  @override
-  State<myBottomNavbar> createState() => _myBottomNavbarState();
-}
-
-class _myBottomNavbarState extends State<myBottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,30 +44,38 @@ class _myBottomNavbarState extends State<myBottomNavbar> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: myIcon.map((item) {
+        children: myIcon.asMap().entries.map((entry) {
+          var index = entry.key;
+          var item = entry.value;
           var title = item['title'].toString();
           var icon = item['icon'] as IconData;
-          var index = myIcon.indexOf(item);
+          var page = item['page'] as Widget;
           return GestureDetector(
             onTap: () {
-              widget.onIndexChanged(index);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => page),
+              );
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                FaIcon(
-                  icon,
-                  color: widget.selectedIndex == index
-                      ? Color(0xFF29D062)
-                      : Colors.grey, // Change icon color based on selection
-                ),
+                FaIcon(icon,
+                    color:
+                        //  selectedIndex == index
+                        //     ?
+                        Color(0xFF29D062)
+                    // : Colors.grey,
+                    ),
                 Text(
                   title,
                   style: TextStyle(
-                    color: widget.selectedIndex == index
-                        ? Color(0xFF29D062)
-                        : Colors.grey,
-                  ),
+                      color:
+                          // selectedIndex == index
+                          //     ?
+                          Color(0xFF29D062)
+                      // : Colors.grey,
+                      ),
                 ),
               ],
             ),

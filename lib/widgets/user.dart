@@ -1,23 +1,71 @@
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/loaders/shimmer_eff.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+
+// ข้อมูล uesr
+List<Map<String, dynamic>> userData = [
+  {
+    "Username": "Binny Bun",
+    "name_key": "@binny.bin",
+    "following": 15,
+    "follower": 4,
+    "stat": 386,
+    "percent": "+2.4%",
+    "BarPET": 68,
+    "BarALU": 120,
+    "BarUHT": 48,
+    "BarOIL": 150,
+    "PET": "68kg",
+    "Aluminium": "120kg",
+    "UHT": "48kg",
+    "Oil": "150kg"
+  },
+  {
+    "Username": "TEST",
+    "name_key": "@TEST.bin",
+    "following": 99,
+    "follower": 999,
+    "stat": 999,
+    "percent": "+100%",
+    "BarPET": 250,
+    "BarALU": 250,
+    "BarUHT": 250,
+    "BarOIL": 250,
+    "PET": "250kg",
+    "Aluminium": "250kg",
+    "UHT": "250kg",
+    "Oil": "250kg"
+  },
+];
 
 //หน้าเเสดงชื่อผู็ใช้
 class BinnyBunWidget extends StatelessWidget {
   //ชื่อโปรไฟล์ของผู้ใช้
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return Column(
       mainAxisAlignment: MainAxisAlignment
           .center, // จัดให้ส่วนของ InkWell อยู่ตรงกลางตามแนวแกนตั้ง
       crossAxisAlignment: CrossAxisAlignment
           .center, // จัดให้ส่วนของ InkWell อยู่ตรงกลางตามแนวแกนนอน
       children: [
-        Text(
-          userData[0]['Username'],
-          style: TextStyle(
-              color: Colors.black, fontSize: 32, fontWeight: FontWeight.bold),
-        ),
+        Obx(() {
+          if (controller.profileLoading.value) {
+            return const ShimmerEffect(width: 80, height: 15);
+          } else {
+            return Text(
+              controller.user.value.fullName,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: controller.user.value.fullName.length > 8 ? 24 : 32,
+                  fontWeight: FontWeight.bold),
+            );
+          }
+        }),
         SizedBox(height: 0.1),
         InkWell(
           onTap: () {
@@ -29,7 +77,7 @@ class BinnyBunWidget extends StatelessWidget {
                 .center, // จัดให้ส่วนของ Row อยู่ตรงกลางตามแนวแกนนอน
             children: [
               Text(
-                userData[0]['name_key'],
+                controller.user.value.username,
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
               SizedBox(width: 2),
@@ -53,7 +101,7 @@ class FollowStatsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.82,
+      width: MediaQuery.of(context).size.width * 0.80,
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(20),
@@ -352,39 +400,3 @@ class BcardWidget extends StatelessWidget {
     return colors[index % colors.length];
   }
 }
-
-// ข้อมูล uesr
-List<Map<String, dynamic>> userData = [
-  {
-    "Username": "Binny Bun",
-    "name_key": "@binny.bin",
-    "following": 15,
-    "follower": 4,
-    "stat": 386,
-    "percent": "+2.4%",
-    "BarPET": 68,
-    "BarALU": 120,
-    "BarUHT": 48,
-    "BarOIL": 150,
-    "PET": "68kg",
-    "Aluminium": "120kg",
-    "UHT": "48kg",
-    "Oil": "150kg"
-  },
-  {
-    "Username": "TEST",
-    "name_key": "@TEST.bin",
-    "following": 99,
-    "follower": 999,
-    "stat": 999,
-    "percent": "+100%",
-    "BarPET": 250,
-    "BarALU": 250,
-    "BarUHT": 250,
-    "BarOIL": 250,
-    "PET": "250kg",
-    "Aluminium": "250kg",
-    "UHT": "250kg",
-    "Oil": "250kg"
-  },
-];

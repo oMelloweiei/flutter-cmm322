@@ -3,22 +3,17 @@ import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/howto.dart';
 import 'package:binny_application/pages/manual.dart';
 import 'package:binny_application/pages/myGarden.dart';
-import 'package:binny_application/pages/pointpage.dart';
-import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/listbox.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  const HomePage({Key? key, required this.cameras}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,81 +21,26 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: _currentIndex != 1
-          ? MyAppBar(
-              currentPageIndex: _currentIndex, pageController: _pageController)
-          : null,
+      appBar: AppBar(),
       body: Container(
-          padding: _currentIndex == 1
-              ? EdgeInsets.zero
-              : (_currentIndex == 0
-                  ? EdgeInsets.only(top: kToolbarHeight)
-                  : EdgeInsets.only(top: kToolbarHeight + 40)),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                _currentIndex != 0
-                    ? Color.fromRGBO(129, 218, 246, 1)
-                    : Colors.white,
-                _currentIndex != 0
-                    ? Colors.white
-                    : Color.fromARGB(255, 24, 24, 24),
-              ],
-              stops: [0.0, _currentIndex != 3 ? 0.0 : 0.3],
-            ),
-          ),
-          child: Stack(children: [
-            PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              children: [
-                homePage(),
-                ScanPage(
-                  cameras: widget.cameras,
-                  pageController: _pageController,
-                ),
-                PointPage(),
-                profilePage(),
-              ],
-            ),
+        padding: EdgeInsets.only(top: kToolbarHeight + 40),
+        child: Stack(
+          children: [
+            homePage(),
             Positioned(
-                bottom: 10,
-                left: 0,
-                right: 0,
-                child: _currentIndex != 1
-                    ? myBottomNavbar(
-                        selectedIndex: _currentIndex,
-                        onIndexChanged: (index) {
-                          _pageController.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                      )
-                    : myBottomNavbar(
-                        selectedIndex: _currentIndex,
-                        onIndexChanged: (index) {
-                          _pageController.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                      ))
-          ])),
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: MyBottomNavbar(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

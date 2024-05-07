@@ -16,8 +16,10 @@ class SignupController extends GetxController {
   final hideconfirmpassword = true.obs;
   final email = TextEditingController();
   final firstname = TextEditingController();
+  final username = TextEditingController();
   final lastname = TextEditingController();
   final password = TextEditingController();
+  final number = TextEditingController();
   final confirmpassword = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
@@ -53,11 +55,14 @@ class SignupController extends GetxController {
 
       //Save Authentication user data in the Firebase Firestore
       final newUser = UserModel(
-          id: userCredential.user!.uid,
-          firstname: firstname.text.trim(),
-          lastname: lastname.text.trim(),
-          email: email.text.trim(),
-          profilePicture: '');
+        id: userCredential.user!.uid,
+        firstname: firstname.text.trim(),
+        username: username.text.trim(),
+        lastname: lastname.text.trim(),
+        email: email.text.trim(),
+        profilePicture: '',
+        number: number.text.trim(),
+      );
 
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);

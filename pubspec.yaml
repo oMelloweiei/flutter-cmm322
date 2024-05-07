@@ -37,6 +37,7 @@ dependencies:
   connectivity_plus: ^6.0.3
   smooth_page_indicator: ^1.1.0
   camera: ^0.10.5+9
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

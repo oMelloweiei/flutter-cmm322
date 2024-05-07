@@ -23,6 +23,17 @@ class Validator {
     return null; // Return null if validation passes
   }
 
+  static String? validateMobile(String? value) {
+    if (value == null || value.isEmpty) {
+      print('PhoneNumber is required');
+      return 'Phone number is required';
+    }
+    if (value.length != 10)
+      return 'Mobile Number must be of 10 digit';
+    else
+      return null;
+  }
+
   static String? validatePassword(
     String? password,
   ) {

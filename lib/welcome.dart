@@ -88,7 +88,7 @@ class _WelcomePageState extends State<WelcomePage> {
           cloud(180, -30, _currentPageIndex),
           SingleChildScrollView(
               child: SizedBox(
-            height: MediaQuery.of(context).size.height + 150,
+            height: MediaQuery.of(context).size.height + 170,
             child: PageView(
               controller: _pageController,
               onPageChanged: _handlePageChange,

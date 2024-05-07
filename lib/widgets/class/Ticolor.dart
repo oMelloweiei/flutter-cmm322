@@ -4,6 +4,7 @@ class Ticolor {
   static const Color greenMain1 = Color(0xFF53D49F);
   static const Color greenMain2 = Color(0xFF29D062);
   static const Color greenMain3 = Color(0xFF02C275);
+  static const Color greenMaininput = Color(0xFFBCE5D0);
 
   static const Color blackMain1 = Color(0xFF5D5D5D);
   static const Color blackMain2 = Color(0xFF242424);
