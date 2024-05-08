@@ -1,24 +1,33 @@
 import 'package:binny_application/pages/scan/detailscan.dart';
+import 'package:binny_application/theme/Text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/scanlist.dart';
 import 'package:flutter/widgets.dart';
 
 class Widget130 extends StatelessWidget {
-  const Widget130({super.key});
+  final TextTheme textThemeThai;
+
+  const Widget130({Key? key, required this.textThemeThai}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     List<ClassScanlist> listtrash = [
       ClassScanlist("8 851 9523 50161", "Crystal คริสตัล",
-          "assets/scan/Scan_BARCODE10.png"),
+          "assets/scan/Scan_BARCODE10.webp"),
       ClassScanlist("1 111 6425 20001", "น้ำมันพืช มรกต",
-          "assets/scan/Scan_BARCODE09.png"),
+          "assets/scan/Scan_BARCODE09.webp"),
       ClassScanlist("8 850 3600 33321", "Dettol Multi Surface",
-          "assets/scan/Scan_BARCODE08.png"),
+          "assets/scan/Scan_BARCODE08.webp"),
       ClassScanlist("4 987 1766 00776", "วิคส์ วาโปรับ (Vicks VapoRub)",
-          "assets/scan/Scan_BARCODE07.png")
+          "assets/scan/Scan_BARCODE07.webp"),
+      ClassScanlist('8 850 0922 80604', 'HYGIENE EXPERT CARE น้ำยาปรับผ้านุ่ม',
+          "assets/scan/Scan_BARCODE06.webp"),
+      ClassScanlist("4 987 1766 00776", "วิคส์ วาโปรับ (Vicks VapoRub)",
+          "assets/scan/Scan_BARCODE07.webp"),
+      ClassScanlist("4 987 1766 00776", "วิคส์ วาโปรับ (Vicks VapoRub)",
+          "assets/scan/Scan_BARCODE07.webp"),
     ];
     return Container(
       width: size.width,
@@ -41,7 +50,7 @@ class Widget130 extends StatelessWidget {
                                 name: trash.name)));
                   },
                   child: Container(
-                      decoration: const BoxDecoration(color: Colors.amber),
+                      // decoration: const BoxDecoration(color: Colors.amber),
                       height: 140,
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -76,20 +85,22 @@ class Widget130 extends StatelessWidget {
                                       child: Text(
                                         textAlign: TextAlign.start,
                                         trash.tagnumber,
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.w500),
+                                        style: textThemeThai.titleLarge!
+                                            .copyWith(
+                                                fontSize: 16,
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                     Expanded(
                                       flex: 3,
                                       child: Text(trash.name,
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              color:
-                                                  Color.fromARGB(255, 0, 0, 0),
-                                              fontWeight: FontWeight.w500)),
+                                          style: textThemeThai.titleLarge!
+                                              .copyWith(
+                                                  fontSize: 16,
+                                                  color: Color.fromARGB(
+                                                      255, 0, 0, 0),
+                                                  fontWeight: FontWeight.w500)),
                                     )
                                   ],
                                 ),

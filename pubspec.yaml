@@ -38,6 +38,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   camera: ^0.10.5+9
   shimmer: ^3.0.0
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

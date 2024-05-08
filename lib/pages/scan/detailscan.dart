@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -211,7 +212,9 @@ class _BinProductState extends State<BinProduct> {
           SizedBox(height: 16),
           BinProductText(),
           SizedBox(height: 10),
-          ProductDetailTwoPic(),
+          ProductDetailTwoPic(
+            picture: widget.picture,
+          ),
           SizedBox(height: 20),
         ],
       ),
@@ -270,6 +273,9 @@ class BinProductText extends StatelessWidget {
 }
 
 class ProductDetailTwoPic extends StatelessWidget {
+  final String picture;
+
+  ProductDetailTwoPic({required this.picture});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -306,7 +312,7 @@ class ProductDetailTwoPic extends StatelessWidget {
                       ),
                       child: Center(
                         child: Image.asset(
-                          'assets/trash/demoTrash.png',
+                          picture,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -320,20 +326,35 @@ class ProductDetailTwoPic extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Container(
-                      width: 135,
-                      height: 125,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          'assets/trash/demoTrash.png',
-                          fit: BoxFit.contain,
+                    Stack(children: [
+                      Container(
+                        width: 135,
+                        height: 125,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            picture,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
+                      Container(
+                        width: 135,
+                        height: 125,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color.fromARGB(54, 0, 0, 0),
+                        ),
+                      ),
+                      Container(
+                        width: 135,
+                        height: 125,
+                        child: Image.asset('assets/icons/recycle1.png'),
+                      )
+                    ]),
                     SizedBox(height: 5),
                     Text(
                       'Bottle',
