@@ -1,31 +1,28 @@
-import 'package:binny_application/pages/homepage.dart';
-import 'package:binny_application/pages/pointpage.dart';
-import 'package:binny_application/pages/profile.dart';
-import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 var myIcon = [
   {
     'title': 'หน้าแรก',
     'icon': FontAwesomeIcons.house,
-    'page': HomePage(),
+    'page': '/home',
   },
   {
     'title': 'สแกนขยะ',
     'icon': FontAwesomeIcons.barcode,
-    'page': ScanPage(),
+    'page': '/scan',
   },
   {
     'title': 'แต้มสะสม',
     'icon': FontAwesomeIcons.gift,
-    'page': PointPage(),
+    'page': '/point',
   },
   {
     'title': 'โปรไฟล์',
     'icon': FontAwesomeIcons.user,
-    'page': profilePage(),
+    'page': '/profile',
   },
 ];
 
@@ -62,17 +59,14 @@ class MyBottomNavbar extends StatelessWidget {
           var item = entry.value;
           var title = item['title'].toString();
           var icon = item['icon'] as IconData;
-          var page = item['page'] as Widget;
+          var page = item['page'] as String;
           return GestureDetector(
             onTap: () {
               if (index != currentPage) {
-                if (currentPage != 0) {
-                  Navigator.pop(context);
+                if (page == '/home') {
+                  Get.back();
                 } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => page),
-                  );
+                  Get.toNamed(page); // Navigate to other pages normally
                 }
               }
             },

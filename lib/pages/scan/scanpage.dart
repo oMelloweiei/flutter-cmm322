@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:binny_application/theme/text.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:get/get.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({
@@ -105,161 +106,7 @@ class _ScanPageState extends State<ScanPage>
     );
   }
 }
-// Container(
-//     padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-//     height: MediaQuery.of(context).size.height * 0.8,
-//     child: CameraPreview(cameraController!))
 
-// class ScanPage extends StatefulWidget {
-//   final List<CameraDescription> cameras;
-//   final PageController pageController;
-
-//   const ScanPage(
-//       {Key? key, required this.cameras, required this.pageController})
-//       : super(key: key);
-
-//   @override
-//   State<ScanPage> createState() => _ScanPageState();
-// }
-
-// class _ScanPageState extends State<ScanPage> {
-//   late CameraController cameraController;
-//   late Future<void> cameraValue;
-//   late TabController tabController;
-//   // late PageController _pageController;
-
-//   void startCamera(int camera) {
-//     cameraController = CameraController(
-//       widget.cameras[camera],
-//       ResolutionPreset.medium,
-//       enableAudio: false,
-//     );
-//     cameraValue = cameraController.initialize();
-//   }
-
-//   @override
-//   void initState() {
-//     startCamera(0);
-//     super.initState();
-//     // tabController = TabController(length: 2, vsync: this);
-//   }
-
-//   @override
-//   void dispose() {
-//     cameraController.dispose();
-//     tabController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Scan Page'),
-//         bottom: TabBar(
-//           controller: tabController,
-//           tabs: [
-//             Tab(text: 'Tab 1'),
-//             Tab(text: 'Tab 2'),
-//           ],
-//         ),
-//       ),
-//       body: TabBarView(
-//         controller: tabController,
-//         children: [
-//           FutureBuilder<void>(
-//             future: cameraValue,
-//             builder: (context, snapshot) {
-//               if (snapshot.connectionState == ConnectionState.done) {
-//                 return Center(
-//                   child: CameraPreview(cameraController),
-//                 );
-//               } else {
-//                 return Center(child: CircularProgressIndicator());
-//               }
-//             },
-//           ),
-//           Center(child: Text('Second Tab')),
-//         ],
-//       ),
-//     );
-//   }
-
-// @override
-// Widget build(BuildContext context) {
-//   final size = MediaQuery.of(context).size;
-
-//   TextTheme textThemeThai = buildTextTHI(Theme.of(context).textTheme);
-//   return Container(
-//     width: size.width,
-//     height: size.height,
-//     child: Column(
-//       children: [
-//         Stack(children: [
-
-//           Positioned(
-//             bottom: 0,
-//             left: 10,
-//             child: IconButton(
-//                 onPressed: () {
-//                   widget.pageController.previousPage(
-//                       duration: Duration.zero, curve: Curves.easeIn);
-//                 },
-//                 icon: Icon(
-//                   Icons.close,
-//                   size: 40,
-//                 )),
-//           )
-//         ]),
-//         Expanded(
-//           child: TabBarView(
-//             controller: tabController, // Pass the TabController
-//             children: [
-//               Container(
-//                 width: size.width * 0.9,
-//                 height: size.height * 0.8,
-//                 child: Stack(
-//                   alignment: Alignment.center,
-//                   children: [
-//                     SizedBox(
-//                       width: size.width * 0.9,
-//                       height: size.height * 0.8,
-//                       child: ClipRRect(
-//                         borderRadius: BorderRadius.circular(10),
-//                         child: FutureBuilder<void>(
-//                           future: cameraValue,
-//                           builder: (context, snapshot) {
-//                             if (snapshot.connectionState ==
-//                                 ConnectionState.done) {
-//                               return CameraPreview(cameraController);
-//                               // return Container();
-//                             } else {
-//                               return Center(
-//                                 child: CircularProgressIndicator(),
-//                               );
-//                             }
-//                           },
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       width: 350,
-//                       child: Image.asset(
-//                         'assets/scanpage/scannerScope.png',
-//                       ),
-//                     )
-//                   ],
-//                 ),
-//               ),
-//               Widget130(),
-//             ],
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-//}
 PreferredSizeWidget Tabbar(BuildContext context, TabController tabController) {
   // Update return type
   final size = MediaQuery.of(context).size;
@@ -273,7 +120,7 @@ PreferredSizeWidget Tabbar(BuildContext context, TabController tabController) {
           flex: 1,
           child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               },
               icon: Icon(
                 Icons.close,

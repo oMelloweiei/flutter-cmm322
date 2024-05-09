@@ -1,12 +1,8 @@
 # binny_application
 
-# ระบบปรับเปลี่ยนข้อมูล User กำลังอยู๋ในกระบวนการแก้ไขอย่าพึ่งทดลอง
-
-# Test Readme
-
 # Binny
 
-Foobar is a Application for something...
+Binny is a Application for something...
 
 ## Packages
 

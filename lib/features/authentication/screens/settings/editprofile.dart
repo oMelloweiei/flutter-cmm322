@@ -19,7 +19,7 @@ class EditProfile extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
@@ -30,7 +30,7 @@ class EditProfile extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height + 100,
             ),
             Positioned(
               top: 0,
@@ -165,13 +165,37 @@ class EditProfile extends StatelessWidget {
                                       borderSide: BorderSide.none,
                                     ))),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.1,
+                              height: 20,
                             ),
                             SizedBox(
                               width: double.infinity,
                               child: TextButton(
                                 style: TextButton.styleFrom(
                                   backgroundColor: Ticolor.greenMain3,
+                                  textStyle: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                onPressed: () => controller.updateUserName(),
+                                child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Text(
+                                      'Confirm',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700),
+                                    )),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  side: BorderSide(width: 2, color: Colors.red),
+                                  backgroundColor: Colors.transparent,
                                   textStyle: TextStyle(
                                     fontSize: 18,
                                   ),

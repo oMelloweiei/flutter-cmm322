@@ -184,28 +184,20 @@ class Tab2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              Container(
                 padding: const EdgeInsets.only(top: 20, left: 10),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "สินค้าอิเล็กทรอนิกส์",
-                              style: GoogleFonts.ibmPlexSansThai(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "สินค้าอิเล็กทรอนิกส์",
+                      style: GoogleFonts.ibmPlexSansThai(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -232,7 +224,7 @@ class Tab2 extends StatelessWidget {
                                 shape: BoxShape.rectangle,
                                 color: Color(0xFFEEF1F4),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   image: imgpath is Image
                                       ? imgpath.image
                                       : AssetImage(
@@ -260,9 +252,9 @@ class Tab2 extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      name.length > 18
-                                          ? '${name.substring(0, 18)}...'
-                                          : name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      name,
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
@@ -287,28 +279,20 @@ class Tab2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "เครื่องแต่งกาย",
-                              style: GoogleFonts.ibmPlexSansThai(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              Container(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "เครื่องแต่งกาย",
+                      style: GoogleFonts.ibmPlexSansThai(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -335,7 +319,7 @@ class Tab2 extends StatelessWidget {
                                 shape: BoxShape.rectangle,
                                 color: Color(0xFFEEF1F4),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   image: imgpath is Image
                                       ? imgpath.image
                                       : AssetImage(
@@ -363,9 +347,9 @@ class Tab2 extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      name.length > 18
-                                          ? '${name.substring(0, 18)}...'
-                                          : name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      name,
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
@@ -390,28 +374,20 @@ class Tab2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "สินค้าเพื่อสุขภาพ",
-                              style: GoogleFonts.ibmPlexSansThai(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              Container(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "สินค้าเพื่อสุขภาพ",
+                      style: GoogleFonts.ibmPlexSansThai(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -438,7 +414,7 @@ class Tab2 extends StatelessWidget {
                                 shape: BoxShape.rectangle,
                                 color: Color(0xFFEEF1F4),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   image: imgpath is Image
                                       ? imgpath.image
                                       : AssetImage(
@@ -466,9 +442,9 @@ class Tab2 extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      name.length > 18
-                                          ? '${name.substring(0, 18)}...'
-                                          : name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      name,
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
@@ -493,28 +469,20 @@ class Tab2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "สินค้าทั่วไป&ข้าวของเครื่องใช้",
-                              style: GoogleFonts.ibmPlexSansThai(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              Container(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "สินค้าทั่วไป&ข้าวของเครื่องใช้",
+                      style: GoogleFonts.ibmPlexSansThai(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -541,7 +509,7 @@ class Tab2 extends StatelessWidget {
                                 shape: BoxShape.rectangle,
                                 color: Color(0xFFEEF1F4),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                   image: imgpath is Image
                                       ? imgpath.image
                                       : AssetImage(
@@ -569,9 +537,9 @@ class Tab2 extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      name.length > 18
-                                          ? '${name.substring(0, 18)}...'
-                                          : name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      name,
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
