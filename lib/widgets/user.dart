@@ -40,13 +40,13 @@ List<Map<String, dynamic>> userData = [
     "Oil": "250kg"
   },
 ];
+final controller = UserController.instance;
 
 //หน้าเเสดงชื่อผู็ใช้
 class BinnyBunWidget extends StatelessWidget {
   //ชื่อโปรไฟล์ของผู้ใช้
   @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
     return Column(
       mainAxisAlignment: MainAxisAlignment
           .center, // จัดให้ส่วนของ InkWell อยู่ตรงกลางตามแนวแกนตั้ง
@@ -134,7 +134,9 @@ class FollowStatsContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    userData[0]['following'].toString(),
+                    // userData[0]['following'].toString(),
+                    (controller.user.value.following ?? 0).toString(),
+
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
@@ -166,7 +168,7 @@ class FollowStatsContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    userData[0]['follower'].toString(),
+                    (controller.user.value.follower ?? 0).toString(),
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
@@ -259,7 +261,8 @@ class _MyWasteStatisticsState extends State<MyWasteStatistics> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                userData[0]['stat'].toString(),
+                // userData[0]['stat'].toString(),
+                (controller.user.value.point ?? 0).toString(),
                 style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
               ),
               SizedBox(width: 6),

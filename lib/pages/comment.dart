@@ -1,7 +1,9 @@
+import 'package:binny_application/pages/createpost.dart';
 import 'package:binny_application/widgets/listbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class katooPage extends StatelessWidget {
@@ -9,8 +11,8 @@ class katooPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final panelHeightOpen = MediaQuery.of(context).size.height * 0.78;
-    final panelHeightClose = MediaQuery.of(context).size.height * 0.52;
+    final panelHeightOpen = MediaQuery.of(context).size.height * 0.8;
+    final panelHeightClose = MediaQuery.of(context).size.height * 0.45;
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -75,7 +77,22 @@ class _QAPageState extends State<QAPage> {
                   boxTitle: 'boxTitle',
                   comment: 'comment',
                   username: 'username',
-                  formattedDate: 'formattedDate')
+                  formattedDate: 'formattedDate'),
+              squareBox(
+                  boxTitle: 'boxTitle',
+                  comment: 'comment',
+                  username: 'username',
+                  formattedDate: 'formattedDate'),
+              squareBox(
+                  boxTitle: 'boxTitle',
+                  comment: 'comment',
+                  username: 'username',
+                  formattedDate: 'formattedDate'),
+              squareBox(
+                  boxTitle: 'boxTitle',
+                  comment: 'comment',
+                  username: 'username',
+                  formattedDate: 'formattedDate'),
             ],
           ),
         ),
@@ -200,11 +217,11 @@ class myPost extends StatelessWidget {
             style:
                 TextStyle(fontSize: 20, color: Colors.black.withOpacity(0.5)),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Colors.green),
+          TextButton(
+            onPressed: () {
+              Get.to(CreatePost());
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
             child: Text(
               'เขียนกระทู้คำถามของคุณ',
               style: TextStyle(fontSize: 20, color: Colors.white),
@@ -233,8 +250,8 @@ class forMeContainer extends StatelessWidget {
             20,
             10,
             " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
+            "assets/Ying.png",
+            'assets/Ying2.png'),
         commmentBox(
             "name",
             "time",
@@ -243,8 +260,8 @@ class forMeContainer extends StatelessWidget {
             20,
             10,
             " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
+            "assets/Ying.png",
+            'assets/Ying2.png'),
         commmentBox(
             "name",
             "time",
@@ -253,8 +270,8 @@ class forMeContainer extends StatelessWidget {
             20,
             10,
             " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
+            "assets/Ying.png",
+            'assets/Ying2.png'),
         commmentBox(
             "name",
             "time",
@@ -263,8 +280,8 @@ class forMeContainer extends StatelessWidget {
             20,
             10,
             " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
+            "assets/Ying.png",
+            'assets/Ying2.png'),
         commmentBox(
             "name",
             "time",
@@ -273,8 +290,8 @@ class forMeContainer extends StatelessWidget {
             20,
             10,
             " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
+            "assets/Ying.png",
+            'assets/Ying2.png'),
       ]),
     );
   }
@@ -309,7 +326,7 @@ class forMeContainer extends StatelessWidget {
                     // color: Colors.pink,
                     child: Row(children: [
                       ClipOval(
-                        child: Image.asset('assets/katoo/$PostprofileImg.jpg',
+                        child: Image.asset(PostprofileImg,
                             fit: BoxFit.cover, width: 50, height: 50),
                       ),
                       SizedBox(width: 10),

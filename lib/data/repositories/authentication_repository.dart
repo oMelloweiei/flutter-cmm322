@@ -211,6 +211,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
       await _auth.currentUser?.delete();
+      await logout();
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {

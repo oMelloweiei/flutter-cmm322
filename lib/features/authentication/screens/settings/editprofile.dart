@@ -142,10 +142,10 @@ class EditProfile extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            ReAuthLoginForm(),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            // ReAuthLoginForm(),
+                            // SizedBox(
+                            //   height: 20,
+                            // ),
                             TextFormField(
                                 keyboardType: TextInputType.multiline,
                                 minLines: 5,
@@ -200,13 +200,14 @@ class EditProfile extends StatelessWidget {
                                     fontSize: 18,
                                   ),
                                 ),
-                                onPressed: () => controller.updateUserName(),
+                                onPressed: () =>
+                                    Get.to(() => ReAuthLoginForm()),
                                 child: Padding(
                                     padding: EdgeInsets.symmetric(vertical: 10),
                                     child: Text(
-                                      'Confirm',
+                                      'Delete',
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.red,
                                           fontWeight: FontWeight.w700),
                                     )),
                               ),
@@ -217,7 +218,7 @@ class EditProfile extends StatelessWidget {
                 ),
               ),
             ),
-            // //ส่วนเเสดงโปรไฟล์ขอผู้ใช้ โดยล็อคตำแหน่งเอาไว้
+
             Positioned(
               top: MediaQuery.of(context).size.height * 0.15,
               left: 0,

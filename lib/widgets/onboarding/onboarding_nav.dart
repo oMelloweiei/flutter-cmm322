@@ -24,7 +24,7 @@ class OnboardingNavigation extends StatelessWidget {
         onDotClicked: controller.dotNavigationClick,
         count: onboardItems.length,
         effect: ExpandingDotsEffect(
-          activeDotColor: Color(0xFF02C275),
+          activeDotColor: Colors.white,
           dotHeight: 10,
           dotWidth: 12,
         ),

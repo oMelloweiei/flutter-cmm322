@@ -138,7 +138,7 @@ class HomePagecontent extends StatelessWidget {
         },
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: 35, // Set the desired width
               height: 35, // Set the desired height
               child: Image.asset(
@@ -180,6 +180,7 @@ class HomePagecontent extends StatelessWidget {
                       bottom: 0.0), // Adjust the horizontal padding as needed
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       myIcon(TImages.sell_garbage, "ติดต่อขายขยะ", context,
                           'sell'),
@@ -251,7 +252,37 @@ class HomePagecontent extends StatelessWidget {
                           boxTitle: 'boxTitle',
                           comment: 'comment',
                           username: 'username',
-                          formattedDate: 'formattedDate')
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
                     ],
                   ),
                 ),
@@ -267,7 +298,27 @@ class HomePagecontent extends StatelessWidget {
                           picture: TImages.picture_6,
                           carpetTitle: 'carpetTitle',
                           description: 'description',
-                          hashtag: 'hashtag')
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
                     ],
                   ),
                 ),
