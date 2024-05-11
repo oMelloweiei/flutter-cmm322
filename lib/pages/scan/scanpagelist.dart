@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/scanlist.dart';
 import 'package:flutter/widgets.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 
 class Widget130 extends StatelessWidget {
   final TextTheme textThemeThai;
