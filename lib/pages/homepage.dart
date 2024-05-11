@@ -4,7 +4,7 @@ import 'package:binny_application/pages/howto.dart';
 import 'package:binny_application/pages/manual.dart';
 import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/sell.dart';
+import 'package:binny_application/pages/selltrash/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/class/Color.dart';

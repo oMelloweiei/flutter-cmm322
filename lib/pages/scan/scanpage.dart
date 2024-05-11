@@ -284,7 +284,9 @@ PreferredSizeWidget Tabbar(BuildContext context, TabController tabController) {
           flex: 4,
           child: Padding(
             padding: EdgeInsets.only(
-                right: size.width * 0.18, top: size.height * 0.005),
+              right: size.width * 0.18,
+              top: size.height * 0.005,
+            ),
             child: TabBar(
               indicator: BoxDecoration(
                   color: greenMain3, borderRadius: BorderRadius.circular(24)),
