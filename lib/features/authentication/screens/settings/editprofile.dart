@@ -19,7 +19,7 @@ class EditProfile extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
@@ -30,7 +30,7 @@ class EditProfile extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height + 100,
             ),
             Positioned(
               top: 0,
@@ -142,10 +142,10 @@ class EditProfile extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            ReAuthLoginForm(),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            // ReAuthLoginForm(),
+                            // SizedBox(
+                            //   height: 20,
+                            // ),
                             TextFormField(
                                 keyboardType: TextInputType.multiline,
                                 minLines: 5,
@@ -165,7 +165,7 @@ class EditProfile extends StatelessWidget {
                                       borderSide: BorderSide.none,
                                     ))),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.1,
+                              height: 20,
                             ),
                             SizedBox(
                               width: double.infinity,
@@ -187,13 +187,38 @@ class EditProfile extends StatelessWidget {
                                     )),
                               ),
                             ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  side: BorderSide(width: 2, color: Colors.red),
+                                  backgroundColor: Colors.transparent,
+                                  textStyle: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                onPressed: () =>
+                                    Get.to(() => ReAuthLoginForm()),
+                                child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Text(
+                                      'Delete',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.w700),
+                                    )),
+                              ),
+                            ),
                           ]),
                     ),
                   ),
                 ),
               ),
             ),
-            // //ส่วนเเสดงโปรไฟล์ขอผู้ใช้ โดยล็อคตำแหน่งเอาไว้
+
             Positioned(
               top: MediaQuery.of(context).size.height * 0.15,
               left: 0,

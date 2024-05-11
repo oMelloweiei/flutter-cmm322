@@ -18,14 +18,14 @@ class OnboardingPage extends StatelessWidget {
         SizedBox(height: 20),
         Text(
           item['head'] as String,
-          style: TextStyle(fontSize: 24, color: Colors.black),
+          style: TextStyle(fontSize: 24, color: Colors.white),
         ),
         SizedBox(height: 20),
         Container(
             width: MediaQuery.of(context).size.width * 0.55,
             child: Text(
               item['detail'] as String,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(fontSize: 16, color: Colors.white),
               textAlign: TextAlign.center,
             )),
       ],

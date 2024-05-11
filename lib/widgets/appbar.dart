@@ -28,16 +28,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       leadingWidth: currentPageIndex != 1 ? 52 : 20,
-      title: Text(
-        controller.user.value.fullName,
-        style: TextStyle(color: _color),
+      title: Image.asset(
+        TImages.logoblack,
+        color: _color,
+        fit: BoxFit.cover,
+        height: 30,
       ),
-      //  Image.asset(
-      //   TImages.logoblack,
-      //   color: _color,
-      //   fit: BoxFit.cover,
-      //   height: 30,
-      // ),
       actions: [
         IconButton(
             onPressed: () {},

@@ -56,7 +56,7 @@ class _PointPageState extends State<PointPage>
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height + 150,
                     child: TabBarView(
                       controller: tabController,
                       children: [
