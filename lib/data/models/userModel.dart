@@ -17,8 +17,8 @@ class UserModel {
   int? aluminium;
   int? drinkbox;
   int? oil;
-  String? topicId;
-  String? replyId;
+  List<String>? topicId;
+  List<String>? replyId;
   List<String>? historyId;
 
   UserModel({
@@ -74,8 +74,8 @@ class UserModel {
       aluminium: 0,
       drinkbox: 0,
       oil: 0,
-      topicId: '',
-      replyId: '',
+      topicId: [],
+      replyId: [],
       historyId: []);
 
   Map<String, dynamic> toJson() {
@@ -120,8 +120,8 @@ class UserModel {
         aluminium: data['Aluminium'] ?? 0,
         drinkbox: data['DrinkBox'] ?? 0,
         oil: data['Oil'] ?? 0,
-        topicId: data['TopicId'],
-        replyId: data['ReplyId'],
+        topicId: data['TopicId'] ?? [],
+        replyId: data['ReplyId'] ?? [],
         historyId: List<String>.from(data['HistoryId'] ?? []),
       );
     } else {

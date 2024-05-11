@@ -31,6 +31,9 @@ class _profilePageState extends State<profilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final networkImage = controller.user.value.profilePicture;
+    final image =
+        networkImage.isNotEmpty ? networkImage : TImages.profilerabbit;
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: MyAppBar(currentPageIndex: 3),
@@ -116,14 +119,16 @@ class _profilePageState extends State<profilePage> {
                     ),
                   ),
                 ),
+
                 //ส่วนเเสดงโปรไฟล์ขอผู้ใช้ โดยล็อคตำแหน่งเอาไว้
                 Positioned(
                   top: MediaQuery.of(context).size.height * 0.15,
                   left: (MediaQuery.of(context).size.width / 2) - 120 / 2,
                   child: CircularImage(
-                    image: controller.user.value.profilePicture,
+                    image: image,
                     width: 120,
                     height: 120,
+                    isNetWorkImage: networkImage.isNotEmpty,
                   ),
                 ),
                 //ส่วนเเสดงปุ่มเเก้ไขโปรไฟล์ โดยล็อคตำแหน่งเอาไว้

@@ -1,12 +1,15 @@
-class Formatter {
-  // static String formatDate(DateTime? date) {
-  //   date ??= DateTime.now();
-  //   return DateFormat('dd-MMM-yyyy').format(date);
-  // }
+// ignore: depend_on_referenced_packages
+// import 'package:intl/intl.dart';
 
-  // static String formatCurrency(double amount) {
-  //   return NumberFormat.currency(locale: 'en_Us', symbol: '\$').format(amount);
-  // }
+class Formatter {
+//   static String formatDate(DateTime? date) {
+//     date ??= DateTime.now();
+//     return DateFormat('dd-MMM-yyyy').format(date);
+//   }
+
+//   static String formatCurrency(double amount) {
+//     return NumberFormat.currency(locale: 'en_Us', symbol: '\$').format(amount);
+//   }
 
   static String formatPhoneNumber(String phoneNumber) {
     //Assuming a 10-digit US phone number format: (123) 456-7890

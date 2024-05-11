@@ -1,5 +1,8 @@
+import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/pages/createpost.dart';
 import 'package:binny_application/widgets/listbox.dart';
+import 'package:binny_application/widgets/loaders/topicshimmer.dart';
+import 'package:binny_application/widgets/topic_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -239,172 +242,23 @@ class forMeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 26, vertical: 12),
-      child: ListView(controller: controller, children: [
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "assets/Ying.png",
-            'assets/Ying2.png'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "assets/Ying.png",
-            'assets/Ying2.png'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "assets/Ying.png",
-            'assets/Ying2.png'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "assets/Ying.png",
-            'assets/Ying2.png'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "assets/Ying.png",
-            'assets/Ying2.png'),
-      ]),
-    );
-  }
+    final _topicController = Get.put(topicController());
+    return Obx(() {
+      // if (_topicController.isLoading.value) return const TopicShimmer();
 
-  Widget commmentBox(
-      String name,
-      String time,
-      String date,
-      String post,
-      int like,
-      int nComment,
-      String reply,
-      String PostprofileImg,
-      String ReplyImg) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-              border: Border.all(
-                  color: const Color.fromARGB(255, 203, 203, 203), width: 2)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    // color: Colors.pink,
-                    child: Row(children: [
-                      ClipOval(
-                        child: Image.asset(PostprofileImg,
-                            fit: BoxFit.cover, width: 50, height: 50),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(name), Text('${time} | ${date}')],
-                      ),
-                    ]),
-                  ),
-                  Icon(Icons.book),
-                ],
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(post),
-              SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    child: Row(children: [
-                      Icon(Icons.heart_broken_rounded),
-                      SizedBox(width: 6),
-                      Text(like.toString())
-                    ]),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    child: Row(children: [
-                      Icon(Icons.chat),
-                      SizedBox(width: 6),
-                      Text(nComment.toString())
-                    ]),
-                  ),
-                ],
-              ),
-              Divider(color: const Color.fromARGB(255, 203, 203, 203)),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        ReplyImg,
-                        fit: BoxFit.cover,
-                        width: 35,
-                        height: 35,
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Flexible(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          reply,
-                          maxLines: 2,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          'reply',
-                          style: TextStyle(color: Colors.green),
-                        )
-                      ],
-                    ))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ));
+      return Container(
+          padding: EdgeInsets.symmetric(horizontal: 26, vertical: 12),
+          child: ListView.builder(
+              controller: controller,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: _topicController.allTopic.length,
+              itemBuilder: (_, index) {
+                final topic = _topicController.allTopic[index];
+                return TopicContainer(
+                  topic: topic,
+                );
+              }));
+    });
   }
 }
