@@ -9,6 +9,10 @@ import 'package:flutter/widgets.dart';
 
 class addTrashIcon extends StatelessWidget {
   final String types;
+  final Function(List<String>) updateList;
+  List<String> addList = [
+    'เพิ่มรายการ',
+  ];
 
   var kind = (
     {
@@ -72,7 +76,10 @@ class addTrashIcon extends StatelessWidget {
     }, //12
   );
 
-  addTrashIcon({required this.types});
+  addTrashIcon({
+    required this.types,
+    required this.updateList,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +98,12 @@ class addTrashIcon extends StatelessWidget {
                         builder: (context) => AlertDialog(
                               actions: [
                                 IconButton(
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () {
+                                      Navigator.pop(
+                                        context,
+                                      );
+                                      updateList(addList);
+                                    },
                                     icon: Icon(Icons.check))
                               ],
                               title: Center(
@@ -231,7 +243,10 @@ String _getImageAsset(String type) {
 //select trash here
 class select extends StatefulWidget {
   final String types;
-  select({super.key, required this.types});
+  select({
+    super.key,
+    required this.types,
+  });
 
   @override
   State<select> createState() => _selectState();
@@ -239,6 +254,7 @@ class select extends StatefulWidget {
 
 class _selectState extends State<select> {
   bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -246,6 +262,7 @@ class _selectState extends State<select> {
         setState(() {
           isSelected = !isSelected;
         });
+        updateList(widget.types);
       },
       child: Padding(
         padding: const EdgeInsets.all(2.0),
@@ -283,5 +300,18 @@ class _selectState extends State<select> {
         ),
       ),
     );
+  }
+}
+
+class updateList {
+  List<String> _newlist = [];
+  late String types;
+
+  updateList(this.types);
+
+  void update(String newType) {
+    types = newType;
+    _newlist.add(newType);
+    print(_newlist);
   }
 }

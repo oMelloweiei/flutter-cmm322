@@ -17,18 +17,13 @@ class bkrccgroup extends StatefulWidget {
 class _bkrccgroupState extends State<bkrccgroup> {
   List<String> _trashList = [
     'เพิ่มรายการ',
-    'ขวดน้ำใส PET',
-    'น้ำมันพืชใช้แล้ว',
-    'กระป๋องอะลูมิเนียม',
-    'พลาสติกแข็ง HDPE',
-    'อุปกรณ์อิเล็กทรอนิกส์',
-    'พลาสติก',
-    'กระดาษ',
-    'กล่องเครื่องดื่ม UHT',
-    'เสื้อผ้า',
-    'ถุงขนม/ซองกาแฟ',
-    'กระป๋อง เหล็ก สังกะสี ปิ๊ป',
   ];
+
+  void updateList(List<String> newList) {
+    setState(() {
+      _trashList = newList;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +109,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                           itemBuilder: (context, index) {
                             return addTrashIcon(
                               types: _trashList[index],
+                              updateList: updateList,
                             );
                           }),
                     ),
