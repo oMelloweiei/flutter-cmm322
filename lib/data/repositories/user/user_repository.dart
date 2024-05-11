@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:binny_application/data/models/user/userModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
@@ -29,6 +29,39 @@ class UserRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
+
+  Future<List<UserModel>> getAllUsers() async {
+    try {
+      // Perform the logic to fetch all users
+      // For example:
+      final querySnapshot = await _db.collection("Users").get();
+      final List<UserModel> users =
+          querySnapshot.docs.map((doc) => UserModel.fromSnapshot(doc)).toList();
+      return users;
+    } catch (e) {
+      // Handle any errors that occur during the process
+      throw e;
+    }
+  }
+
+  // Function to fetch user data based on user ID
+  // Future<UserModel> getUserById(UserModel userId) async {
+  //   try {
+  //     final documentSnapshot =
+  //         await _db.collection("Users").doc(userId.id).get();
+  //     if (documentSnapshot.exists) {
+  //       return UserModel.fromSnapshot(documentSnapshot);
+  //     } else {
+  //       throw "User not found";
+  //     }
+  //   } on FirebaseException catch (e) {
+  //     throw TFirebaseException(e.code).message;
+  //   } on PlatformException catch (e) {
+  //     throw TPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw "Something went wrong. Please try again";
+  //   }
+  // }
 
   //Function to fetch user detail based on user ID
   Future<UserModel> fetchUserDetails() async {

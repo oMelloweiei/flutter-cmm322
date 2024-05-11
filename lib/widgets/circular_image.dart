@@ -1,8 +1,6 @@
 import 'package:binny_application/widgets/loaders/shimmer_eff.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CircularImage extends StatelessWidget {
   const CircularImage(
@@ -15,7 +13,6 @@ class CircularImage extends StatelessWidget {
       this.fit = BoxFit.cover,
       this.padding = 5,
       this.isNetWorkImage = false});
-
   final BoxFit? fit;
   final String image;
   final bool isNetWorkImage;
@@ -29,11 +26,10 @@ class CircularImage extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-          // color: backgroundColor
-          borderRadius: BorderRadius.circular(100)),
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Center(
+          color: Colors.amber, borderRadius: BorderRadius.circular(100)),
+      child: ClipOval(
+          // borderRadius: BorderRadius.circular(100),
+          child: Container(
               child: isNetWorkImage
                   ? CachedNetworkImage(
                       fit: fit,
