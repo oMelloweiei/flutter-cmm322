@@ -2,6 +2,7 @@ import 'package:binny_application/features/authentication/screens/settings/editp
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
+import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,9 @@ class _profilePageState extends State<profilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final networkImage = controller.user.value.profilePicture;
+    final image =
+        networkImage.isNotEmpty ? networkImage : TImages.profilerabbit;
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: MyAppBar(currentPageIndex: 3),
@@ -115,19 +119,16 @@ class _profilePageState extends State<profilePage> {
                     ),
                   ),
                 ),
+
                 //ส่วนเเสดงโปรไฟล์ขอผู้ใช้ โดยล็อคตำแหน่งเอาไว้
                 Positioned(
                   top: MediaQuery.of(context).size.height * 0.15,
                   left: (MediaQuery.of(context).size.width / 2) - 120 / 2,
-                  child: ClipOval(
-                    child: Container(
-                      width: 120,
-                      height: 120,
-                      child: Image.network(
-                        controller.user.value.profilePicture,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  child: CircularImage(
+                    image: image,
+                    width: 120,
+                    height: 120,
+                    isNetWorkImage: networkImage.isNotEmpty,
                   ),
                 ),
                 //ส่วนเเสดงปุ่มเเก้ไขโปรไฟล์ โดยล็อคตำแหน่งเอาไว้

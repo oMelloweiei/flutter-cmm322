@@ -1,10 +1,13 @@
 import 'package:binny_application/bindings/general_bindings.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
+import 'package:binny_application/features/authentication/screens/login/login.dart';
+import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:binny_application/firebase_options.dart';
 import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/scan/scanpage.dart';
+import 'package:binny_application/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +42,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: [
+        GetPage(name: '/welcome', page: () => WelcomePage()),
+        GetPage(name: '/login', page: () => LoginForm()),
+        GetPage(name: '/signup', page: () => SignupForm()),
         GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/scan', page: () => ScanPage()),
         GetPage(name: '/point', page: () => PointPage()),

@@ -1,6 +1,8 @@
 import 'package:binny_application/features/authentication/controllers/setting/edit_profile_controller.dart';
 import 'package:binny_application/features/authentication/screens/settings/re_auth_user_login_form.dart';
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/utils/validators/validations.dart';
+import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UpdateUserController());
+    final user = UserController.instance;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -88,7 +91,10 @@ class EditProfile extends StatelessWidget {
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.018),
-                            Text('Add Photo (Optional)'),
+                            ElevatedButton(
+                                onPressed: () =>
+                                    user.uploadUserProfilePicture(),
+                                child: Text('Add Photo (Optional)')),
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.03),
@@ -230,11 +236,18 @@ class EditProfile extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                   ),
-                  child: Image.asset(
-                    TImages.profilerabbit,
-                    width: 175,
-                    height: 175,
-                  ),
+                  child: Obx(() {
+                    final networkImage = user.user.value.profilePicture;
+                    final image = networkImage.isNotEmpty
+                        ? networkImage
+                        : TImages.profilerabbit;
+                    return CircularImage(
+                      image: image,
+                      width: 120,
+                      height: 120,
+                      isNetWorkImage: networkImage.isNotEmpty,
+                    );
+                  }),
                 ),
               ),
             ),

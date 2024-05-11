@@ -1,4 +1,4 @@
-import 'package:binny_application/data/models/user/userModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/data/repositories/user/user_repository.dart';
 import 'package:binny_application/features/authentication/screens/settings/editprofile.dart';
@@ -9,6 +9,7 @@ import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
@@ -43,25 +44,32 @@ class UserController extends GetxController {
 
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        //Convert name to first and last
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
+      //First update Rx user and then check if user data is already started. if not store new data
+      await fetchUserRecord();
 
-        final username =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      //IF no record already stored
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          //Convert name to first and last
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
 
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          username: username,
-          firstname: nameParts[0],
-          lastname: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          email: userCredentials.user!.email ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-          number: userCredentials.user!.phoneNumber ?? '',
-        );
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        await userRepository.saveUserRecord(user);
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            username: username,
+            firstname: nameParts[0],
+            lastname:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            email: userCredentials.user!.email ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+            number: userCredentials.user!.phoneNumber ?? '',
+          );
+
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       Loaders.warningSnackBar(
@@ -141,6 +149,37 @@ class UserController extends GetxController {
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    }
+  }
+
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+
+      if (image != null) {
+        // Upload image
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile', image);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        // Assign the resolved imageUrl to user.value.profilePicture
+        user.value.profilePicture = imageUrl;
+
+        Loaders.successSnackBar(
+          title: 'Congratulation',
+          message: 'Your Profile Image has been updated.',
+        );
+      }
+    } catch (e) {
+      Loaders.errorSnackBar(
+          title: 'Oh Snap!', message: 'Something went wrong: $e');
     }
   }
 }
