@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-List imgList = [];
+// List imgList = [];
 
 class CreatePost extends StatelessWidget {
   CreatePost({Key? key}) : super(key: key);
@@ -81,18 +81,18 @@ class CreatePost extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (imgList.isNotEmpty)
-                          Expanded(
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: imgList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Container(
-                                  width: 90,
-                                );
-                              },
-                            ),
-                          ),
+                        // if (imgList.isNotEmpty)
+                        //   Expanded(
+                        //     child: ListView.builder(
+                        //       scrollDirection: Axis.horizontal,
+                        //       itemCount: imgList.length,
+                        //       itemBuilder: (BuildContext context, int index) {
+                        //         return Container(
+                        //           width: 90,
+                        //         );
+                        //       },
+                        //     ),
+                        //   ),
                       ]))
                 ])));
   }
