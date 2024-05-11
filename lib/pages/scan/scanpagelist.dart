@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/scanlist.dart';
 import 'package:flutter/widgets.dart';
+import 'package:binny_application/widgets/class/Timages.dart';
 
 class Widget130 extends StatelessWidget {
   const Widget130({super.key});
@@ -12,13 +13,13 @@ class Widget130 extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     List<ClassScanlist> listtrash = [
       ClassScanlist("8 851 9523 50161", "Crystal คริสตัล",
-          "assets/scan/Scan_BARCODE10.png"),
+          TImages.watercrystalphoto),
       ClassScanlist("1 111 6425 20001", "น้ำมันพืช มรกต",
-          "assets/scan/Scan_BARCODE09.png"),
+          TImages.oilmorakotphoto),
       ClassScanlist("8 850 3600 33321", "Dettol Multi Surface",
-          "assets/scan/Scan_BARCODE08.png"),
+          TImages.dettolphoto),
       ClassScanlist("4 987 1766 00776", "วิคส์ วาโปรับ (Vicks VapoRub)",
-          "assets/scan/Scan_BARCODE07.png")
+          TImages.vicksphoto)
     ];
     return Container(
       width: size.width,

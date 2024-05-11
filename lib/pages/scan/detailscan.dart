@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:binny_application/widgets/class/Timages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -306,7 +306,7 @@ class ProductDetailTwoPic extends StatelessWidget {
                       ),
                       child: Center(
                         child: Image.asset(
-                          'assets/trash/demoTrash.png',
+                          TImages.emptybottle,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -329,7 +329,7 @@ class ProductDetailTwoPic extends StatelessWidget {
                       ),
                       child: Center(
                         child: Image.asset(
-                          'assets/trash/demoTrash.png',
+                          TImages.iconHDPE,
                           fit: BoxFit.contain,
                         ),
                       ),

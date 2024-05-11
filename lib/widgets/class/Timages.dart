@@ -205,6 +205,11 @@ class TImages {
   static const String emptybottle = "assets/scan/Scan_10.webp";
   static const String watercrystalphoto = "assets/scan/Scan_BARCODE10.webp";
 
+  static const String iconPTE = "assets/scan/Scan_iconPTE.webp";
+  static const String iconHDPE = "assets/scan/Scan_iconHDPE.webp";
+  static const String iconnull = "assets/scan/Scan_iconnull.webp";
+  static const String iconOTHER = "assets/scan/Scan_iconOTHER.webp";
+
 //หน้าhome
   static const String homeiconscan = "assets/obj/OBJ_homeiconscan.png";
   static const String homelevel = "assets/obj/OBJ_homelevel.png";
