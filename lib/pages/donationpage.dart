@@ -1,74 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
-
-void main() {
-  runApp(const Donation());
-}
+import 'package:binny_application/widgets/class/Image.dart';
 
 class Donation extends StatelessWidget {
   const Donation({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Binny',
-      home: HomeScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key});
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Image.asset(TImages.logoblack,
+            fit: BoxFit.cover, width: 100, height: 30),
+        actions: [
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: IconButton(
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => History()),
+                    // );
+                  },
+                  icon: Icon(
+                    Icons.history_rounded,
+                    size: 35,
+                  ))),
+          Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.search,
+                    size: 35,
+                  ))),
+        ],
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 20, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 7),
-                          child: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: Color(0xFF242424),
-                            size: 28,
-                          ),
-                        ),
-                        Image.asset(
-                          TImages.logoblack,
-                          fit: BoxFit.cover,
-                          width: 75,
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 7),
-                          child: Icon(
-                            Icons.favorite_border_rounded,
-                            color: Color(0xFF242424),
-                            size: 35,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 155,
                 width: double.infinity,

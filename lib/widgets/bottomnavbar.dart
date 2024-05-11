@@ -1,42 +1,36 @@
-import 'package:flutter/cupertino.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 var myIcon = [
   {
     'title': 'หน้าแรก',
     'icon': FontAwesomeIcons.house,
+    'page': '/home',
   },
   {
     'title': 'สแกนขยะ',
     'icon': FontAwesomeIcons.barcode,
+    'page': '/scan',
   },
   {
     'title': 'แต้มสะสม',
     'icon': FontAwesomeIcons.gift,
+    'page': '/point',
   },
   {
     'title': 'โปรไฟล์',
     'icon': FontAwesomeIcons.user,
+    'page': '/profile',
   },
 ];
 
-class myBottomNavbar extends StatefulWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onIndexChanged;
+class MyBottomNavbar extends StatelessWidget {
+  final int currentPage;
 
-  const myBottomNavbar({
-    Key? key,
-    required this.selectedIndex,
-    required this.onIndexChanged,
-  }) : super(key: key);
+  const MyBottomNavbar({Key? key, required this.currentPage}) : super(key: key);
 
-  @override
-  State<myBottomNavbar> createState() => _myBottomNavbarState();
-}
-
-class _myBottomNavbarState extends State<myBottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,29 +54,35 @@ class _myBottomNavbarState extends State<myBottomNavbar> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: myIcon.map((item) {
+        children: myIcon.asMap().entries.map((entry) {
+          var index = entry.key;
+          var item = entry.value;
           var title = item['title'].toString();
           var icon = item['icon'] as IconData;
-          var index = myIcon.indexOf(item);
+          var page = item['page'] as String;
           return GestureDetector(
             onTap: () {
-              widget.onIndexChanged(index);
+              if (index != currentPage) {
+                if (page == '/home') {
+                  Get.back();
+                } else {
+                  Get.toNamed(page); // Navigate to other pages normally
+                }
+              }
             },
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 FaIcon(
                   icon,
-                  color: widget.selectedIndex == index
-                      ? Color(0xFF29D062)
-                      : Colors.grey, // Change icon color based on selection
+                  color:
+                      currentPage == index ? Ticolor.greenMain3 : Colors.grey,
                 ),
                 Text(
                   title,
                   style: TextStyle(
-                    color: widget.selectedIndex == index
-                        ? Color(0xFF29D062)
-                        : Colors.grey,
+                    color:
+                        currentPage == index ? Ticolor.greenMain3 : Colors.grey,
                   ),
                 ),
               ],

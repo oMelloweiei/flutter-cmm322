@@ -12,7 +12,7 @@ class OnboardingNext extends StatelessWidget {
         right: 30,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                shape: CircleBorder(), backgroundColor: Color(0xFF02C275)),
+                shape: CircleBorder(), backgroundColor: Colors.white),
             onPressed: () => OnBoardingController.instance.nextPage(),
             child: Icon(Icons.arrow_forward_ios_rounded)));
   }

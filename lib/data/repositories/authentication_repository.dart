@@ -1,3 +1,4 @@
+import 'package:binny_application/data/repositories/user/user_repository.dart';
 import 'package:binny_application/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
 import 'package:binny_application/pages/homepage.dart';
@@ -5,7 +6,6 @@ import 'package:binny_application/utils/exceptions/firebase_auth_exception.dart'
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
 import 'package:binny_application/welcome.dart';
-import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -20,9 +20,12 @@ class AuthenticationRepository extends GetxController {
   //Variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-  final List<CameraDescription> cameras;
+
+  // final List<CameraDescription> cameras;
+
+  User? get authUser => _auth.currentUser;
   //get cameras
-  AuthenticationRepository({required this.cameras});
+  // AuthenticationRepository({required this.cameras});
   //Call from main.dart an app launch
   @override
   void onReady() {
@@ -31,11 +34,13 @@ class AuthenticationRepository extends GetxController {
   }
 
   //Funtion to show Relevant Screen
-  screenRedirect() async {
+  void screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAll(() => HomePage(cameras: cameras));
+        //debug
+        print('Current User: ${_auth.currentUser}');
+        Get.offAll(() => HomePage());
       } else {
         Get.offAll(() => VerifyEmailScreen(
               email: _auth.currentUser?.email,
@@ -129,6 +134,27 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //Email Authentication - User
+  Future<void> reAuthenticationEmailAndPassword(
+      String email, String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw "Somethins went wrong. Please try again";
+    }
+  }
+
 /*------------------------------ Federated identity & social sign-in ----------------------------------*/
   //GoogleAuthentication - Google
   Future<UserCredential> signInWithGoogle() async {
@@ -163,9 +189,29 @@ class AuthenticationRepository extends GetxController {
   //Logout - Valid for any authentication
   Future<void> logout() async {
     try {
+      print('Logout User: ${_auth.currentUser}');
       await GoogleSignIn().signOut();
+      // await _auth.signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const WelcomePage());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw "Somethins went wrong. Please try again";
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+      await logout();
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {

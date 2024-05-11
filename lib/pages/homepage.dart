@@ -3,105 +3,48 @@ import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/howto.dart';
 import 'package:binny_application/pages/manual.dart';
 import 'package:binny_application/pages/myGarden.dart';
-import 'package:binny_application/pages/pointpage.dart';
-import 'package:binny_application/pages/profile.dart';
 import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/pages/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
-import 'package:binny_application/widgets/class/Timages.dart';
+import 'package:binny_application/widgets/class/Color.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/listbox.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  const HomePage({Key? key, required this.cameras}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  final PageController _pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: _currentIndex != 1
-          ? MyAppBar(
-              currentPageIndex: _currentIndex, pageController: _pageController)
-          : null,
+      backgroundColor: Ticolor.blackMain2,
+      // extendBodyBehindAppBar: true,
+      appBar: MyAppBar(
+        currentPageIndex: 0,
+      ),
       body: Container(
-          padding: _currentIndex == 1
-              ? EdgeInsets.zero
-              : (_currentIndex == 0
-                  ? EdgeInsets.only(top: kToolbarHeight)
-                  : EdgeInsets.only(top: kToolbarHeight + 40)),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                _currentIndex != 0
-                    ? Color.fromRGBO(129, 218, 246, 1)
-                    : Colors.white,
-                _currentIndex != 0
-                    ? Colors.white
-                    : Color.fromARGB(255, 24, 24, 24),
-              ],
-              stops: [0.0, _currentIndex != 3 ? 0.0 : 0.3],
-            ),
-          ),
-          child: Stack(children: [
-            PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              children: [
-                homePage(),
-                ScanPage(
-                  cameras: widget.cameras,
-                  pageController: _pageController,
-                ),
-                PointPage(),
-                profilePage(),
-              ],
-            ),
+        child: Stack(
+          children: [
+            homePage(),
             Positioned(
-                bottom: 10,
-                left: 0,
-                right: 0,
-                child: _currentIndex != 1
-                    ? myBottomNavbar(
-                        selectedIndex: _currentIndex,
-                        onIndexChanged: (index) {
-                          _pageController.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                      )
-                    : myBottomNavbar(
-                        selectedIndex: _currentIndex,
-                        onIndexChanged: (index) {
-                          _pageController.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                      ))
-          ])),
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: MyBottomNavbar(
+                currentPage: 0,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -126,7 +69,7 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Positioned(
-        top: 55,
+        top: 30,
         left: 0,
         right: 0,
         child: Container(
@@ -195,12 +138,13 @@ class HomePagecontent extends StatelessWidget {
         },
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: 35, // Set the desired width
               height: 35, // Set the desired height
               child: Image.asset(
                 imgPath,
-                fit: BoxFit.cover, // Adjust the fit to your requirement
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width + 100,
               ),
             ),
             Text(head),
@@ -214,7 +158,7 @@ class HomePagecontent extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 172 - AppBar().preferredSize.height,
+            height: 150 - kToolbarHeight,
           ), // Spacer to account for app bar height
           Container(
             padding: EdgeInsets.only(
@@ -236,6 +180,7 @@ class HomePagecontent extends StatelessWidget {
                       bottom: 0.0), // Adjust the horizontal padding as needed
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       myIcon(TImages.sell_garbage, "ติดต่อขายขยะ", context,
                           'sell'),
@@ -307,7 +252,37 @@ class HomePagecontent extends StatelessWidget {
                           boxTitle: 'boxTitle',
                           comment: 'comment',
                           username: 'username',
-                          formattedDate: 'formattedDate')
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
+                      squareBox(
+                          boxTitle: 'boxTitle',
+                          comment: 'comment',
+                          username: 'username',
+                          formattedDate: 'formattedDate'),
                     ],
                   ),
                 ),
@@ -320,10 +295,30 @@ class HomePagecontent extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       carpet(
-                          picture: 'demoTrash.png',
+                          picture: TImages.picture_6,
                           carpetTitle: 'carpetTitle',
                           description: 'description',
-                          hashtag: 'hashtag')
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
+                      carpet(
+                          picture: TImages.picture_6,
+                          carpetTitle: 'carpetTitle',
+                          description: 'description',
+                          hashtag: 'hashtag'),
                     ],
                   ),
                 ),
