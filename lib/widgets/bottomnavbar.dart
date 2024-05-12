@@ -64,7 +64,7 @@ class MyBottomNavbar extends StatelessWidget {
             onTap: () {
               if (index != currentPage) {
                 if (page == '/home') {
-                  Get.back();
+                  Get.offAllNamed(page);
                 } else {
                   Get.toNamed(page); // Navigate to other pages normally
                 }

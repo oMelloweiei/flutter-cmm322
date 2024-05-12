@@ -76,53 +76,55 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
 
   bool showBtmAppBr = true;
 
+  // Container(
+  //                 padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+  //                 child: Row(
+  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                   children: [
+  //                     Row(
+  //                       children: [
+  //                         const Padding(
+  //                           padding: EdgeInsets.only(right: 7),
+  //                           child: Icon(
+  //                             Icons.arrow_back_ios_new_rounded,
+  //                             color: Color(0xFF242424),
+  //                             size: 28,
+  //                           ),
+  //                         ),
+  //                         Image.asset(TImages.binny_White,
+  //                             color: Colors.black, fit: BoxFit.cover, width: 75)
+  //                       ],
+  //                     ),
+  //                     const Row(
+  //                       children: [
+  //                         Padding(
+  //                           padding: EdgeInsets.only(right: 7),
+  //                           child: Icon(
+  //                             Icons.favorite_border_rounded,
+  //                             color: Color(0xFF242424),
+  //                             size: 35,
+  //                           ),
+  //                         ),
+  //                         Icon(
+  //                           Icons.calendar_month_sharp,
+  //                           color: Color(0xFF242424),
+  //                           size: 35,
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ],
+  //                 )),
+
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 2, vsync: this);
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: whiteMain1,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                  padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(right: 7),
-                            child: Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              color: Color(0xFF242424),
-                              size: 28,
-                            ),
-                          ),
-                          Image.asset(TImages.binny_White,
-                              color: Colors.black, fit: BoxFit.cover, width: 75)
-                        ],
-                      ),
-                      const Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 7),
-                            child: Icon(
-                              Icons.favorite_border_rounded,
-                              color: Color(0xFF242424),
-                              size: 35,
-                            ),
-                          ),
-                          Icon(
-                            Icons.calendar_month_sharp,
-                            color: Color(0xFF242424),
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  )),
               Container(
                 alignment: Alignment.centerLeft,
                 padding:

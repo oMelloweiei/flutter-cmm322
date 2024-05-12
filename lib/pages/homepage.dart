@@ -13,6 +13,7 @@ import 'package:binny_application/widgets/listbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -107,33 +108,13 @@ class HomePagecontent extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           if (topic == 'donation') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Donation(),
-              ),
-            );
+            Get.toNamed('/donation');
           } else if (topic == 'katoo') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => katooPage(),
-              ),
-            );
+            Get.toNamed('/katoo');
           } else if (topic == 'sell') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SellPage(),
-              ),
-            );
+            Get.toNamed('/sell');
           } else if (topic == 'manual') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ManualPage(),
-              ),
-            );
+            Get.toNamed('/manual');
           }
         },
         child: Column(
@@ -430,19 +411,9 @@ class HomePagecontent extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (topic == 'myGarden') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MyGarden(),
-            ),
-          );
+          Get.toNamed('/mygarden');
         } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => RaklokPage(),
-            ),
-          );
+          Get.toNamed('/raklok');
         }
       },
       child: Image.asset(

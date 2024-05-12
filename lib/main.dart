@@ -3,10 +3,16 @@ import 'package:binny_application/data/repositories/authentication_repository.da
 import 'package:binny_application/features/authentication/screens/login/login.dart';
 import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:binny_application/firebase_options.dart';
+import 'package:binny_application/pages/comment.dart';
+import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/manual.dart';
+import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
+import 'package:binny_application/pages/raklok.dart';
 import 'package:binny_application/pages/scan/scanpage.dart';
+import 'package:binny_application/pages/selltrash/sell.dart';
 import 'package:binny_application/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -49,6 +55,12 @@ class MainApp extends StatelessWidget {
         GetPage(name: '/scan', page: () => ScanPage()),
         GetPage(name: '/point', page: () => PointPage()),
         GetPage(name: '/profile', page: () => profilePage()),
+        GetPage(name: '/raklok', page: () => RaklokPage()),
+        GetPage(name: '/mygarden', page: () => MyGarden()),
+        GetPage(name: '/donation', page: () => Donation()),
+        GetPage(name: '/katoo', page: () => katooPage()),
+        GetPage(name: '/sell', page: () => SellPage()),
+        GetPage(name: '/manual', page: () => ManualPage()),
       ],
       initialBinding: GeneralBindings(),
       home: const Scaffold(

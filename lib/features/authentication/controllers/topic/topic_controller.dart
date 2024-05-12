@@ -31,7 +31,7 @@ class topicController extends GetxController {
 
       //Update the topic list
       allTopic.assignAll(topics);
-      await fetchUsersForTopics(topics);
+      // await fetchUsersForTopics(topics);
     } catch (e) {
       Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
@@ -39,26 +39,26 @@ class topicController extends GetxController {
     }
   }
 
-  Future<void> fetchUsersForTopics(List<TopicModel> topics) async {
-    try {
-      final List<UserModel> users = await _userRepository.getAllUsers();
+  // Future<void> fetchUsersForTopics(List<TopicModel> topics) async {
+  //   try {
+  //     final List<UserModel> users = await _userRepository.getAllUsers();
 
-      // Iterate over each topic to find the host user
-      for (final topic in topics) {
-        // Find the user who created the topic
-        final hostUser = users.firstWhere(
-          (user) => user.topicId?.contains(topic.id) ?? false,
-          orElse: () => UserModel.empty(),
-        );
+  //     // Iterate over each topic to find the host user
+  //     for (final topic in topics) {
+  //       // Find the user who created the topic
+  //       final hostUser = users.firstWhere(
+  //         (user) => user.topicId?.contains(topic.id) ?? false,
+  //         orElse: () => UserModel.empty(),
+  //       );
 
-        // Assign the host user to the topic
-        topic.user = hostUser;
-        print(hostUser);
-      }
-    } catch (e) {
-      // Handle any errors
-    }
-  }
+  //       // Assign the host user to the topic
+  //       topic.user = hostUser;
+  //       print(hostUser);
+  //     }
+  //   } catch (e) {
+  //     // Handle any errors
+  //   }
+  // }
 
   // // Extract unique user IDs
   // final userIds = topics.map((topic) => topic.userId).toSet();

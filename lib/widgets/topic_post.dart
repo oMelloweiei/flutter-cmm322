@@ -14,7 +14,7 @@ class TopicContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat.yMMMd().add_Hm().format(topic.timeStamp);
-    final networkImage = topic.user.id;
+    final networkImage = topic.profilePic;
     final image =
         networkImage.isNotEmpty ? networkImage : TImages.profilerabbit;
     return GestureDetector(
@@ -46,10 +46,7 @@ class TopicContainer extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(topic.user.fullName),
-                          Text(formattedDate)
-                        ],
+                        children: [Text(topic.userName), Text(formattedDate)],
                       ),
                     ]),
                   ),
