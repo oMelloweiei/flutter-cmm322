@@ -4,23 +4,75 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 var data = [
-  {'name': 'KFC', 'imgpath': Image.asset(TImages.kfc)},
-  {'name': 'โอ้กะจู๋', 'imgpath': Image.asset(TImages.ohkaju)},
-  {'name': "Chester's", 'imgpath': Image.asset(TImages.chester)},
-  {'name': 'DairyQueen', 'imgpath': Image.asset(TImages.dailyqueen)},
-  {'name': 'MIXUE', 'imgpath': Image.asset(TImages.mixue)},
-  {'name': "Jones'Salad", 'imgpath': Image.asset(TImages.jones)},
+  {
+    'name': 'KFC',
+    'imgpath': Image.asset(TImages.kfc),
+    'url': 'https://www.kfc.co.th/'
+  },
+  {
+    'name': 'โอ้กะจู๋',
+    'imgpath': Image.asset(TImages.ohkaju),
+    'url': 'https://www.ohkajhuorganic.com/en/'
+  },
+  {
+    'name': "Chester's",
+    'imgpath': Image.asset(TImages.chester),
+    'url': 'https://www.chesters.co.th/'
+  },
+  {
+    'name': 'DairyQueen',
+    'imgpath': Image.asset(TImages.dailyqueen),
+    'url': 'https://www.dairyqueenthailand.com/'
+  },
+  {
+    'name': 'MIXUE',
+    'imgpath': Image.asset(TImages.mixue),
+    'url': 'https://mixue.asia/'
+  },
+  {
+    'name': "Jones'Salad",
+    'imgpath': Image.asset(TImages.jones),
+    'url': 'https://jonessalad.com/'
+  },
 ];
 
 //data1[0]['name'] = 'Tops'
 var data1 = [
-  {'name': 'Tops', 'imgpath': Image.asset(TImages.tops)},
-  {'name': 'Big C', 'imgpath': Image.asset(TImages.bigC)},
-  {'name': "Maxvalu", 'imgpath': Image.asset(TImages.maxvalu)},
-  {'name': 'Boots', 'imgpath': Image.asset(TImages.boots)},
-  {'name': 'Tops Market', 'imgpath': Image.asset(TImages.topsdaily)},
-  {'name': "Lotus's", 'imgpath': Image.asset(TImages.lotus)},
-  {'name': "Maxvalu Supermaket", 'imgpath': Image.asset(TImages.maxvalu)},
+  {
+    'name': 'Tops',
+    'imgpath': Image.asset(TImages.tops),
+    'url': 'https://www.tops.co.th/th'
+  },
+  {
+    'name': 'Big C',
+    'imgpath': Image.asset(TImages.bigC),
+    'url': 'https://www.bigc.co.th/'
+  },
+  {
+    'name': "Maxvalu",
+    'imgpath': Image.asset(TImages.maxvalu),
+    'url': 'https://www.aeonthailand.co.th/th/'
+  },
+  {
+    'name': 'Boots',
+    'imgpath': Image.asset(TImages.boots),
+    'url': 'https://store.boots.co.th/th'
+  },
+  {
+    'name': 'Tops Market',
+    'imgpath': Image.asset(TImages.topsdaily),
+    'url': 'https://topsdaily.tops.co.th/'
+  },
+  {
+    'name': "Lotus's",
+    'imgpath': Image.asset(TImages.lotus),
+    'url': 'https://www.lotuss.com/th'
+  },
+  {
+    'name': "Maxvalu Supermaket",
+    'imgpath': Image.asset(TImages.maxvalu),
+    'url': 'https://www.aeonthailand.co.th/th'
+  },
 ];
 
 class Tab1 extends StatelessWidget {
