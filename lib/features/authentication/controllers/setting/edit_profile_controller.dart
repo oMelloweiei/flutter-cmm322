@@ -1,4 +1,4 @@
-import 'package:binny_application/data/repositories/user/user_repository.dart';
+import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/pages/profile.dart';

@@ -1,3 +1,4 @@
+import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';
@@ -30,7 +31,21 @@ class TopicRepository extends GetxController {
       throw "Something went wrong. Please try again $e";
     }
   }
-  //Get sub topic
+
+  Future<List<String>> getAllTopicIds() async {
+    try {
+      final snapshot = await _db.collection('Topics').get();
+      final List<String> topicIds = snapshot.docs.map((doc) => doc.id).toList();
+      return topicIds;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      print(e);
+      throw "Something went wrong. Please try again $e";
+    }
+  }
 
   //Upload topic to the cloud firestore
 }

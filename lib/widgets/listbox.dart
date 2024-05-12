@@ -73,6 +73,8 @@ class squareBox extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 7.0),
                     child: Text(
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       boxTitle,
                       style: titleText,
                     ),

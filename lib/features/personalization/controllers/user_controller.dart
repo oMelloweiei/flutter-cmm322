@@ -1,6 +1,6 @@
 import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/authentication_repository.dart';
-import 'package:binny_application/data/repositories/user/user_repository.dart';
+import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/features/authentication/screens/settings/editprofile.dart';
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';

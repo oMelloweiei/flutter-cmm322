@@ -1,4 +1,4 @@
-import 'package:binny_application/data/repositories/user/user_repository.dart';
+import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
 import 'package:binny_application/pages/homepage.dart';

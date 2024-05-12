@@ -1,13 +1,17 @@
+import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
 import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/pages/createpost.dart';
 import 'package:binny_application/widgets/listbox.dart';
-import 'package:binny_application/widgets/loaders/topicshimmer.dart';
+import 'package:binny_application/widgets/myPost.dart';
 import 'package:binny_application/widgets/topic_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+final _topicController = TopicController.instance;
 
 class katooPage extends StatelessWidget {
   const katooPage({Key? key}) : super(key: key);
@@ -72,31 +76,23 @@ class _QAPageState extends State<QAPage> {
             )),
 
         Container(
-          height: 230, // Specify a height here
-          child: ListView(
+          height: 190,
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            children: [
-              squareBox(
-                  boxTitle: 'boxTitle',
-                  comment: 'comment',
-                  username: 'username',
-                  formattedDate: 'formattedDate'),
-              squareBox(
-                  boxTitle: 'boxTitle',
-                  comment: 'comment',
-                  username: 'username',
-                  formattedDate: 'formattedDate'),
-              squareBox(
-                  boxTitle: 'boxTitle',
-                  comment: 'comment',
-                  username: 'username',
-                  formattedDate: 'formattedDate'),
-              squareBox(
-                  boxTitle: 'boxTitle',
-                  comment: 'comment',
-                  username: 'username',
-                  formattedDate: 'formattedDate'),
-            ],
+            shrinkWrap: true,
+            itemCount: _topicController.allTopic.length,
+            itemBuilder: (context, index) {
+              final topic = _topicController.allTopic[index];
+              String formattedDate =
+                  DateFormat.yMMMd().add_Hm().format(topic.timeStamp);
+
+              return squareBox(
+                boxTitle: topic.text,
+                comment: 'comment',
+                username: topic.userName,
+                formattedDate: formattedDate,
+              );
+            },
           ),
         ),
 
@@ -146,7 +142,17 @@ class _PanelWidgetState extends State<PanelWidget> {
                 SizedBox(width: 20),
                 myTextButton('กระทู้ของฉัน', 'myPost')
               ])),
-              Icon(Icons.post_add, color: Colors.green, size: 35)
+              SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: IconButton(
+                      iconSize: 30,
+                      padding: EdgeInsets.zero,
+                      onPressed: () => Get.to(CreatePost()),
+                      icon: Icon(
+                        Icons.post_add,
+                        color: Colors.green,
+                      )))
             ],
           ),
         ),
@@ -198,54 +204,13 @@ class _PanelWidgetState extends State<PanelWidget> {
   }
 }
 
-class myPost extends StatelessWidget {
-  const myPost({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.black.withOpacity(0.05),
-      padding: EdgeInsets.symmetric(horizontal: 26, vertical: 26),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'คุณยังไม่เคยตั้งกระทู้..',
-            style:
-                TextStyle(fontSize: 16, color: Colors.black.withOpacity(0.3)),
-          ),
-          Text(
-            'มาเริ่มตั้งกระทู้กันเลย!',
-            style:
-                TextStyle(fontSize: 20, color: Colors.black.withOpacity(0.5)),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.to(CreatePost());
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-            child: Text(
-              'เขียนกระทู้คำถามของคุณ',
-              style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class forMeContainer extends StatelessWidget {
   final ScrollController controller;
   const forMeContainer({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _topicController = Get.put(topicController());
     return Obx(() {
-      // if (_topicController.isLoading.value) return const TopicShimmer();
-
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 26, vertical: 12),
           child: ListView.builder(

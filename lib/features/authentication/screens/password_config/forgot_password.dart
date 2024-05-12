@@ -1,5 +1,4 @@
 import 'package:binny_application/features/authentication/controllers/forget_password/forget_password_controller.dart';
-import 'package:binny_application/features/authentication/screens/password_config/reset_password.dart';
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

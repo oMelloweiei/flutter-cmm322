@@ -56,9 +56,8 @@ class TopicModel {
       DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
-      DateTime timeStamp = data['timeStamp'] != null
-          ? data['timeStamp'].toDate()
-          : DateTime.now();
+      DateTime timeStamp =
+          data['time'] != null ? data['time'].toDate() : DateTime.now();
       return TopicModel(
           id: document.id,
           likeCount: data['like_count'] ?? 0,

@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class replyModel {
+class ReplyModel {
   final String id;
   String text;
   String topicId;
   String userId;
 
-  replyModel({
+  ReplyModel({
     required this.id,
     required this.text,
     required this.topicId,
     required this.userId,
   });
 
-  static replyModel empty() =>
-      replyModel(id: '', text: '', topicId: '', userId: '');
+  static ReplyModel empty() =>
+      ReplyModel(id: '', text: '', topicId: '', userId: '');
 
   Map<String, dynamic> toJson() {
     return {
@@ -24,17 +24,17 @@ class replyModel {
     };
   }
 
-  factory replyModel.fromSnapshot(
+  factory ReplyModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
-      return replyModel(
+      return ReplyModel(
           id: document.id,
           text: data['text'] ?? '',
           topicId: data['topic_id'] ?? '',
           userId: data['user_id'] ?? '');
     } else {
-      return replyModel.empty();
+      return ReplyModel.empty();
     }
   }
 }

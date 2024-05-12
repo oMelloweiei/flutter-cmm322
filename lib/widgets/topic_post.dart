@@ -1,5 +1,7 @@
+import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
+import 'package:binny_application/pages/comment_detail.dart';
 import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +11,7 @@ import 'package:intl/intl.dart';
 
 class TopicContainer extends StatelessWidget {
   final TopicModel topic;
+
   const TopicContainer({Key? key, required this.topic}) : super(key: key);
 
   @override
@@ -18,7 +21,11 @@ class TopicContainer extends StatelessWidget {
     final image =
         networkImage.isNotEmpty ? networkImage : TImages.profilerabbit;
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Get.to(PostDetail(
+            topic: topic,
+          ));
+        },
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 8),
           padding: EdgeInsets.all(15),

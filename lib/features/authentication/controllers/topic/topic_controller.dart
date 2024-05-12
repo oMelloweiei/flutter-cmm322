@@ -1,12 +1,12 @@
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
-import 'package:binny_application/data/repositories/topic/topic_repository.dart';
-import 'package:binny_application/data/repositories/user/user_repository.dart';
+import 'package:binny_application/data/repositories/topic_repository.dart';
+import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:get/get.dart';
 
-class topicController extends GetxController {
-  static topicController get instance => Get.find();
+class TopicController extends GetxController {
+  static TopicController get instance => Get.find();
 
   final _userRepository = Get.put(UserRepository());
   final _topicRepository = Get.put(TopicRepository());
@@ -36,6 +36,7 @@ class topicController extends GetxController {
       Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       //Finally Remove Loader
+      isLoading.value = false;
     }
   }
 

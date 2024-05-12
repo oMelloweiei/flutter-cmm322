@@ -1,3 +1,4 @@
+import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/howto.dart';
@@ -10,10 +11,14 @@ import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/listbox.dart';
+import 'package:binny_application/widgets/loaders/shimmer_eff.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
+final topicController = Get.put(TopicController());
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -246,48 +251,36 @@ class HomePagecontent extends StatelessWidget {
                   height: 16,
                 ),
                 Container(
-                  height: 190, // Specify a height here
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                      squareBox(
-                          boxTitle: 'boxTitle',
-                          comment: 'comment',
-                          username: 'username',
-                          formattedDate: 'formattedDate'),
-                    ],
-                  ),
+                  height: 190,
+                  child: Obx(() {
+                    if (topicController.isLoading.value) {
+                      return ShimmerEffect(width: 100, height: 190);
+                    } else {
+                      return Container(
+                        height: 190,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: topicController.allTopic.length,
+                          itemBuilder: (context, index) {
+                            final topic = topicController.allTopic[index];
+                            String formattedDate = DateFormat.yMMMd()
+                                .add_Hm()
+                                .format(topic.timeStamp);
+
+                            return squareBox(
+                              boxTitle: topic.text,
+                              comment: 'comment',
+                              username: topic.userName,
+                              formattedDate: formattedDate,
+                            );
+                          },
+                        ),
+                      );
+                    }
+                  }),
                 ),
+
                 SizedBox(
                   height: 16,
                 ),
