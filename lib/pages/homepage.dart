@@ -103,6 +103,27 @@ class HomePagecontent extends StatelessWidget {
   final Function(bool) onShowChanged;
   HomePagecontent({Key? key, required this.onShowChanged});
 
+  List<Map<String, String>> data = [
+    {
+      'picture': TImages.khayakamphra,
+      'carpetTitle': 'ขยะกำพร้าไปไหนดี?',
+      'description': 'N15 Technology',
+      'hashtag': '#ประเภทขยะกำพร้า'
+    },
+    {
+      'picture': TImages.thisshirt,
+      'carpetTitle': 'เสื้อตัวนี้ไม่ใส่แล้วไว้ไหนดี?',
+      'description': 'สถานสงเคราะห์ต้องการนะ',
+      'hashtag': '#ประเภทขยะกำพร้า'
+    },
+    {
+      'picture': TImages.cosmetics,
+      'carpetTitle': 'เครื่องสำอางค์ใช้ไม่ทัน',
+      'description': 'มา “แบ่งบุญสวย” กันไหม',
+      'hashtag': '#ประเภทขยะกำพร้า'
+    },
+  ];
+
   Widget myIcon(String img, String head, BuildContext context, String topic) {
     final String imgPath = img;
     return GestureDetector(
@@ -271,38 +292,23 @@ class HomePagecontent extends StatelessWidget {
                   height: 16,
                 ),
                 Container(
-                  height: 230, // Specify a height here
-                  child: ListView(
+                  height: 230,
+                  child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    children: [
-                      carpet(
-                          picture: TImages.picture_6,
-                          carpetTitle: 'carpetTitle',
-                          description: 'description',
-                          hashtag: 'hashtag'),
-                      carpet(
-                          picture: TImages.picture_6,
-                          carpetTitle: 'carpetTitle',
-                          description: 'description',
-                          hashtag: 'hashtag'),
-                      carpet(
-                          picture: TImages.picture_6,
-                          carpetTitle: 'carpetTitle',
-                          description: 'description',
-                          hashtag: 'hashtag'),
-                      carpet(
-                          picture: TImages.picture_6,
-                          carpetTitle: 'carpetTitle',
-                          description: 'description',
-                          hashtag: 'hashtag'),
-                      carpet(
-                          picture: TImages.picture_6,
-                          carpetTitle: 'carpetTitle',
-                          description: 'description',
-                          hashtag: 'hashtag'),
-                    ],
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: carpet(
+                          picture: data[index]['picture'] as String,
+                          carpetTitle: data[index]['carpetTitle'] as String,
+                          description: data[index]['description'] as String,
+                          hashtag: data[index]['hashtag'] as String,
+                        ),
+                      );
+                    },
                   ),
-                ),
+                )
               ],
             ),
           ),
