@@ -100,7 +100,7 @@ class _ScanPageState extends State<ScanPage>
           )
         ]),
         Container(
-            child: Widget130(
+            child: TrashList(
                 textThemeThai: buildTextTHI(Theme.of(context).textTheme)))
       ],
     );

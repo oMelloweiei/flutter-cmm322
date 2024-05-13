@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: [
-        GetPage(name: '/welcome', page: () => WelcomePage()),
+        GetPage(name: '/welcome', page: () => ScanPage()),
         GetPage(name: '/login', page: () => LoginForm()),
         GetPage(name: '/signup', page: () => SignupForm()),
         GetPage(name: '/home', page: () => HomePage()),
