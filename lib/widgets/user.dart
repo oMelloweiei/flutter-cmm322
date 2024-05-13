@@ -4,7 +4,7 @@ import 'package:binny_application/widgets/loaders/shimmer_eff.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import 'package:binny_application/widgets/class/Color.dart';
 // ข้อมูล uesr
 List<Map<String, dynamic>> userData = [
   {
@@ -60,7 +60,7 @@ class BinnyBunWidget extends StatelessWidget {
             return Text(
               controller.user.value.fullName,
               style: TextStyle(
-                  color: Colors.black,
+                  color: Ticolor.blackMain3,
                   fontSize: controller.user.value.fullName.length > 8 ? 24 : 32,
                   fontWeight: FontWeight.bold),
             );
@@ -78,14 +78,14 @@ class BinnyBunWidget extends StatelessWidget {
             children: [
               Text(
                 controller.user.value.username,
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                style: TextStyle(color: Ticolor.blackMain3, fontSize: 14),
               ),
               SizedBox(width: 2),
               Image.asset(
                 TImages.iconcopy,
                 width: 18,
                 height: 18,
-                color: Colors.black,
+                color: Ticolor.blackMain3,
               ),
             ],
           ),
@@ -103,10 +103,10 @@ class FollowStatsContainer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.80,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Ticolor.no,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.grey.withOpacity(0.5),
+          color: Ticolor.blackSup1.withOpacity(0.5),
           width: 1,
         ),
       ),
@@ -118,14 +118,14 @@ class FollowStatsContainer extends StatelessWidget {
             child: Container(
               height: 65,
               decoration: BoxDecoration(
-                color: Colors.transparent,
+                color: Ticolor.no,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20),
                 ),
                 border: Border(
                   right: BorderSide(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Ticolor.blackSup1.withOpacity(0.5),
                     width: 1,
                   ),
                 ),
@@ -138,14 +138,14 @@ class FollowStatsContainer extends StatelessWidget {
                     (controller.user.value.following ?? 0).toString(),
 
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'กำลังติดตาม',
                     style: TextStyle(
-                        color: Color(0xFF29D062),
+                        color: Ticolor.greenMain2,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
@@ -158,7 +158,7 @@ class FollowStatsContainer extends StatelessWidget {
             child: Container(
               height: 65,
               decoration: BoxDecoration(
-                color: Colors.transparent,
+                color: Ticolor.no,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   bottomRight: Radius.circular(20),
@@ -170,14 +170,14 @@ class FollowStatsContainer extends StatelessWidget {
                   Text(
                     (controller.user.value.follower ?? 0).toString(),
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'ผู้ติดตาม',
                     style: TextStyle(
-                        color: Color(0xFF29D062),
+                        color: Ticolor.greenMain2,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
@@ -221,9 +221,9 @@ class _MyWasteStatisticsState extends State<MyWasteStatistics> {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Ticolor.no,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.transparent, width: 2),
+        border: Border.all(color: Ticolor.no, width: 2),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -235,7 +235,7 @@ class _MyWasteStatisticsState extends State<MyWasteStatistics> {
               Text(
                 'สถิติการแยกขยะของฉัน',
                 style: TextStyle(
-                    color: Color(0xFF5D5D5D),
+                    color: Ticolor.blackMain1,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),
@@ -269,12 +269,12 @@ class _MyWasteStatisticsState extends State<MyWasteStatistics> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 7, vertical: 3),
                 decoration: BoxDecoration(
-                  color: Color(0xFF53D49F).withOpacity(0.2),
+                  color: Ticolor.greenMain1.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
                   userData[0]['percent'],
-                  style: TextStyle(fontSize: 14, color: Color(0xFF02C275)),
+                  style: TextStyle(fontSize: 14, color: Ticolor.greenMain3),
                 ),
               ),
             ],
@@ -288,25 +288,25 @@ class _MyWasteStatisticsState extends State<MyWasteStatistics> {
                 Expanded(
                   flex: userData[0]['BarPET'],
                   child: Container(
-                    color: Color.fromRGBO(80, 183, 142, 1),
+                    color: Ticolor.bar1,
                   ),
                 ),
                 Expanded(
                   flex: userData[0]['BarALU'],
                   child: Container(
-                    color: Color.fromRGBO(196, 231, 217, 1),
+                    color: Ticolor.bar2,
                   ),
                 ),
                 Expanded(
                   flex: userData[0]['BarUHT'],
                   child: Container(
-                    color: Color.fromRGBO(215, 238, 170, 1),
+                    color: Ticolor.bar3,
                   ),
                 ),
                 Expanded(
                   flex: userData[0]['BarOIL'],
                   child: Container(
-                    color: Color.fromRGBO(238, 207, 170, 1),
+                    color: Ticolor.bar4,
                   ),
                 ),
               ],
@@ -330,9 +330,9 @@ class BcardWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       height: MediaQuery.of(context).size.height * 0.25,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Ticolor.no,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.transparent, width: 2),
+        border: Border.all(color: Ticolor.no, width: 2),
       ),
       child: ListView(
         shrinkWrap: true,
@@ -360,9 +360,9 @@ class BcardWidget extends StatelessWidget {
     return Expanded(
       child: Card(
         elevation: 0,
-        color: Colors.white,
+        color: Ticolor.whiteMain1,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.grey.withOpacity(0.5), width: 1),
+          side: BorderSide(color: Ticolor.blackSup1.withOpacity(0.5), width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: ListTile(
@@ -377,7 +377,7 @@ class BcardWidget extends StatelessWidget {
               Text(
                 item.split(' ')[0],
                 style: TextStyle(
-                    color: Color(0xFF5D5D5D),
+                    color: Ticolor.blackMain1,
                     fontSize: 12,
                     fontWeight: FontWeight.bold),
               ),
@@ -386,7 +386,7 @@ class BcardWidget extends StatelessWidget {
           subtitle: Text(
             item.split(' ')[1],
             style: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                color: Ticolor.blackMain3, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -395,10 +395,10 @@ class BcardWidget extends StatelessWidget {
 
   Color _getColorForIndex(int index) {
     List<Color> colors = [
-      Color.fromRGBO(80, 183, 142, 1),
-      Color.fromRGBO(196, 231, 217, 1),
-      Color.fromRGBO(215, 238, 170, 1),
-      Color.fromRGBO(238, 207, 170, 1),
+      Ticolor.bar1,
+      Ticolor.bar2,
+      Ticolor.bar3,
+      Ticolor.bar4,
     ];
     return colors[index % colors.length];
   }

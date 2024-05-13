@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/scanlist.dart';
 import 'package:flutter/widgets.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class TrashList extends StatelessWidget {
   final TextTheme textThemeThai;
@@ -57,7 +58,7 @@ class TrashList extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           height: 130,
@@ -87,7 +88,7 @@ class TrashList extends StatelessWidget {
                                     textAlign: TextAlign.start,
                                     style: textThemeThai.titleLarge!.copyWith(
                                         fontSize: 16,
-                                        color: Colors.green,
+                                        color: Ticolor.greenMain4,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
@@ -97,7 +98,7 @@ class TrashList extends StatelessWidget {
                                     trash.name,
                                     style: textThemeThai.titleLarge!.copyWith(
                                         fontSize: 16,
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color: Ticolor.addon3,
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),

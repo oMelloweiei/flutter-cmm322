@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 final _topicController = TopicController.instance;
 
@@ -22,10 +23,10 @@ class katooPage extends StatelessWidget {
     final panelHeightOpen = MediaQuery.of(context).size.height * 0.8;
     final panelHeightClose = MediaQuery.of(context).size.height * 0.45;
     return Scaffold(
-        backgroundColor: Color(0xFFF6F9FD),
+        backgroundColor: Ticolor.whiteMain2,
         appBar: AppBar(
           centerTitle: false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Ticolor.no,
           title: Image.asset(
             TImages.logoblack,
             fit: BoxFit.cover,
@@ -164,7 +165,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                       onPressed: () => Get.to(CreatePost()),
                       icon: Icon(
                         Icons.post_add,
-                        color: Colors.green,
+                        color: Ticolor.greenMain4,
                       )))
             ],
           ),
@@ -186,7 +187,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               Text(
                 text,
                 style: TextStyle(
-                    color: selected ? Colors.green : Colors.black,
+                    color: selected ? Ticolor.greenMain4 : Ticolor.blackMain3,
                     fontSize: 20),
               ),
               SizedBox(height: 2),
@@ -194,7 +195,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ? Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
-                        color: Colors.green,
+                        color: Ticolor.greenMain4,
                       ),
                       height: 3,
                     )

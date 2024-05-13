@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
+import 'package:binny_application/widgets/class/Color.dart';
 Future<void> main() async {
   //Widget Binding
   final WidgetsBinding widgetsBinding =
@@ -65,10 +65,10 @@ class MainApp extends StatelessWidget {
       ],
       initialBinding: GeneralBindings(),
       home: const Scaffold(
-          backgroundColor: Color.fromARGB(183, 31, 188, 0),
+          backgroundColor: Ticolor.addon1,
           body: Center(
               child: CircularProgressIndicator(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Ticolor.addon,
           ))),
       debugShowCheckedModeBanner: false,
     );

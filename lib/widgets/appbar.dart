@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final int currentPageIndex;
@@ -16,9 +17,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Color getColor(int page) {
     if (page != 0) {
-      return Colors.black;
+      return Ticolor.blackMain3;
     }
-    return Colors.white;
+    return Ticolor.whiteMain1;
   }
 
   @override
@@ -26,7 +27,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     final controller = Get.put(UserController());
     final _color = getColor(currentPageIndex);
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Ticolor.no,
       leadingWidth: currentPageIndex != 1 ? 52 : 20,
       title: Image.asset(
         TImages.logoblack,

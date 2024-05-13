@@ -89,7 +89,7 @@ class _homePageState extends State<homePage> {
               },
               child: Container(
                 padding: EdgeInsets.all(10),
-                color: Colors.black.withOpacity(0.6),
+                color: Ticolor.blackMain3.withOpacity(0.6),
                 child: Image.asset(TImages.the_amount_of_trash),
               )),
         )
@@ -164,7 +164,7 @@ class HomePagecontent extends StatelessWidget {
             padding: EdgeInsets.only(
                 left: 10.0, right: 10.0, top: 0.0, bottom: 50.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Ticolor.whiteMain1,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
@@ -309,7 +309,7 @@ class HomePagecontent extends StatelessWidget {
             height: 177,
             width: 335,
             decoration: BoxDecoration(
-              color: Color(0xFF262525),
+              color: Ticolor.blackMain2,
               borderRadius: BorderRadius.circular(14),
             ),
             child: Column(
@@ -325,7 +325,7 @@ class HomePagecontent extends StatelessWidget {
                     Text(
                       "ปริมาณขยะที่ฉันช่วยไว้",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         fontSize: 16, // Adjust the font size here
                       ),
                     )
@@ -339,7 +339,7 @@ class HomePagecontent extends StatelessWidget {
                     Text(
                       "#0023412000",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         fontSize: 10, // Adjust the font size here
                       ),
                     ),
@@ -351,21 +351,21 @@ class HomePagecontent extends StatelessWidget {
                     Text(
                       "10.25",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         fontSize: 42, // Adjust the font size here
                       ),
                     ),
                     Text(
                       " kg",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         fontSize: 16, // Adjust the font size here
                       ),
                     ),
                   ],
                 ),
                 Divider(
-                  color: const Color.fromARGB(255, 180, 180, 180),
+                  color: Ticolor.addon6,
                   thickness: 0.5,
                 ), // Add a horizontal line
                 Row(
@@ -384,7 +384,7 @@ class HomePagecontent extends StatelessWidget {
                     Text(
                       "สแกนกับร้านรับซื้อขยะที่เข้าร่วม",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         fontSize: 11, // Adjust the font size here
                       ),
                     ),

@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -145,7 +145,7 @@ class BinProductDetail extends StatelessWidget {
           width: 333,
           height: 244,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Ticolor.whiteMain1,
             border: Border.all(color: Colors.black26, width: 1),
             borderRadius: BorderRadius.circular(10),
           ),
@@ -163,7 +163,7 @@ class BinProductDetail extends StatelessWidget {
             onPressed: toggleFavorite,
             icon: Icon(
               isFavorited ? Icons.bookmark_outlined : Icons.bookmark_outline,
-              color: isFavorited ? Colors.amber : Colors.black26,
+              color: isFavorited ? Ticolor.amber : Colors.black26,
               size: 30,
             ),
           ),
@@ -256,7 +256,7 @@ class BinProductText extends StatelessWidget {
                 'วิธีคัดแยกขยะจากผู้ใช้งานอื่น',
                 style: GoogleFonts.ibmPlexSansThai(
                   fontSize: 16,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
             ],
@@ -279,7 +279,7 @@ class ProductDetailTwoPic extends StatelessWidget {
       height: 185,
       padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Ticolor.whiteMain1,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -422,14 +422,14 @@ class LikeDislikeBar extends StatelessWidget {
                 icon: Icon(
                   Icons.playlist_add_rounded,
                   size: 28,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
               Text(
                 'เพิ่มวิธีของคุณ',
                 style: GoogleFonts.ibmPlexSansThai(
                   fontSize: 12,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
             ],
@@ -441,7 +441,7 @@ class LikeDislikeBar extends StatelessWidget {
                 '30',
                 style: GoogleFonts.ibmPlexSansThai(
                   fontSize: 12,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
               IconButton(
@@ -452,14 +452,14 @@ class LikeDislikeBar extends StatelessWidget {
                 icon: Icon(
                   Icons.thumb_up_alt_outlined,
                   size: 20,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
               Text(
                 '20',
                 style: GoogleFonts.ibmPlexSansThai(
                   fontSize: 12,
-                  color: Colors.green,
+                  color: Ticolor.greenMain4,
                 ),
               ),
               IconButton(
@@ -485,7 +485,7 @@ class CommentList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.white,
+      // color: Ticolor.whiteMain1,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -505,7 +505,7 @@ class CommentList extends StatelessWidget {
               icon: Icon(
                 Icons.keyboard_arrow_down_rounded,
                 size: 28,
-                color: Colors.green,
+                color: Ticolor.greenMain4,
               ),
             ),
           ]),

@@ -4,6 +4,7 @@ import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 var topics = [
   {'topic': 'ร้านรับซื้อใกล้ฉัน', 'icon': Icons.near_me_outlined, 'init': true},
@@ -56,9 +57,9 @@ class SellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF6F9FD),
+      backgroundColor: Ticolor.whiteMain2,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Ticolor.no,
         title: Image.asset(
           TImages.logoblack,
           fit: BoxFit.cover,
@@ -105,10 +106,10 @@ class SellPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 7),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.white,
+                  color: Ticolor.whiteMain1,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
+                      color: Ticolor.blackSup1.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 4,
                       offset: Offset(0, 3), // changes position of shadow
@@ -133,7 +134,7 @@ class SellPage extends StatelessWidget {
                             _storeContainer(store, context),
                             Divider(
                               thickness: 1,
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Ticolor.blackSup1.withOpacity(0.3),
                             )
                           ]),
                         ));
@@ -159,9 +160,9 @@ class SellPage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              backgroundColor: init ? Color(0xFF02C275) : Colors.white,
-              foregroundColor: init ? Colors.white : Color(0xFF02C275),
-              side: BorderSide(color: Color(0xFF02C275), width: 1),
+              backgroundColor: init ? Ticolor.greenMain3 : Ticolor.whiteMain1,
+              foregroundColor: init ? Ticolor.whiteMain1 : Ticolor.greenMain3,
+              side: BorderSide(color: Ticolor.greenMain3, width: 1),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -199,7 +200,7 @@ class SellPage extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.all(6),
-        color: Colors.transparent,
+        color: Ticolor.no,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -242,7 +243,7 @@ class SellPage extends StatelessWidget {
                             Icon(
                               Icons.swap_vert_rounded,
                               size: 20,
-                              color: Color(0xFF02C275),
+                              color: Ticolor.greenMain3,
                               weight: 600,
                             ),
                             SizedBox(width: 2),
@@ -251,7 +252,7 @@ class SellPage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF02C275),
+                                color: Ticolor.greenMain3,
                               ),
                             )
                           ],
@@ -271,19 +272,21 @@ class SellPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Color(0xFF02C275),
+            color: Ticolor.greenMain3,
           ),
           child: Text(
             '${price} ฿',
             style: TextStyle(
-                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
+                color: Ticolor.whiteMain1,
+                fontSize: 12,
+                fontWeight: FontWeight.w400),
           ),
         ),
         SizedBox(width: 10),
         Container(
           height: 20,
           width: 1,
-          color: Colors.grey,
+          color: Ticolor.blackSup1,
         ),
         SizedBox(width: 10),
         Text(

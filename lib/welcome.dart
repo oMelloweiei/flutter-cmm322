@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -37,12 +38,12 @@ class _WelcomePageState extends State<WelcomePage> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFF4795DD),
-                    Color(0xFF4DC5DD),
-                    Color(0xFF52D3DB),
-                    Color(0xFF3AB589),
-                    Color(0xFF42BD6C),
-                    Color(0xFF5AD255),
+                    Ticolor.blueSup5,
+                    Ticolor.blueSup4,
+                    Ticolor.blueSup3,
+                    Ticolor.greenMain6,
+                    Ticolor.greenMain5,
+                    Ticolor.greenMain4,
                   ],
                 ),
               ),
@@ -83,7 +84,7 @@ class WelcomeContent extends StatelessWidget {
           SizedBox(height: MediaQuery.of(context).size.height * 0.275),
           Image.asset(
             'assets/icons/binny-100px.png',
-            color: Colors.white,
+            color: Ticolor.whiteMain1,
             fit: BoxFit.cover,
             height: 97,
           ),
@@ -95,14 +96,14 @@ class WelcomeContent extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => Get.toNamed('/login'),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.black,
+                    backgroundColor: Ticolor.blackMain3,
                     textStyle: TextStyle(fontSize: 16),
                     fixedSize: Size(120, 50),
                   ),
                   child: Text(
                     'Login',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Ticolor.whiteMain1,
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                     ),
@@ -114,14 +115,14 @@ class WelcomeContent extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => Get.toNamed('/home'),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Ticolor.whiteMain1,
                     textStyle: TextStyle(fontSize: 16),
                     fixedSize: Size(120, 50),
                   ),
                   child: Text(
                     'Sign up',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Ticolor.blackMain3,
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                     ),

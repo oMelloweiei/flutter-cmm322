@@ -2,6 +2,7 @@ import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class maintain extends StatelessWidget {
   @override
@@ -56,11 +57,11 @@ class maintain extends StatelessWidget {
           child: Text(
             'ตกลง',
             style: TextStyle(
-              color: Colors.white, // Change text color to white
+              color: Ticolor.whiteMain1, // Change text color to white
             ),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
+            backgroundColor: Ticolor.greenMain4,
             padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
             textStyle: TextStyle(
               fontSize: 20.0,

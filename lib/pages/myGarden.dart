@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/physics.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class MyGarden extends StatefulWidget {
   const MyGarden({Key? key}) : super(key: key);
@@ -66,11 +67,7 @@ class _MyGardenState extends State<MyGarden>
                           gradient: LinearGradient(
                 begin: Alignment(0.00, -1.00),
                 end: Alignment(0, 1),
-                colors: [
-                  Color(0xFF4795DD),
-                  Color(0xFF4DC5DD),
-                  Color(0xFF56E0D9)
-                ],
+                colors: [Ticolor.blueSup5, Ticolor.blueSup4, Ticolor.blueSup3],
               )))),
               Positioned.fill(
                 left: 0,
@@ -82,9 +79,9 @@ class _MyGardenState extends State<MyGarden>
                       begin: Alignment(0.00, -1.00),
                       end: Alignment(0, 1),
                       colors: [
-                        Color(0xFF3AB589),
-                        Color(0xFF42BD6C),
-                        Color(0xFF5AD255)
+                        Ticolor.greenMain6,
+                        Ticolor.greenMain5,
+                        Ticolor.greenMain4
                       ],
                     ),
                   ),
@@ -154,7 +151,7 @@ class _MyGardenState extends State<MyGarden>
               icon: Icon(
                 Icons.arrow_back_ios_new_rounded,
                 size: 40,
-                color: Colors.white,
+                color: Ticolor.whiteMain1,
               )),
           Container(
             padding: EdgeInsets.all(10),
@@ -163,13 +160,13 @@ class _MyGardenState extends State<MyGarden>
               style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white),
+                  color: Ticolor.whiteMain1),
             ),
           ),
           IconButton(
               onPressed: () {},
-              icon:
-                  Icon(Icons.download_outlined, size: 40, color: Colors.white))
+              icon: Icon(Icons.download_outlined,
+                  size: 40, color: Ticolor.whiteMain1))
         ],
       ),
     );
@@ -184,13 +181,17 @@ class _MyGardenState extends State<MyGarden>
           Text(
             'ทุกคนช่วยลด CO2 ไปแล้ว',
             style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w400, color: Colors.white),
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Ticolor.whiteMain1),
           ),
           SizedBox(height: 2),
           Text(
             '120,562',
             style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                color: Ticolor.whiteMain1),
           ),
         ],
       ),
@@ -207,7 +208,7 @@ class _MyGardenState extends State<MyGarden>
                 width: 90,
                 height: 90,
                 child: Image.asset('assets/garden/finger.png',
-                    fit: BoxFit.cover, color: Colors.white))),
+                    fit: BoxFit.cover, color: Ticolor.whiteMain1))),
         Positioned(
             bottom: ((myHeight / 2) - 90) * 0.75,
             left: (myWidth - 90) / 2,
@@ -219,7 +220,7 @@ class _MyGardenState extends State<MyGarden>
                         width: 90,
                         height: 90,
                         child: Image.asset('assets/garden/fingertouch.png',
-                            fit: BoxFit.cover, color: Colors.white))))),
+                            fit: BoxFit.cover, color: Ticolor.whiteMain1))))),
       ],
     );
   }
@@ -235,7 +236,9 @@ class _MyGardenState extends State<MyGarden>
           Text(
             'กดที่ต้นไม้เพื่อใช้แต้ม',
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w800),
+                fontSize: 20,
+                color: Ticolor.whiteMain1,
+                fontWeight: FontWeight.w800),
           ),
           SizedBox(
             height: 8,
@@ -243,11 +246,11 @@ class _MyGardenState extends State<MyGarden>
           Container(
               padding: EdgeInsets.symmetric(horizontal: 18, vertical: 2),
               decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Ticolor.whiteMain1,
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               child: Text(
                 '-20',
-                style: TextStyle(color: Colors.black, fontSize: 24),
+                style: TextStyle(color: Ticolor.blackMain3, fontSize: 24),
               ))
         ],
       ),
@@ -268,7 +271,7 @@ class _MyGardenState extends State<MyGarden>
           Container(
             padding: const EdgeInsets.all(8),
             decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Ticolor.whiteMain1,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Text('Level. 01'),
           ),
@@ -279,7 +282,7 @@ class _MyGardenState extends State<MyGarden>
                 'Binary Garden',
                 style: TextStyle(
                     fontSize: 30,
-                    color: Colors.white,
+                    color: Ticolor.whiteMain1,
                     fontWeight: FontWeight.w700),
               ),
               SizedBox(
@@ -288,13 +291,13 @@ class _MyGardenState extends State<MyGarden>
               Icon(
                 Icons.edit_note,
                 size: 35,
-                color: Colors.white,
+                color: Ticolor.whiteMain1,
               ),
             ],
           ),
           const Divider(
             height: 2,
-            color: Colors.white,
+            color: Ticolor.whiteMain1,
           )
         ],
       ),
