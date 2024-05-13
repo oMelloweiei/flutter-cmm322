@@ -232,4 +232,8 @@ class TImages {
   static const String donate_garbage = "assets/obj/OBJ_Donate_garbage.png";
   static const String the_amount_of_trash =
       "assets/obj/OBJ_The_amount_of_trash.png";
+
+  //new add-on
+  static const String maintainpic =
+      "assets/onboarding/construct.png";
 }
