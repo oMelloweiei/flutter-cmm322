@@ -3,6 +3,7 @@ import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/topic_repository.dart';
 import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TopicController extends GetxController {
@@ -22,6 +23,20 @@ class TopicController extends GetxController {
 
   //Load Topic data
   Future<void> fetchTopics() async {
+    try {
+      isLoading.value = true;
+
+      final topics = await _topicRepository.getAllTopic();
+
+      allTopic.assignAll(topics);
+    } catch (e) {
+      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> createTopic(UserModel user) async {
     try {
       //Show Loader while loading topic
       isLoading.value = true;

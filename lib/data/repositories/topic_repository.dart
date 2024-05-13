@@ -47,5 +47,19 @@ class TopicRepository extends GetxController {
     }
   }
 
+  Future<void> saveTopicRecord(TopicModel topic) async {
+    try {
+      await _db.collection("Topics").doc(topic.id).set(topic.toJson());
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const FormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
   //Upload topic to the cloud firestore
 }
