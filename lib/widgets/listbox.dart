@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:binny_application/data/models/topicModel.dart';
+import 'package:binny_application/pages/comment_detail.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 const TextStyle topCommentText = TextStyle(
   fontFamily: 'IBMPlexSansThai',
@@ -44,12 +47,14 @@ class squareBox extends StatelessWidget {
   final String comment;
   final String username;
   final String formattedDate;
+  final TopicModel? topic;
   const squareBox(
       {Key? key,
       required this.boxTitle,
       required this.comment,
       required this.username,
-      required this.formattedDate})
+      required this.formattedDate,
+      this.topic})
       : super(key: key);
 
   @override
@@ -57,7 +62,9 @@ class squareBox extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
         child: InkWell(
-          onTap: () {}, //Link to whatever
+          onTap: () {
+            Get.to(PostDetail(topic: topic!));
+          },
           child: Container(
             width: 216,
             decoration: BoxDecoration(

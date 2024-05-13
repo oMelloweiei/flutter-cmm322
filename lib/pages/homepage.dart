@@ -1,11 +1,4 @@
 import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
-import 'package:binny_application/pages/comment.dart';
-import 'package:binny_application/pages/donationpage.dart';
-import 'package:binny_application/pages/howto.dart';
-import 'package:binny_application/pages/manual.dart';
-import 'package:binny_application/pages/myGarden.dart';
-import 'package:binny_application/pages/raklok.dart';
-import 'package:binny_application/pages/selltrash/sell.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
 import 'package:binny_application/widgets/class/Color.dart';
@@ -140,7 +133,7 @@ class HomePagecontent extends StatelessWidget {
           } else if (topic == 'sell') {
             Get.toNamed('/sell');
           } else if (topic == 'manual') {
-            Get.toNamed('/manual');
+            Get.toNamed('/howto');
           }
         },
         child: Column(
@@ -231,12 +224,7 @@ class HomePagecontent extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HowtoPage(),
-                            ),
-                          );
+                          Get.toNamed('/howto');
                         },
                         child: Image.asset(
                           TImages.homecard,
@@ -269,6 +257,7 @@ class HomePagecontent extends StatelessWidget {
                                 .format(topic.timeStamp);
 
                             return squareBox(
+                              topic: topic,
                               boxTitle: topic.text,
                               comment: 'comment',
                               username: topic.userName,
@@ -285,7 +274,7 @@ class HomePagecontent extends StatelessWidget {
                   height: 16,
                 ),
                 Container(
-                  height: 230,
+                  height: 141,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: data.length,

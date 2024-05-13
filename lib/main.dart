@@ -6,6 +6,7 @@ import 'package:binny_application/firebase_options.dart';
 import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/howto.dart';
 import 'package:binny_application/pages/manual.dart';
 import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/pointpage.dart';
@@ -60,7 +61,7 @@ class MainApp extends StatelessWidget {
         GetPage(name: '/donation', page: () => Donation()),
         GetPage(name: '/katoo', page: () => katooPage()),
         GetPage(name: '/sell', page: () => SellPage()),
-        GetPage(name: '/manual', page: () => ManualPage()),
+        GetPage(name: '/howto', page: () => HowtoPage()),
       ],
       initialBinding: GeneralBindings(),
       home: const Scaffold(

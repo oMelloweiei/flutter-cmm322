@@ -1,6 +1,7 @@
 import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
 import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/pages/createpost.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/listbox.dart';
 import 'package:binny_application/widgets/myPost.dart';
 import 'package:binny_application/widgets/topic_post.dart';
@@ -21,14 +22,25 @@ class katooPage extends StatelessWidget {
     final panelHeightOpen = MediaQuery.of(context).size.height * 0.8;
     final panelHeightClose = MediaQuery.of(context).size.height * 0.45;
     return Scaffold(
+        backgroundColor: Color(0xFFF6F9FD),
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
+          centerTitle: false,
+          backgroundColor: Colors.transparent,
+          title: Image.asset(
+            TImages.logoblack,
+            fit: BoxFit.cover,
+            height: 30,
           ),
-          backgroundColor: Colors.black,
+          actions: [
+            Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.bookmark_outline_rounded,
+                      size: 35,
+                    ))),
+          ],
         ),
         body: SlidingUpPanel(
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
@@ -87,6 +99,7 @@ class _QAPageState extends State<QAPage> {
                   DateFormat.yMMMd().add_Hm().format(topic.timeStamp);
 
               return squareBox(
+                topic: topic,
                 boxTitle: topic.text,
                 comment: 'comment',
                 username: topic.userName,
