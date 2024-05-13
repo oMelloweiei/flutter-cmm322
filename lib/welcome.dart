@@ -112,7 +112,7 @@ class WelcomeContent extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TextButton(
-                  onPressed: () => Get.toNamed('/signup'),
+                  onPressed: () => Get.toNamed('/home'),
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.white,
                     textStyle: TextStyle(fontSize: 16),

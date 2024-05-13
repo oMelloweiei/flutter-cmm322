@@ -4,16 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'scanpagelist.dart';
 
 class DetailScan extends StatefulWidget {
   final String barcode;
   final String picture;
   final String name;
+  final String iconre;
   DetailScan(
       {Key? key,
       required this.barcode,
       required this.picture,
-      required this.name})
+      required this.name,
+      required this.iconre})
       : super(key: key);
   @override
   State<DetailScan> createState() => _DetailScanState();
@@ -26,6 +29,7 @@ class _DetailScanState extends State<DetailScan> {
   late String name;
   late String picture;
   late String barcode;
+  late String iconre;
 
   @override
   void initState() {
@@ -35,6 +39,7 @@ class _DetailScanState extends State<DetailScan> {
     name = widget.name;
     picture = widget.picture;
     barcode = widget.barcode;
+    iconre = widget.iconre;
   }
 
   void toggleLike() {
@@ -68,6 +73,7 @@ class _DetailScanState extends State<DetailScan> {
           children: [
             BinProduct(
               picture: picture,
+              iconre: iconre,
             ),
             LikeDislikeBar(
               onLikePressed: toggleLike,
@@ -93,27 +99,22 @@ class DetailScanAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       backgroundColor: Color.fromARGB(0, 255, 255, 255),
       elevation: 0,
-      title: Center(
-        child: Column(
-          children: [
-            Text(
-              name,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black),
-            ),
-            Text(
-              barcode,
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.black),
-            )
-          ],
-        ),
+      title: Column(
+        children: [
+          Text(
+            name,
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
+          ),
+          Text(
+            barcode,
+            style: TextStyle(
+                fontSize: 14, fontWeight: FontWeight.w300, color: Colors.black),
+          )
+        ],
       ),
       leading: IconButton(
         onPressed: () {
@@ -121,14 +122,6 @@ class DetailScanAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         icon: Icon(Icons.arrow_back, size: 40, color: Colors.black),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            // Add your function here
-          },
-          icon: Icon(Icons.filter_list, size: 40, color: Colors.black),
-        ),
-      ],
     );
   }
 }
@@ -182,8 +175,9 @@ class BinProductDetail extends StatelessWidget {
 
 class BinProduct extends StatefulWidget {
   final String picture;
+  final String iconre;
 
-  BinProduct({required this.picture});
+  BinProduct({required this.picture, required this.iconre});
   @override
   _BinProductState createState() => _BinProductState();
 }
@@ -214,6 +208,7 @@ class _BinProductState extends State<BinProduct> {
           SizedBox(height: 10),
           ProductDetailTwoPic(
             picture: widget.picture,
+            iconre: widget.iconre,
           ),
           SizedBox(height: 20),
         ],
@@ -274,8 +269,9 @@ class BinProductText extends StatelessWidget {
 
 class ProductDetailTwoPic extends StatelessWidget {
   final String picture;
+  final String iconre;
 
-  ProductDetailTwoPic({required this.picture});
+  ProductDetailTwoPic({required this.picture, required this.iconre});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -352,12 +348,15 @@ class ProductDetailTwoPic extends StatelessWidget {
                       Container(
                         width: 135,
                         height: 125,
-                        child: Image.asset('assets/icons/recycle1.png'),
+                        child: Image.asset(
+                          iconre,
+                          fit: BoxFit.contain,
+                        ),
                       )
                     ]),
                     SizedBox(height: 5),
                     Text(
-                      'Bottle',
+                      'Type',
                       style: GoogleFonts.ibmPlexSansThai(fontSize: 12),
                     ),
                   ],
@@ -381,7 +380,7 @@ class ProductDetailTwoPic extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    'Scan Tip: Always rinse bottles before recycling',
+                    'Scan Tip: Waste should be separated according to type',
                     style: GoogleFonts.ibmPlexSansThai(
                       fontSize: 10,
                       color: Colors.black87,
@@ -408,8 +407,6 @@ class LikeDislikeBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isLiked = false;
-    bool _isDisliked = false;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: Row(
