@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class TopicContainer extends StatelessWidget {
   final TopicModel topic;
@@ -34,7 +35,7 @@ class TopicContainer extends StatelessWidget {
                 Radius.circular(10),
               ),
               border: Border.all(
-                  color: const Color.fromARGB(255, 203, 203, 203), width: 2)),
+                  color: Ticolor.blackSup1, width: 2)),
           child: Column(
             children: [
               Row(
@@ -89,7 +90,7 @@ class TopicContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(color: const Color.fromARGB(255, 203, 203, 203)),
+              Divider(color: Ticolor.blackSup1),
               // Container(
               //   margin: EdgeInsets.symmetric(vertical: 4),
               //   child: Row(

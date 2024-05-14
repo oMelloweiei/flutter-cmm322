@@ -2,6 +2,7 @@ import 'package:binny_application/features/authentication/controllers/login/logi
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class googleBTN extends StatelessWidget {
   const googleBTN({super.key});
@@ -11,7 +12,7 @@ class googleBTN extends StatelessWidget {
     final controller = Get.put(LoginController());
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: Colors.white,
+        backgroundColor: Ticolor.whiteMain1,
         textStyle: TextStyle(fontSize: 16),
       ),
       onPressed: () => controller.googleSignIn(),
@@ -26,8 +27,8 @@ class googleBTN extends StatelessWidget {
             SizedBox(width: 5),
             Text(
               'Google',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+              style: TextStyle(
+                  color: Ticolor.blackMain3, fontWeight: FontWeight.w700),
             ),
           ])),
     );

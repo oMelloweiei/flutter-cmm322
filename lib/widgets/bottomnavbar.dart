@@ -39,13 +39,13 @@ class MyBottomNavbar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 43, vertical: 4),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: Colors.white,
+        color: Ticolor.whiteMain1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
         shadows: [
           BoxShadow(
-            color: Color(0x3F000000),
+            color: Ticolor.blackMain3,
             blurRadius: 8.50,
             offset: Offset(0, 0),
             spreadRadius: 0,

@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class PostDetail extends StatelessWidget {
   TopicModel topic;
@@ -22,10 +23,10 @@ class PostDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final panelHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: Color(0xFFF6F9FD),
+        backgroundColor: Ticolor.whiteMain2,
         appBar: AppBar(
           centerTitle: false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Ticolor.no,
           title: Image.asset(
             TImages.logoblack,
             fit: BoxFit.cover,
@@ -82,7 +83,7 @@ class PostInner extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
               height: 100,
-              color: Color(0xFF02C275),
+              color: Ticolor.greenMain3,
               child: Form(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -105,7 +106,7 @@ class PostInner extends StatelessWidget {
                                     vertical: 2, horizontal: 25),
                                 hintText: 'แสดงความคิดเห็นของคุณ',
                                 filled: true,
-                                fillColor: Colors.white,
+                                fillColor: Ticolor.whiteMain1,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(50),
                                   borderSide: BorderSide.none,
@@ -114,11 +115,11 @@ class PostInner extends StatelessWidget {
                   SizedBox(width: 10),
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color(0xFFC0F2DE),
+                    backgroundColor: Ticolor.addon7,
                     child: IconButton(
                       icon: Icon(
                         Icons.navigate_next_rounded,
-                        color: Color(0xFF02C275),
+                        color: Ticolor.greenMain3,
                       ),
                       onPressed: () {},
                     ),
@@ -155,7 +156,7 @@ class Postbox extends StatelessWidget {
                       Radius.circular(10),
                     ),
                     border: Border.all(
-                        color: const Color.fromARGB(255, 203, 203, 203),
+                        color: Ticolor.blackSup3,
                         width: 2)),
                 child: Column(
                   children: [
@@ -214,7 +215,7 @@ class Postbox extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Divider(color: const Color.fromARGB(255, 203, 203, 203)),
+                    Divider(color: Ticolor.blackSup3),
                     Obx(() {
                       if (replyController.isLoading.value) {
                         // Show loading indicator while replies are being fetched
@@ -253,7 +254,7 @@ class Postbox extends StatelessWidget {
                                         child: Text(
                                       text,
                                       style: TextStyle(
-                                        color: Color(0xFF232323),
+                                        color: Ticolor.blackMain2,
                                         fontSize: 13,
                                         fontFamily: 'IBM Plex Sans Thai',
                                         fontWeight: FontWeight.w500,

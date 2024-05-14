@@ -21,7 +21,7 @@ class CreatePost extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Ticolor.no,
           title: Image.asset(
             TImages.logoblack,
             fit: BoxFit.cover,
@@ -32,11 +32,11 @@ class CreatePost extends StatelessWidget {
               padding: EdgeInsets.only(right: 20),
               child: CircleAvatar(
                 radius: 20,
-                backgroundColor: Color(0xFFC0F2DE),
+                backgroundColor: Ticolor.addon7,
                 child: IconButton(
                   icon: Icon(
                     Icons.navigate_next_rounded,
-                    color: Color(0xFF02C275),
+                    color: Ticolor.greenMain3,
                   ),
                   onPressed: () {
                     createtopicController.creatpost(userController.user.value);
@@ -70,7 +70,7 @@ class CreatePost extends StatelessWidget {
                         Text(
                           userController.user.value.fullName,
                           style: TextStyle(
-                            color: Color(0xFF02C275),
+                            color: Ticolor.greenMain3,
                             fontSize: 16,
                             fontFamily: 'IBM Plex Sans Thai',
                             fontWeight: FontWeight.w500,

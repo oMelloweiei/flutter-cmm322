@@ -2,6 +2,7 @@ import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 var data = [
   {
@@ -96,8 +97,8 @@ class Tab2 extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [
-                    Color.fromARGB(255, 47, 125, 121),
-                    Color(0xFF29D062),
+                    Ticolor.addon2,
+                    Ticolor.greenMain2,
                   ],
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -113,7 +114,7 @@ class Tab2 extends StatelessWidget {
                         Text(
                           "แต้มสะสมทั้งหมด",
                           style: GoogleFonts.ibmPlexSansThai(
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
                           ),
@@ -123,7 +124,7 @@ class Tab2 extends StatelessWidget {
                           style: GoogleFonts.ibmPlexSansThai(
                             fontWeight: FontWeight.bold,
                             fontSize: 50,
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                           ),
                         ),
                       ],
@@ -134,7 +135,7 @@ class Tab2 extends StatelessWidget {
                         Container(
                           width: 1,
                           height: 80,
-                          color: Color(0xFFFFFFFF),
+                          color: Ticolor.whiteMain1,
                         ),
                       ],
                     ),
@@ -145,7 +146,7 @@ class Tab2 extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.storefront,
-                              color: Colors.white,
+                              color: Ticolor.whiteMain1,
                               size: 50,
                             ),
                             Positioned(
@@ -155,14 +156,14 @@ class Tab2 extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 3, vertical: 1),
                                 decoration: BoxDecoration(
-                                  color: Colors.red, // เลือกสีตามต้องการ
+                                  color: Ticolor.redSup2, // เลือกสีตามต้องการ
                                   shape: BoxShape.circle,
                                 ),
                                 child: Text(
                                   '99', // แทนตัวเลขด้วยจำนวนสินค้าในตะกร้า
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.white,
+                                    color: Ticolor.whiteMain1,
                                   ),
                                 ),
                               ),
@@ -173,7 +174,7 @@ class Tab2 extends StatelessWidget {
                           'สินค้าในตะกร้า',
                           style: GoogleFonts.ibmPlexSansThai(
                             fontSize: 10,
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                           ),
                         ),
                       ],
@@ -189,7 +190,7 @@ class Tab2 extends StatelessWidget {
             child: Text(
               "สินค้าอิเล็กทรอนิกส์",
               style: GoogleFonts.ibmPlexSansThai(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Ticolor.addon,
                   fontWeight: FontWeight.bold,
                   fontSize: 12),
             ),
@@ -216,7 +217,7 @@ class Tab2 extends StatelessWidget {
                           height: MediaQuery.of(context).size.width / 4.8,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color(0xFFEEF1F4),
+                            color: Ticolor.whiteMain2,
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: imgpath is Image
@@ -234,7 +235,7 @@ class Tab2 extends StatelessWidget {
                           height: 30,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Ticolor.addon,
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(6),
                                 bottomRight: Radius.circular(6)),
@@ -259,7 +260,7 @@ class Tab2 extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff62BF26),
+                                    color: Ticolor.greenMain8,
                                   ),
                                 ),
                               ],
@@ -282,7 +283,7 @@ class Tab2 extends StatelessWidget {
                 Text(
                   "เครื่องแต่งกาย",
                   style: GoogleFonts.ibmPlexSansThai(
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: Ticolor.addon,
                       fontWeight: FontWeight.bold,
                       fontSize: 12),
                 ),
@@ -311,7 +312,7 @@ class Tab2 extends StatelessWidget {
                           height: MediaQuery.of(context).size.width / 4.8,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color(0xFFEEF1F4),
+                            color: Ticolor.whiteMain2,
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: imgpath is Image
@@ -329,7 +330,7 @@ class Tab2 extends StatelessWidget {
                           height: 30,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Ticolor.addon,
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(6),
                                 bottomRight: Radius.circular(6)),
@@ -354,7 +355,7 @@ class Tab2 extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff62BF26),
+                                    color: Ticolor.greenMain8,
                                   ),
                                 ),
                               ],
@@ -377,7 +378,7 @@ class Tab2 extends StatelessWidget {
                 Text(
                   "สินค้าเพื่อสุขภาพ",
                   style: GoogleFonts.ibmPlexSansThai(
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: Ticolor.addon,
                       fontWeight: FontWeight.bold,
                       fontSize: 12),
                 ),
@@ -406,7 +407,7 @@ class Tab2 extends StatelessWidget {
                           height: MediaQuery.of(context).size.width / 4.8,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color(0xFFEEF1F4),
+                            color: Ticolor.whiteMain2,
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: imgpath is Image
@@ -424,7 +425,7 @@ class Tab2 extends StatelessWidget {
                           height: 30,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Ticolor.addon,
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(6),
                                 bottomRight: Radius.circular(6)),
@@ -449,7 +450,7 @@ class Tab2 extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff62BF26),
+                                    color: Ticolor.greenMain8,
                                   ),
                                 ),
                               ],
@@ -472,7 +473,7 @@ class Tab2 extends StatelessWidget {
                 Text(
                   "สินค้าทั่วไป&ข้าวของเครื่องใช้",
                   style: GoogleFonts.ibmPlexSansThai(
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: Ticolor.addon,
                       fontWeight: FontWeight.bold,
                       fontSize: 12),
                 ),
@@ -501,7 +502,7 @@ class Tab2 extends StatelessWidget {
                           height: MediaQuery.of(context).size.width / 4.8,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color(0xFFEEF1F4),
+                            color: Ticolor.whiteMain2,
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: imgpath is Image
@@ -519,7 +520,7 @@ class Tab2 extends StatelessWidget {
                           height: 30,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Ticolor.addon,
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(6),
                                 bottomRight: Radius.circular(6)),
@@ -544,7 +545,7 @@ class Tab2 extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff62BF26),
+                                    color: Ticolor.greenMain8,
                                   ),
                                 ),
                               ],

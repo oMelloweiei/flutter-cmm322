@@ -1,7 +1,7 @@
-import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class RaklokPage extends StatefulWidget {
   const RaklokPage({super.key});
@@ -87,7 +87,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
   //                           padding: EdgeInsets.only(right: 7),
   //                           child: Icon(
   //                             Icons.arrow_back_ios_new_rounded,
-  //                             color: Color(0xFF242424),
+  //                             color: Ticolor.blackMain2,
   //                             size: 28,
   //                           ),
   //                         ),
@@ -101,13 +101,13 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
   //                           padding: EdgeInsets.only(right: 7),
   //                           child: Icon(
   //                             Icons.favorite_border_rounded,
-  //                             color: Color(0xFF242424),
+  //                             color: Ticolor.blackMain2,
   //                             size: 35,
   //                           ),
   //                         ),
   //                         Icon(
   //                           Icons.calendar_month_sharp,
-  //                           color: Color(0xFF242424),
+  //                           color: Ticolor.blackMain2,
   //                           size: 35,
   //                         ),
   //                       ],
@@ -120,7 +120,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
     TabController tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       appBar: AppBar(),
-      backgroundColor: whiteMain1,
+      backgroundColor: Ticolor.whiteMain1,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -136,7 +136,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                       "รักษ์โลก",
                       style: TextStyle(
                         fontSize: 40.0,
-                        color: greenMain3,
+                        color: Ticolor.greenMain3,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -144,7 +144,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                       "คอมมูนิตี้",
                       style: TextStyle(
                         fontSize: 30.0,
-                        color: blackMain2,
+                        color: Ticolor.blackMain2,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -154,7 +154,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
               Container(
                 height: 45,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFE2E2E2)),
+                  border: Border.all(color: Ticolor.whiteMain1),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                   ),
@@ -168,9 +168,9 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                         tabAlignment: TabAlignment.start,
                         controller: tabController,
                         isScrollable: true,
-                        labelColor: greenMain3,
-                        unselectedLabelColor: blackMain3,
-                        indicatorColor: greenMain3,
+                        labelColor: Ticolor.greenMain3,
+                        unselectedLabelColor: Ticolor.blackMain3,
+                        indicatorColor: Ticolor.greenMain3,
                         tabs: [
                           Tab(text: "สำหรับฉัน"),
                           Tab(text: "ยอดฮิต"),
@@ -188,8 +188,8 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                             fontSize: 12.0,
                             decoration: TextDecoration.underline,
                             decorationThickness: 2.0,
-                            decorationColor: greenMain3,
-                            color: greenMain3,
+                            decorationColor: Ticolor.greenMain3,
+                            color: Ticolor.greenMain3,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -236,7 +236,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                                       child: Text(
                                         trashy[index].name,
                                         style: TextStyle(
-                                          color: blackMain3,
+                                          color: Ticolor.blackMain3,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -261,8 +261,8 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                                         ? Icons.favorite
                                         : Icons.favorite_border,
                                     color: _favoritesTab1[index]
-                                        ? Colors.red
-                                        : Colors.white,
+                                        ? Ticolor.redSup2
+                                        : Ticolor.whiteMain1,
                                     size: 22.0,
                                   ),
                                 ),
@@ -302,7 +302,7 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                                       child: Text(
                                         trashie[index].text,
                                         style: TextStyle(
-                                          color: blackMain3,
+                                          color: Ticolor.blackMain3,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -327,8 +327,8 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                                         ? Icons.favorite
                                         : Icons.favorite_border,
                                     color: _favoritesTab2[index]
-                                        ? Colors.red
-                                        : Colors.white,
+                                        ? Ticolor.redSup2
+                                        : Ticolor.whiteMain1,
                                     size: 22.0,
                                   ),
                                 ),
@@ -369,8 +369,8 @@ class _RaklokPageState extends State<RaklokPage> with TickerProviderStateMixin {
                                     fontSize: 12.0,
                                     decoration: TextDecoration.underline,
                                     decorationThickness: 2.0,
-                                    decorationColor: greenMain3,
-                                    color: greenMain3,
+                                    decorationColor: Ticolor.greenMain3,
+                                    color: Ticolor.greenMain3,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -481,7 +481,7 @@ class _GridBState extends State<GridB> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Color(0xFF232323),
+                color: Ticolor.blackMain3,
               ),
               height: 250,
             ),
@@ -505,7 +505,7 @@ class _GridBState extends State<GridB> {
                     padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(13)),
-                      color: Color(0xFF242424),
+                      color: Ticolor.blackMain2,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -513,7 +513,7 @@ class _GridBState extends State<GridB> {
                       children: [
                         Icon(
                           CupertinoIcons.heart_fill,
-                          color: Color(0xFF02C275),
+                          color: Ticolor.greenMain3,
                           size: 15,
                         ),
                         SizedBox(
@@ -521,7 +521,8 @@ class _GridBState extends State<GridB> {
                         ),
                         Text(
                           '30 คน',
-                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          style: TextStyle(
+                              color: Ticolor.whiteMain1, fontSize: 12),
                         )
                       ],
                     ),
@@ -533,7 +534,7 @@ class _GridBState extends State<GridB> {
                     padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(13)),
-                      color: Color(0xFF242424),
+                      color: Ticolor.blackMain2,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -541,7 +542,7 @@ class _GridBState extends State<GridB> {
                       children: [
                         Icon(
                           CupertinoIcons.location_solid,
-                          color: Colors.white,
+                          color: Ticolor.whiteMain1,
                           size: 15,
                         ),
                         SizedBox(
@@ -549,7 +550,8 @@ class _GridBState extends State<GridB> {
                         ),
                         Text(
                           "${gridMap.elementAt(index)['location']}",
-                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          style: TextStyle(
+                              color: Ticolor.whiteMain1, fontSize: 12),
                         )
                       ],
                     ),
@@ -565,7 +567,7 @@ class _GridBState extends State<GridB> {
                 top: 118,
                 left: 13,
                 child: Container(
-                  color: Colors.white,
+                  color: Ticolor.whiteMain1,
                   child: Text("${gridMap.elementAt(index)['date']}"),
                 )),
             Positioned(
@@ -580,7 +582,7 @@ class _GridBState extends State<GridB> {
                         Text(
                           "${gridMap.elementAt(index)['title']}",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Ticolor.whiteMain1,
                               fontWeight: FontWeight.w900,
                               fontSize: 14),
                         ),
@@ -589,7 +591,7 @@ class _GridBState extends State<GridB> {
                         ),
                         Icon(
                           CupertinoIcons.clock,
-                          color: Colors.white,
+                          color: Ticolor.whiteMain1,
                           size: 15,
                         ),
                         SizedBox(
@@ -597,13 +599,13 @@ class _GridBState extends State<GridB> {
                         ),
                         Text(
                           "${gridMap.elementAt(index)['time']}",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Ticolor.whiteMain1),
                         )
                       ],
                     ),
                     Text(
                       "${gridMap.elementAt(index)['text']}",
-                      style: TextStyle(color: Colors.white, fontSize: 10),
+                      style: TextStyle(color: Ticolor.whiteMain1, fontSize: 10),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -616,8 +618,8 @@ class _GridBState extends State<GridB> {
                         TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Color(0XFF02C275),
+                                foregroundColor: Ticolor.whiteMain1,
+                                backgroundColor: Ticolor.greenMain3,
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 0)),
                             child: Text('เข้าร่วม')),
@@ -627,8 +629,8 @@ class _GridBState extends State<GridB> {
                         TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                                foregroundColor: Color(0xFF02C275),
-                                side: BorderSide(color: Color(0xFF02C275)),
+                                foregroundColor: Ticolor.greenMain3,
+                                side: BorderSide(color: Ticolor.greenMain3),
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 0)),
                             child: Text('สนใจ')),

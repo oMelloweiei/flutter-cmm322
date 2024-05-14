@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class Loaders {
   static hideSnackBar() =>
@@ -10,12 +11,13 @@ class Loaders {
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
         elevation: 0,
         duration: const Duration(seconds: 3),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Ticolor.no,
         content: Container(
           padding: const EdgeInsets.all(12.0),
           margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30), color: Colors.grey),
+              borderRadius: BorderRadius.circular(30),
+              color: Ticolor.blackSup1),
           child: Center(
             child: Text(
               message,
@@ -29,14 +31,14 @@ class Loaders {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: Colors.white,
-        backgroundColor: Color(0xff62BF26),
+        colorText: Ticolor.whiteMain1,
+        backgroundColor: Ticolor.greenMain10,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
         margin: EdgeInsets.all(10),
         icon: FaIcon(
           FontAwesomeIcons.check,
-          color: Colors.white,
+          color: Ticolor.whiteMain1,
         ));
   }
 
@@ -44,14 +46,14 @@ class Loaders {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: Colors.white,
-        backgroundColor: Colors.orange,
+        colorText: Ticolor.whiteMain1,
+        backgroundColor: Ticolor.orange,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
         margin: EdgeInsets.all(20),
         icon: FaIcon(
           FontAwesomeIcons.bell,
-          color: Colors.white,
+          color: Ticolor.whiteMain1,
         ));
   }
 
@@ -59,14 +61,14 @@ class Loaders {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: Colors.white,
-        backgroundColor: Colors.red,
+        colorText: Ticolor.whiteMain1,
+        backgroundColor: Ticolor.redSup2,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
         margin: EdgeInsets.all(20),
         icon: FaIcon(
           FontAwesomeIcons.bell,
-          color: Colors.white,
+          color: Ticolor.whiteMain1,
         ));
   }
 }

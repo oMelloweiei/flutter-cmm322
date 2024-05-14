@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/pages/comment_detail.dart';
 import 'package:binny_application/widgets/class/Image.dart';
@@ -11,7 +11,7 @@ const TextStyle topCommentText = TextStyle(
   fontWeight: FontWeight.w400,
   fontSize: 12,
   color:
-      Color(0xFF9FFFA9), // Use direct color value instead of Color.fromRGBO()
+      Ticolor.addon4, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 
@@ -19,7 +19,7 @@ const TextStyle titleText = TextStyle(
   fontSize: 20,
   fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w700,
-  color: Colors.white,
+  color: Ticolor.whiteMain1,
   letterSpacing: -0.5,
 );
 
@@ -27,20 +27,20 @@ const TextStyle commentText = TextStyle(
   fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 12,
-  color: Colors.white, // Use direct color value instead of Color.fromRGBO()
+  color: Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 const TextStyle locationText = TextStyle(
   fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 16,
-  color: Colors.white, // Use direct color value instead of Color.fromRGBO()
+  color: Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 //Color style here -------------------------------------------------------------------------------------------------------------
 const Color primaryColor =
-    Color(0xFF02C275); // Use direct color value instead of Color.fromRGBO()
-const Color cardBG = Color(0xFF242424);
+    Ticolor.greenMain3; // Use direct color value instead of Color.fromRGBO()
+const Color cardBG = Ticolor.blackMain2;
 
 class squareBox extends StatelessWidget {
   final String boxTitle;
@@ -70,7 +70,7 @@ class squareBox extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(10),
-              color: Colors.black,
+              color: Ticolor.blackMain3,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +180,7 @@ class carpet extends StatelessWidget {
             width: 348,
             height: 200,
             decoration: BoxDecoration(
-              color: Color.fromARGB(102, 0, 0, 0),
+              color: Ticolor.addon3,
               borderRadius: BorderRadius.circular(10),
             ),
           ),

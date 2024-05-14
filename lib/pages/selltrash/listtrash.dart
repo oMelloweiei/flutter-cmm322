@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
 import 'package:binny_application/theme/Text.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/theme/color.dart';
@@ -168,7 +169,9 @@ class addTrashIcon extends StatelessWidget {
           Text(
             types,
             style: TextStyle(
-                color: greenMain3, fontSize: 10, fontWeight: FontWeight.w600),
+                color: Ticolor.greenMain3,
+                fontSize: 10,
+                fontWeight: FontWeight.w600),
           )
         ],
       ),
@@ -186,14 +189,16 @@ class button extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(50)),
         border: Border.all(
-            color: types == 'เพิ่มรายการ' ? greenMain3 : Colors.grey, width: 2),
+            color:
+                types == 'เพิ่มรายการ' ? Ticolor.greenMain3 : Ticolor.blackSup1,
+            width: 2),
       ),
       width: 100,
       height: 100,
       child: types == 'เพิ่มรายการ'
           ? Icon(
               Icons.add_outlined,
-              color: greenMain3,
+              color: Ticolor.greenMain3,
             )
           : ClipRRect(
               borderRadius: BorderRadius.circular(50),
@@ -282,7 +287,7 @@ class _selectState extends State<select> {
             Visibility(
               visible: isSelected,
               child: Container(
-                color: Color.fromARGB(64, 36, 36, 36),
+                color: Ticolor.addon8,
               ),
             ),
             Visibility(
@@ -291,7 +296,7 @@ class _selectState extends State<select> {
                   child: Icon(
                     Icons.check,
                     size: 50,
-                    color: Colors.white,
+                    color: Ticolor.whiteMain1,
                   ),
                 ))
           ] //stack Chirdren

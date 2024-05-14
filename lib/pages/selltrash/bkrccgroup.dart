@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/widgets.dart';
 import 'package:binny_application/pages/selltrash/listtrash.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class bkrccgroup extends StatefulWidget {
   late String shopName;
@@ -29,7 +30,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: whiteMain1,
+      backgroundColor: Ticolor.whiteMain1,
       appBar: appBarSellpage(shopName: widget.shopName),
       body: SingleChildScrollView(
         child: Stack(
@@ -57,14 +58,14 @@ class _bkrccgroupState extends State<bkrccgroup> {
                                   "เลือกประเภทขยะรีไซเคิล",
                                   style: TextStyle(
                                     fontSize: 16.0,
-                                    color: blackMain2,
+                                    color: Ticolor.blackMain2,
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
                               ),
                               Icon(
                                 Icons.info_outline_rounded,
-                                color: blackMain2,
+                                color: Ticolor.blackMain2,
                                 size: 18,
                               ),
                             ],
@@ -76,7 +77,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                               padding: EdgeInsets.only(right: 2),
                               child: Icon(
                                 Icons.swap_vert_rounded,
-                                color: greenMain3,
+                                color: Ticolor.greenMain3,
                                 size: 18,
                               ),
                             ),
@@ -84,7 +85,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                               "ราคารับซื้อขยะ",
                               style: TextStyle(
                                 fontSize: 14.0,
-                                color: greenMain3,
+                                color: Ticolor.greenMain3,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -100,7 +101,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       height: 150,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE2E2E2)),
+                        border: Border.all(color: Ticolor.blackSup3),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                       child: ListView.builder(
@@ -141,14 +142,14 @@ class _bkrccgroupState extends State<bkrccgroup> {
             //       IconButton(
             //         icon: Icon(
             //           Icons.arrow_circle_left_outlined,
-            //           color: whiteMain1,
+            //           color: Ticolor.whiteMain1,
             //           size: 35,
             //         ),
             //         onPressed: () => Navigator.of(context).pop(),
             //       ),
             //       Text(widget.shopName,
             //           style: TextStyle(
-            //               color: whiteMain1,
+            //               color: Ticolor.whiteMain1,
             //               fontSize: 16,
             //               fontWeight: FontWeight.w600)),
             //     ],
@@ -159,11 +160,11 @@ class _bkrccgroupState extends State<bkrccgroup> {
               left: 13,
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                color: blackMain2,
+                color: Ticolor.blackMain2,
                 child: Text(
                   widget.shopName,
                   style: TextStyle(
-                      color: whiteMain1,
+                      color: Ticolor.whiteMain1,
                       fontSize: 20,
                       fontWeight: FontWeight.w800),
                 ),
@@ -187,14 +188,16 @@ class appBarSellpage extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(
           Icons.arrow_circle_left_outlined,
-          color: whiteMain1,
+          color: Ticolor.whiteMain1,
           size: 35,
         ),
         onPressed: () => Navigator.pop(context),
       ),
       title: Text(shopName,
           style: TextStyle(
-              color: whiteMain1, fontSize: 16, fontWeight: FontWeight.w600)),
+              color: Ticolor.whiteMain1,
+              fontSize: 16,
+              fontWeight: FontWeight.w600)),
     );
   }
 

@@ -55,8 +55,8 @@ class _profilePageState extends State<profilePage> {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            Color.fromRGBO(129, 218, 246, 1),
-                            Colors.white,
+                            Ticolor.blueSup6,
+                            Ticolor.whiteMain1,
                           ],
                           stops: [
                             0.0,
@@ -83,7 +83,7 @@ class _profilePageState extends State<profilePage> {
                   child: Center(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Ticolor.whiteMain1,
                         borderRadius:
                             BorderRadius.circular(10), // กำหนดขอบมนขนาด 10 px
                       ),
@@ -97,7 +97,7 @@ class _profilePageState extends State<profilePage> {
                                 Container(
                                   padding: EdgeInsets.all(8),
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Ticolor.whiteMain1,
                                   ),
                                   child: BinnyBunWidget(),
                                 ),

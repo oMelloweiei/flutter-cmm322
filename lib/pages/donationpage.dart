@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:binny_application/widgets/class/Image.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class Donation extends StatelessWidget {
   const Donation({Key? key});
@@ -9,7 +10,7 @@ class Donation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Ticolor.no,
         title: Image.asset(TImages.logoblack,
             fit: BoxFit.cover, width: 100, height: 30),
         actions: [
@@ -36,7 +37,7 @@ class Donation extends StatelessWidget {
                   ))),
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Ticolor.whiteMain1,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -57,7 +58,7 @@ class Donation extends StatelessWidget {
                       height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                       ),
                       child: Stack(
                         children: [
@@ -65,7 +66,7 @@ class Donation extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: ColorFiltered(
                               colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.5),
+                                Ticolor.blackMain3.withOpacity(0.5),
                                 BlendMode.darken,
                               ),
                               child: Image.asset(
@@ -84,7 +85,7 @@ class Donation extends StatelessWidget {
                               child: Text(
                                 'ขยะกำพร้าไปไหนดี?',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
                                 ),
@@ -100,7 +101,7 @@ class Donation extends StatelessWidget {
                               child: Text(
                                 'N15 Technology',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
                                   fontSize: 17,
                                 ),
@@ -116,7 +117,7 @@ class Donation extends StatelessWidget {
                               child: Text(
                                 '#ประเภทขยะกำพร้า',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
                                   fontSize: 17,
                                 ),

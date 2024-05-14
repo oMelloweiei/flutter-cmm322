@@ -1,6 +1,7 @@
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class HowtoPage extends StatelessWidget {
   const HowtoPage({super.key});
@@ -71,7 +72,7 @@ class HowtoPage extends StatelessWidget {
                   Positioned(
                     top: 10,
                     right: 20,
-                    child: Icon(Icons.info_outline, color: Colors.black),
+                    child: Icon(Icons.info_outline, color: Ticolor.blackMain3),
                   ),
                   _buildPositionedPoints(200, 170),
                   _buildPositionedPoints(86, 10),
@@ -127,7 +128,7 @@ class HowtoPage extends StatelessWidget {
                       height: 70,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                       ),
                     ),
                   ),
@@ -156,10 +157,10 @@ class HowtoPage extends StatelessWidget {
                       height: 40,
                       width: 125,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Colors.white,
+                          color: Ticolor.whiteMain1,
                           width: 2,
                         ),
                       ),
@@ -167,7 +168,7 @@ class HowtoPage extends StatelessWidget {
                         child: Text(
                           'คุณอยู่อันดับ 35',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                             fontSize: 14,
                           ),
                         ),
@@ -184,7 +185,7 @@ class HowtoPage extends StatelessWidget {
                         child: Text(
                           'การจัดอันดับ',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Ticolor.whiteMain1,
                             fontSize: 24,
                           ),
                         ),
@@ -245,12 +246,12 @@ class HowtoPage extends StatelessWidget {
         height: 30,
         width: 90,
         decoration: BoxDecoration(
-            color: Colors.black, borderRadius: BorderRadius.circular(6)),
+            color: Ticolor.blackMain3, borderRadius: BorderRadius.circular(6)),
         child: Center(
           child: Text(
             '2 point',
             style: TextStyle(
-                color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+                color: Ticolor.whiteMain1, fontSize: 14, fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -266,8 +267,8 @@ class HowtoPage extends StatelessWidget {
           height: 489,
           width: 359,
           decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey),
+              color: Ticolor.whiteMain1,
+              border: Border.all(color: Ticolor.blueSup1),
               borderRadius: BorderRadius.circular(10)),
         ),
       ),
@@ -282,8 +283,8 @@ class HowtoPage extends StatelessWidget {
           height: 620,
           width: 400,
           decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey),
+              color: Ticolor.whiteMain1,
+              border: Border.all(color: Ticolor.blueSup1),
               borderRadius: BorderRadius.circular(10)),
         ),
       ),
@@ -298,7 +299,7 @@ class HowtoPage extends StatelessWidget {
         child: Text(
           '+10 binny point',
           style: TextStyle(
-              color: Colors.green, fontSize: 15, fontWeight: FontWeight.bold),
+              color: Ticolor.greenMain4, fontSize: 15, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -312,7 +313,7 @@ class HowtoPage extends StatelessWidget {
         child: Text(
           'คะแนนสะสม',
           style: TextStyle(
-            color: Colors.black,
+            color: Ticolor.blackMain3,
             fontSize: 15,
           ),
         ),
