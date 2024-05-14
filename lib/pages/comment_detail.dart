@@ -1,7 +1,9 @@
 import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
+import 'package:binny_application/features/authentication/controllers/signup/create_comment_controller.dart';
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
+import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/topic_post.dart';
@@ -68,6 +70,7 @@ class PostInner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userController = UserController.instance;
+    final createcommentController = Get.put(CreateCommentController());
     final networkImage = userController.user.value.profilePicture;
     final image =
         networkImage.isNotEmpty ? networkImage : TImages.profilerabbit;
@@ -85,47 +88,54 @@ class PostInner extends StatelessWidget {
               height: 100,
               color: Ticolor.greenMain3,
               child: Form(
+                  key: createcommentController.createCommentKey,
                   child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircularImage(
-                    image: image,
-                    width: 45,
-                    height: 45,
-                    isNetWorkImage: networkImage.isNotEmpty,
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: SizedBox(
-                        height: 35,
-                        child: TextFormField(
-                            expands: false,
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 2, horizontal: 25),
-                                hintText: 'แสดงความคิดเห็นของคุณ',
-                                filled: true,
-                                fillColor: Ticolor.whiteMain1,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                  borderSide: BorderSide.none,
-                                )))),
-                  ),
-                  SizedBox(width: 10),
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Ticolor.addon7,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.navigate_next_rounded,
-                        color: Ticolor.greenMain3,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularImage(
+                        image: image,
+                        width: 45,
+                        height: 45,
+                        isNetWorkImage: networkImage.isNotEmpty,
                       ),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              )),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: SizedBox(
+                            height: 35,
+                            child: TextFormField(
+                                validator: (value) =>
+                                    Validator.validateEmptyText('Text', value),
+                                controller: createcommentController.comment,
+                                expands: false,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2, horizontal: 25),
+                                    hintText: 'แสดงความคิดเห็นของคุณ',
+                                    filled: true,
+                                    fillColor: Ticolor.whiteMain1,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: BorderSide.none,
+                                    )))),
+                      ),
+                      SizedBox(width: 10),
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Ticolor.addon7,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.navigate_next_rounded,
+                            color: Ticolor.greenMain3,
+                          ),
+                          onPressed: () {
+                            createcommentController.creatcomment(
+                                userController.user.value, topic);
+                          },
+                        ),
+                      ),
+                    ],
+                  )),
             ))
       ],
     );
@@ -155,9 +165,7 @@ class Postbox extends StatelessWidget {
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
                     ),
-                    border: Border.all(
-                        color: Ticolor.blackSup3,
-                        width: 2)),
+                    border: Border.all(color: Ticolor.blackSup3, width: 2)),
                 child: Column(
                   children: [
                     Row(

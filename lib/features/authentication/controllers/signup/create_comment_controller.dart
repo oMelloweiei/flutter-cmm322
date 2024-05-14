@@ -1,9 +1,7 @@
+import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
-import 'package:binny_application/data/repositories/authentication_repository.dart';
-import 'package:binny_application/data/repositories/topic_repository.dart';
-import 'package:binny_application/data/repositories/user_repository.dart';
-import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
+import 'package:binny_application/data/repositories/reply_repository.dart';
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
@@ -12,17 +10,17 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CreatePostController extends GetxController {
-  static CreatePostController get instance => Get.find();
+class CreateCommentController extends GetxController {
+  static CreateCommentController get instance => Get.find();
 
   ///Variables
 
-  final post = TextEditingController();
+  final comment = TextEditingController();
 
-  GlobalKey<FormState> createFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> createCommentKey = GlobalKey<FormState>();
 
   // SignUp
-  void creatpost(UserModel user) async {
+  void creatcomment(UserModel user, TopicModel topic) async {
     try {
       FullScreenLoader.openLoadingDialog(
           'We are processing your information', 'assets/lottie/loading.json');
@@ -36,40 +34,39 @@ class CreatePostController extends GetxController {
       }
 
       //Form validation
-      if (!createFormKey.currentState!.validate()) {
+      if (!createCommentKey.currentState!.validate()) {
         FullScreenLoader.stopLoading();
         print("Form Validation Failed");
         return;
       }
 
       final DatabaseReference databaseReference =
-          FirebaseDatabase.instance.ref().child('topics');
-      final newTopicRef = databaseReference.push();
+          FirebaseDatabase.instance.ref().child('comments');
+      final newCommentRef = databaseReference.push();
 
       //Save Authentication user data in the Firebase Firestore
-      final newTopic = TopicModel(
-          id: newTopicRef.key!,
-          likeCount: 0,
-          replyCount: 0,
-          replyId: [],
-          text: post.text,
-          timeStamp: DateTime.now(),
-          userId: user.id,
-          profilePic: user.profilePicture,
-          userName: user.username);
+      final newComment = ReplyModel(
+        id: newCommentRef.key!,
+        text: comment.text,
+        topicId: topic.id,
+        userId: user.id,
+        username: user.username,
+        profilePic: user.profilePicture,
+      );
 
-      final topicRepository = Get.put(TopicRepository());
-      await topicRepository.saveTopicRecord(newTopic);
+      final replyRepository = Get.put(ReplyRepository());
+      await replyRepository.saveReplyRecord(newComment);
 
       //Remove loader
       FullScreenLoader.stopLoading();
 
       //Show success
       Loaders.successSnackBar(
-          title: 'Congratulations', message: 'Your post has been created!');
+          title: 'Congratulations',
+          message: 'Your account has been created! Verify email to continue');
 
       //Move to verify comment screen
-      Get.to(() => katooPage());
+      // Get.to(() => katooPage());
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
