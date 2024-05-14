@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:binny_application/theme/text.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
 class ScanPage extends StatefulWidget {
@@ -26,7 +26,6 @@ class _ScanPageState extends State<ScanPage>
   late Future<void> cameraInitialization;
   late TabController _tabController;
   late Timer _timer;
-  String _scanBarcode = '';
   static const List<Tab> myTabs = <Tab>[
     Tab(text: 'Tab1'),
     Tab(text: 'Tab2'),
@@ -108,11 +107,9 @@ class _ScanPageState extends State<ScanPage>
 }
 
 PreferredSizeWidget Tabbar(BuildContext context, TabController tabController) {
-  // Update return type
   final size = MediaQuery.of(context).size;
   TextTheme textThemeThai = buildTextTHI(Theme.of(context).textTheme);
   return PreferredSize(
-    // Return PreferredSize widget
     preferredSize: Size.fromHeight(12),
     child: Row(
       children: [
