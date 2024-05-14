@@ -18,7 +18,7 @@ class _nextButtonState extends State<nextButton> {
     final size = MediaQuery.of(context).size;
     return ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(greenSub),
+            backgroundColor: MaterialStatePropertyAll(greenMain2),
             fixedSize: MaterialStateProperty.all(Size(size.width - 20, 60))),
         onPressed: () {},
         child: Text(
