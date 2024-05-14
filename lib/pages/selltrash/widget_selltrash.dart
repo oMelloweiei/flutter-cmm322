@@ -1,6 +1,7 @@
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:binny_application/theme/color.dart';
 
 class nextButton extends StatefulWidget {
   final String title;
