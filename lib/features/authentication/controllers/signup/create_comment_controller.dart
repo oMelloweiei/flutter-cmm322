@@ -3,7 +3,6 @@ import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/reply_repository.dart';
 import 'package:binny_application/network_manager.dart';
-import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -22,8 +21,8 @@ class CreateCommentController extends GetxController {
   // SignUp
   void creatcomment(UserModel user, TopicModel topic) async {
     try {
-      FullScreenLoader.openLoadingDialog(
-          'We are processing your information', 'assets/lottie/loading.json');
+      // FullScreenLoader.openLoadingDialog(
+      //     'We are processing your information', 'assets/lottie/loading.json');
 
       //Form validation
       final isConnected = await NetworkManager.instance.isConnected();
@@ -58,12 +57,12 @@ class CreateCommentController extends GetxController {
       await replyRepository.saveReplyRecord(newComment);
 
       //Remove loader
-      FullScreenLoader.stopLoading();
+      // FullScreenLoader.stopLoading();
 
       //Show success
-      Loaders.successSnackBar(
-          title: 'Congratulations',
-          message: 'Your account has been created! Verify email to continue');
+      // Loaders.successSnackBar(
+      //     title: 'Congratulations',
+      //     message: 'Your account has been created! Verify email to continue');
 
       //Move to verify comment screen
       // Get.to(() => katooPage());

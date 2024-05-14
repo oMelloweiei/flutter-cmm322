@@ -1,3 +1,4 @@
+import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,10 +10,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class bkrccgroup extends StatefulWidget {
-  late String shopName;
-  late String shopPic;
+  ShopModel shop;
+  String imageUrl;
 
-  bkrccgroup({Key? key, required this.shopName, required this.shopPic})
+  bkrccgroup({Key? key, required this.shop, required this.imageUrl})
       : super(key: key);
 
   @override
@@ -26,7 +27,9 @@ class _bkrccgroupState extends State<bkrccgroup> {
 
   void addToTrashList(String trashItem) {
     setState(() {
-      _trashList.add(trashItem);
+      if (!_trashList.contains(trashItem)) {
+        _trashList.add(trashItem);
+      }
     });
   }
 
@@ -42,7 +45,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Ticolor.whiteMain1,
-      appBar: appBarSellpage(shopName: widget.shopName),
+      appBar: appBarSellpage(shopName: widget.shop.shopname),
       body: Stack(alignment: Alignment.center, children: [
         SingleChildScrollView(
           child: Column(
@@ -50,8 +53,8 @@ class _bkrccgroupState extends State<bkrccgroup> {
               Container(
                 child: Stack(
                   children: [
-                    Image.asset(
-                      widget.shopPic,
+                    Image.network(
+                      widget.imageUrl,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.width * 0.62,
@@ -72,14 +75,14 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       ),
                     ),
                     Positioned(
-                      top: 218,
+                      top: 200,
                       left: 13,
                       child: Container(
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                         color: blackMain2,
                         child: Text(
-                          widget.shopName,
+                          widget.shop.shopname,
                           style: GoogleFonts.ibmPlexSansThai().copyWith(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -92,7 +95,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 13, right: 13, top: 15),
+                padding: EdgeInsets.only(left: 13, right: 13, top: 40),
                 child: Column(
                   children: [
                     Row(
@@ -207,8 +210,11 @@ class _bkrccgroupState extends State<bkrccgroup> {
                 alignment: Alignment.topCenter,
                 width: size.width,
                 height: size.height * 0.5,
-                color: Colors.red,
-                child: Sellform(type: _trashList),
+                color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Sellform(type: _trashList),
+                ),
               )
             ],
           ),

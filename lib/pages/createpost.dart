@@ -1,5 +1,4 @@
 import 'package:binny_application/features/authentication/controllers/signup/create_post_controller.dart';
-import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/class/Color.dart';

@@ -3,7 +3,6 @@ import 'package:binny_application/features/personalization/controllers/user_cont
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

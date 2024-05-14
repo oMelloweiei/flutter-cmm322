@@ -1,4 +1,3 @@
-import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/utils/exceptions/firebase_exception.dart';
 import 'package:binny_application/utils/exceptions/platform_exception.dart';

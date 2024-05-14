@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ShopModel {
   final String id;
-  int distance;
+  double distance;
   String shopname;
   String ownerName;
   String ownerPic;
@@ -50,7 +50,7 @@ class ShopModel {
       final data = document.data()!;
       return ShopModel(
           id: document.id,
-          distance: data['Distance'] ?? 0,
+          distance: data['distance'] ?? 0.0,
           shopname: data['Name'] ?? '',
           ownerName: data['Owner_name'] ?? '',
           ownerPic: data['Owner_pic'] ?? '',

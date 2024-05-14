@@ -6,11 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
 import 'package:binny_application/widgets/class/Color.dart';
-=======
 import 'package:google_fonts/google_fonts.dart';
->>>>>>> jade
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final int currentPageIndex;
