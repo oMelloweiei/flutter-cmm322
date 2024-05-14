@@ -1,15 +1,19 @@
+import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
+import 'package:binny_application/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/widgets.dart';
-import 'package:binny_application/pages/selltrash/listtrash.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class bkrccgroup extends StatefulWidget {
   late String shopName;
   late String shopPic;
 
-  bkrccgroup({super.key, required this.shopName, required this.shopPic});
+  bkrccgroup({Key? key, required this.shopName, required this.shopPic})
+      : super(key: key);
 
   @override
   State<bkrccgroup> createState() => _bkrccgroupState();
@@ -20,34 +24,79 @@ class _bkrccgroupState extends State<bkrccgroup> {
     'เพิ่มรายการ',
   ];
 
-  void updateList(List<String> newList) {
+  void addToTrashList(String trashItem) {
     setState(() {
-      _trashList = newList;
+      _trashList.add(trashItem);
+    });
+  }
+
+  void deleteTrashList(String trashItem) {
+    setState(() {
+      _trashList.remove(trashItem);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Ticolor.whiteMain1,
       appBar: appBarSellpage(shopName: widget.shopName),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Image.asset(
-                  widget.shopPic,
-                  fit: BoxFit.cover,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width * 0.62,
+      body: Stack(alignment: Alignment.center, children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      widget.shopPic,
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width * 0.62,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width * 0.62,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          stops: [0.005, 1],
+                          colors: [
+                            Color.fromRGBO(0, 0, 0, 50),
+                            Color.fromRGBO(0, 0, 0, 0),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 218,
+                      left: 13,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                        color: blackMain2,
+                        child: Text(
+                          widget.shopName,
+                          style: GoogleFonts.ibmPlexSansThai().copyWith(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 13, right: 13, top: 35),
-                  child: Column(children: [
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 13, right: 13, top: 15),
+                child: Column(
+                  children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Row(
@@ -56,9 +105,9 @@ class _bkrccgroupState extends State<bkrccgroup> {
                                 padding: EdgeInsets.only(right: 2),
                                 child: Text(
                                   "เลือกประเภทขยะรีไซเคิล",
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Ticolor.blackMain2,
+                                  style: GoogleFonts.ibmPlexSansThai().copyWith(
+                                    fontSize: 18.0,
+                                    color: blackMain2,
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
@@ -71,28 +120,35 @@ class _bkrccgroupState extends State<bkrccgroup> {
                             ],
                           ),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 2),
-                              child: Icon(
-                                Icons.swap_vert_rounded,
-                                color: Ticolor.greenMain3,
-                                size: 18,
-                              ),
-                            ),
-                            Text(
-                              "ราคารับซื้อขยะ",
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Ticolor.greenMain3,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+                        Padding(
+                          padding: EdgeInsets.only(right: 2),
+                          child: Icon(
+                            Icons.swap_vert_rounded,
+                            color: greenMain3,
+                            size: 18,
+                          ),
+                        ),
+                        Text(
+                          "ราคารับซื้อขยะ",
+                          style: GoogleFonts.ibmPlexSansThai().copyWith(
+                            fontSize: 14.0,
+                            color: greenMain3,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 13, right: 13, top: 5),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
                     SizedBox(
                       height: 10,
                     ),
@@ -105,102 +161,70 @@ class _bkrccgroupState extends State<bkrccgroup> {
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _trashList.length,
-                          itemBuilder: (context, index) {
-                            return addTrashIcon(
-                              types: _trashList[index],
-                              updateList: updateList,
-                            );
-                          }),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: _trashList.length,
+                        itemBuilder: (context, index) {
+                          return addTrashIcon(
+                            types: _trashList[index],
+                            onTap: addToTrashList,
+                            deleteTrashList: deleteTrashList,
+                          );
+                        },
+                      ),
                     ),
-                  ]),
-                ),
-              ],
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 0.62,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: [
-                    0.005,
-                    1
                   ],
-                      colors: [
-                    Color.fromRGBO(0, 0, 0, 50),
-                    Color.fromRGBO(0, 0, 0, 0)
-                  ])),
-            ),
-            // Positioned(
-            //   top: 28,
-            //   left: 13,
-            //   child: Row(
-            //     children: [
-            //       IconButton(
-            //         icon: Icon(
-            //           Icons.arrow_circle_left_outlined,
-            //           color: Ticolor.whiteMain1,
-            //           size: 35,
-            //         ),
-            //         onPressed: () => Navigator.of(context).pop(),
-            //       ),
-            //       Text(widget.shopName,
-            //           style: TextStyle(
-            //               color: Ticolor.whiteMain1,
-            //               fontSize: 16,
-            //               fontWeight: FontWeight.w600)),
-            //     ],
-            //   ),
-            // ),
-            Positioned(
-              top: 218,
-              left: 13,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                color: Ticolor.blackMain2,
-                child: Text(
-                  widget.shopName,
-                  style: TextStyle(
-                      color: Ticolor.whiteMain1,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800),
                 ),
               ),
-            ),
-          ],
+              Container(
+                height: 40,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(
+                  left: 15,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      textAlign: TextAlign.left,
+                      "น้ำหนักขยะรีไซเคิล",
+                      style: GoogleFonts.ibmPlexSansThai().copyWith(
+                        fontSize: 18.0,
+                        color: blackMain2,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Icon(
+                        Icons.info_outline_rounded,
+                        color: blackMain2,
+                        size: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.topCenter,
+                width: size.width,
+                height: size.height * 0.5,
+                color: Colors.red,
+                child: Sellform(type: _trashList),
+              )
+            ],
+          ),
         ),
-      ),
+        Positioned(
+            bottom: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: nextButton(title: 'ถัดไป'),
+            )),
+      ]),
     );
   }
 }
 
-class appBarSellpage extends StatelessWidget implements PreferredSizeWidget {
-  late String shopName;
-  appBarSellpage({super.key, required this.shopName});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WIDGET PART
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_circle_left_outlined,
-          color: Ticolor.whiteMain1,
-          size: 35,
-        ),
-        onPressed: () => Navigator.pop(context),
-      ),
-      title: Text(shopName,
-          style: TextStyle(
-              color: Ticolor.whiteMain1,
-              fontSize: 16,
-              fontWeight: FontWeight.w600)),
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-}

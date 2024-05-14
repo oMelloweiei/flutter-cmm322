@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const greenMain1 = Color(0xFF53D49F);
 const greenMain2 = Color(0xFF29D062);
 const greenMain3 = Color(0xFF02C275);
+const greenSub = Color.fromRGBO(2, 194, 117, 1);
 
 const blackMain1 = Color(0xFF5D5D5D);
 const blackMain2 = Color(0xFF242424);

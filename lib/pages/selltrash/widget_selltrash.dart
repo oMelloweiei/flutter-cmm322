@@ -1,7 +1,6 @@
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:binny_application/theme/color.dart';
 
 class nextButton extends StatefulWidget {
   final String title;
@@ -18,7 +17,7 @@ class _nextButtonState extends State<nextButton> {
     final size = MediaQuery.of(context).size;
     return ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(greenMain2),
+            backgroundColor: MaterialStatePropertyAll(greenSub),
             fixedSize: MaterialStateProperty.all(Size(size.width - 20, 60))),
         onPressed: () {},
         child: Text(
@@ -278,8 +277,14 @@ class _selectionTrashState extends State<selectionTrash> {
     'กระป๋อง เหล็ก สังกะสี ปิ๊ป',
   ];
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     bool isSelected = false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSelected;
     return GridView.builder(
       itemCount: trashTypes.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -288,13 +293,11 @@ class _selectionTrashState extends State<selectionTrash> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            if (isSelected == false) {
-              widget.addToTrashList(trashTypes[index]);
-            } else {
-              widget.deleteTrashList(trashTypes[index]);
-            }
+            widget.addToTrashList(trashTypes[index]);
           },
-          child: TrashObject(types: trashTypes[index]),
+          child: TrashObject(
+            types: trashTypes[index],
+          ),
         );
       },
     );
