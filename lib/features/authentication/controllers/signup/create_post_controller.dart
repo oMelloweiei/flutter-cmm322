@@ -43,7 +43,7 @@ class CreatePostController extends GetxController {
       }
 
       final DatabaseReference databaseReference =
-          FirebaseDatabase.instance.reference().child('topics');
+          FirebaseDatabase.instance.ref().child('topics');
       final newTopicRef = databaseReference.push();
 
       //Save Authentication user data in the Firebase Firestore
