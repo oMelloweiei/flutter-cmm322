@@ -1,6 +1,7 @@
 import 'package:binny_application/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class OnboardingNavigation extends StatelessWidget {
   final List<Map<String, dynamic>> onboardItems;
@@ -24,7 +25,7 @@ class OnboardingNavigation extends StatelessWidget {
         onDotClicked: controller.dotNavigationClick,
         count: onboardItems.length,
         effect: ExpandingDotsEffect(
-          activeDotColor: Color(0xFF02C275),
+          activeDotColor: Ticolor.whiteMain1,
           dotHeight: 10,
           dotWidth: 12,
         ),

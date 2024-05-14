@@ -1,74 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:binny_application/widgets/class/Image.dart';
-
-void main() {
-  runApp(const Donation());
-}
+import 'package:binny_application/widgets/class/Color.dart';
 
 class Donation extends StatelessWidget {
   const Donation({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Binny',
-      home: HomeScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key});
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Ticolor.no,
+        title: Image.asset(TImages.logoblack,
+            fit: BoxFit.cover, width: 100, height: 30),
+        actions: [
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: IconButton(
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => History()),
+                    // );
+                  },
+                  icon: Icon(
+                    Icons.history_rounded,
+                    size: 35,
+                  ))),
+          Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.search,
+                    size: 35,
+                  ))),
+        ],
+      ),
+      backgroundColor: Ticolor.whiteMain1,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 20, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 7),
-                          child: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: Color(0xFF242424),
-                            size: 28,
-                          ),
-                        ),
-                        Image.asset(
-                          TImages.logoblack,
-                          fit: BoxFit.cover,
-                          width: 75,
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 7),
-                          child: Icon(
-                            Icons.favorite_border_rounded,
-                            color: Color(0xFF242424),
-                            size: 35,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 155,
                 width: double.infinity,
@@ -84,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                       height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.black,
+                        color: Ticolor.blackMain3,
                       ),
                       child: Stack(
                         children: [
@@ -92,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: ColorFiltered(
                               colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.5),
+                                Ticolor.blackMain3.withOpacity(0.5),
                                 BlendMode.darken,
                               ),
                               child: Image.asset(
@@ -111,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 'ขยะกำพร้าไปไหนดี?',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
                                 ),
@@ -127,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 'N15 Technology',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
                                   fontSize: 17,
                                 ),
@@ -143,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                               child: Text(
                                 '#ประเภทขยะกำพร้า',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
                                   fontSize: 17,
                                 ),

@@ -4,6 +4,7 @@ import 'package:binny_application/widgets/reward.dart';
 import 'package:binny_application/widgets/score.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class PointPage extends StatefulWidget {
   const PointPage({Key? key}) : super(key: key);
@@ -41,9 +42,9 @@ class _PointPageState extends State<PointPage>
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     child: TabBar(
-                      unselectedLabelColor: Color(0xff63676D),
-                      labelColor: Color(0xff62BF26),
-                      indicatorColor: Color(0xff62BF26),
+                      unselectedLabelColor: Ticolor.addon5,
+                      labelColor: Ticolor.greenMain8,
+                      indicatorColor: Ticolor.greenMain8,
                       controller: tabController,
                       tabs: [
                         Tab(
@@ -56,7 +57,7 @@ class _PointPageState extends State<PointPage>
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height + 150,
                     child: TabBarView(
                       controller: tabController,
                       children: [

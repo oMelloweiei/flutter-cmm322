@@ -1,25 +1,47 @@
+import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
+import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
+import 'package:binny_application/pages/createpost.dart';
+import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/listbox.dart';
+import 'package:binny_application/widgets/myPost.dart';
+import 'package:binny_application/widgets/topic_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:binny_application/widgets/class/Color.dart';
+
+final _topicController = TopicController.instance;
 
 class katooPage extends StatelessWidget {
   const katooPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final panelHeightOpen = MediaQuery.of(context).size.height * 0.78;
-    final panelHeightClose = MediaQuery.of(context).size.height * 0.52;
+    final panelHeightOpen = MediaQuery.of(context).size.height * 0.8;
+    final panelHeightClose = MediaQuery.of(context).size.height * 0.45;
     return Scaffold(
+        backgroundColor: Ticolor.whiteMain2,
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
+          centerTitle: false,
+          backgroundColor: Ticolor.no,
+          title: Image.asset(
+            TImages.logoblack,
+            fit: BoxFit.cover,
+            height: 30,
           ),
-          backgroundColor: Colors.black,
+          actions: [
+            Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.bookmark_outline_rounded,
+                      size: 35,
+                    ))),
+          ],
         ),
         body: SlidingUpPanel(
             borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
@@ -67,16 +89,24 @@ class _QAPageState extends State<QAPage> {
             )),
 
         Container(
-          height: 230, // Specify a height here
-          child: ListView(
+          height: 190,
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            children: [
-              squareBox(
-                  boxTitle: 'boxTitle',
-                  comment: 'comment',
-                  username: 'username',
-                  formattedDate: 'formattedDate')
-            ],
+            shrinkWrap: true,
+            itemCount: _topicController.allTopic.length,
+            itemBuilder: (context, index) {
+              final topic = _topicController.allTopic[index];
+              String formattedDate =
+                  DateFormat.yMMMd().add_Hm().format(topic.timeStamp);
+
+              return squareBox(
+                topic: topic,
+                boxTitle: topic.text,
+                comment: 'comment',
+                username: topic.userName,
+                formattedDate: formattedDate,
+              );
+            },
           ),
         ),
 
@@ -126,7 +156,17 @@ class _PanelWidgetState extends State<PanelWidget> {
                 SizedBox(width: 20),
                 myTextButton('กระทู้ของฉัน', 'myPost')
               ])),
-              Icon(Icons.post_add, color: Colors.green, size: 35)
+              SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: IconButton(
+                      iconSize: 30,
+                      padding: EdgeInsets.zero,
+                      onPressed: () => Get.to(CreatePost()),
+                      icon: Icon(
+                        Icons.post_add,
+                        color: Ticolor.greenMain4,
+                      )))
             ],
           ),
         ),
@@ -147,7 +187,7 @@ class _PanelWidgetState extends State<PanelWidget> {
               Text(
                 text,
                 style: TextStyle(
-                    color: selected ? Colors.green : Colors.black,
+                    color: selected ? Ticolor.greenMain4 : Ticolor.blackMain3,
                     fontSize: 20),
               ),
               SizedBox(height: 2),
@@ -155,7 +195,7 @@ class _PanelWidgetState extends State<PanelWidget> {
                   ? Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
-                        color: Colors.green,
+                        color: Ticolor.greenMain4,
                       ),
                       height: 3,
                     )
@@ -178,216 +218,26 @@ class _PanelWidgetState extends State<PanelWidget> {
   }
 }
 
-class myPost extends StatelessWidget {
-  const myPost({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.black.withOpacity(0.05),
-      padding: EdgeInsets.symmetric(horizontal: 26, vertical: 26),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'คุณยังไม่เคยตั้งกระทู้..',
-            style:
-                TextStyle(fontSize: 16, color: Colors.black.withOpacity(0.3)),
-          ),
-          Text(
-            'มาเริ่มตั้งกระทู้กันเลย!',
-            style:
-                TextStyle(fontSize: 20, color: Colors.black.withOpacity(0.5)),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Colors.green),
-            child: Text(
-              'เขียนกระทู้คำถามของคุณ',
-              style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class forMeContainer extends StatelessWidget {
   final ScrollController controller;
   const forMeContainer({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 26, vertical: 12),
-      child: ListView(controller: controller, children: [
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
-        commmentBox(
-            "name",
-            "time",
-            "date",
-            "Comment Comment Comment Comment Comment Comment Comment Comment  Comment Comment Comment Comment",
-            20,
-            10,
-            " reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply reply",
-            "leo",
-            'assets/katoo/leo.jpg'),
-      ]),
-    );
-  }
-
-  Widget commmentBox(
-      String name,
-      String time,
-      String date,
-      String post,
-      int like,
-      int nComment,
-      String reply,
-      String PostprofileImg,
-      String ReplyImg) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-              border: Border.all(
-                  color: const Color.fromARGB(255, 203, 203, 203), width: 2)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    // color: Colors.pink,
-                    child: Row(children: [
-                      ClipOval(
-                        child: Image.asset('assets/katoo/$PostprofileImg.jpg',
-                            fit: BoxFit.cover, width: 50, height: 50),
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(name), Text('${time} | ${date}')],
-                      ),
-                    ]),
-                  ),
-                  Icon(Icons.book),
-                ],
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(post),
-              SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    child: Row(children: [
-                      Icon(Icons.heart_broken_rounded),
-                      SizedBox(width: 6),
-                      Text(like.toString())
-                    ]),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    child: Row(children: [
-                      Icon(Icons.chat),
-                      SizedBox(width: 6),
-                      Text(nComment.toString())
-                    ]),
-                  ),
-                ],
-              ),
-              Divider(color: const Color.fromARGB(255, 203, 203, 203)),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        ReplyImg,
-                        fit: BoxFit.cover,
-                        width: 35,
-                        height: 35,
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Flexible(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          reply,
-                          maxLines: 2,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          'reply',
-                          style: TextStyle(color: Colors.green),
-                        )
-                      ],
-                    ))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ));
+    return Obx(() {
+      return Container(
+          padding: EdgeInsets.symmetric(horizontal: 26, vertical: 12),
+          child: ListView.builder(
+              controller: controller,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: _topicController.allTopic.length,
+              itemBuilder: (_, index) {
+                final topic = _topicController.allTopic[index];
+                return TopicContainer(
+                  topic: topic,
+                );
+              }));
+    });
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/pages/scan/scanpagelist.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/utils/camera/camera.dart';
@@ -99,7 +99,7 @@ class _ScanPageState extends State<ScanPage>
           )
         ]),
         Container(
-            child: Widget130(
+            child: TrashList(
                 textThemeThai: buildTextTHI(Theme.of(context).textTheme)))
       ],
     );
@@ -128,18 +128,21 @@ PreferredSizeWidget Tabbar(BuildContext context, TabController tabController) {
           flex: 4,
           child: Padding(
             padding: EdgeInsets.only(
-                right: size.width * 0.18, top: size.height * 0.005),
+              right: size.width * 0.18,
+              top: size.height * 0.005,
+            ),
             child: TabBar(
               indicator: BoxDecoration(
-                  color: greenMain3, borderRadius: BorderRadius.circular(24)),
+                  color: Ticolor.greenMain3,
+                  borderRadius: BorderRadius.circular(24)),
               labelPadding: EdgeInsets.zero,
               controller: tabController,
-              labelColor: Colors.white,
+              labelColor: Ticolor.whiteMain1,
               labelStyle: textThemeThai.titleLarge!
                   .copyWith(fontWeight: FontWeight.bold),
               unselectedLabelStyle:
                   textThemeThai.bodyLarge!.copyWith(fontSize: 14),
-              unselectedLabelColor: greenMain3,
+              unselectedLabelColor: Ticolor.greenMain3,
               indicatorSize: TabBarIndicatorSize.tab,
               dividerColor: Color.fromRGBO(0, 0, 0, 0),
               tabs: [

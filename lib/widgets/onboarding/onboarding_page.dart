@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 
 class OnboardingPage extends StatelessWidget {
   Map<String, dynamic> item;
@@ -18,14 +19,14 @@ class OnboardingPage extends StatelessWidget {
         SizedBox(height: 20),
         Text(
           item['head'] as String,
-          style: TextStyle(fontSize: 24, color: Colors.black),
+          style: TextStyle(fontSize: 24, color: Ticolor.whiteMain1),
         ),
         SizedBox(height: 20),
         Container(
             width: MediaQuery.of(context).size.width * 0.55,
             child: Text(
               item['detail'] as String,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(fontSize: 16, color: Ticolor.whiteMain1),
               textAlign: TextAlign.center,
             )),
       ],
