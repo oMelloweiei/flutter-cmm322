@@ -5,13 +5,12 @@ import 'package:binny_application/pages/comment_detail.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const TextStyle topCommentText = TextStyle(
-  fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 12,
-  color:
-      Ticolor.addon4, // Use direct color value instead of Color.fromRGBO()
+  color: Ticolor.addon4, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 
@@ -27,14 +26,16 @@ const TextStyle commentText = TextStyle(
   fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 12,
-  color: Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
+  color:
+      Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 const TextStyle locationText = TextStyle(
   fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 16,
-  color: Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
+  color:
+      Ticolor.whiteMain1, // Use direct color value instead of Color.fromRGBO()
   letterSpacing: -0.4,
 );
 //Color style here -------------------------------------------------------------------------------------------------------------
@@ -83,7 +84,12 @@ class squareBox extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       boxTitle,
-                      style: titleText,
+                      style: GoogleFonts.ibmPlexSansThai().copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Ticolor.whiteMain1,
+                        letterSpacing: -0.5,
+                      ),
                     ),
                   ),
                 ),
@@ -95,7 +101,12 @@ class squareBox extends StatelessWidget {
                       text: TextSpan(children: [
                         TextSpan(
                           text: 'Top comment\n',
-                          style: topCommentText,
+                          style: GoogleFonts.ibmPlexSansThai().copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: Ticolor.whiteMain1,
+                            letterSpacing: -0.5,
+                          ),
                         ),
                         TextSpan(
                           text: comment,
