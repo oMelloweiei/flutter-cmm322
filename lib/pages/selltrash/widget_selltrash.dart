@@ -1,11 +1,18 @@
+import 'dart:ui' as ui;
+
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+List<String> _kg = [
+  '',
+];
+
 class nextButton extends StatefulWidget {
   final String title;
+  final Widget link;
 
-  nextButton({super.key, required this.title});
+  nextButton({super.key, required this.title, required this.link});
 
   @override
   State<nextButton> createState() => _nextButtonState();
@@ -19,7 +26,10 @@ class _nextButtonState extends State<nextButton> {
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(greenSub),
             fixedSize: MaterialStateProperty.all(Size(size.width - 20, 60))),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => widget.link)));
+        },
         child: Text(
           widget.title,
           style: GoogleFonts.ibmPlexSansThai().copyWith(
@@ -49,6 +59,7 @@ class _SellformState extends State<Sellform> {
         scrollDirection: Axis.vertical,
         itemCount: widget.type.length - 1,
         itemBuilder: (BuildContext context, int index) {
+<<<<<<< HEAD
           return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -105,6 +116,123 @@ class _SellformState extends State<Sellform> {
                   ),
                 ],
               ));
+=======
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+                padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.type[index + 1],
+                            style: GoogleFonts.ibmPlexSansThai().copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -0.4,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'ราคา/กก. 5 บาท',
+                            style: GoogleFonts.ibmPlexSansThai().copyWith(
+                              color: Colors.grey,
+                              letterSpacing: -0.4,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                      child: Divider(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, bottom: 10),
+                              child: Text(
+                                'น้ำหนัก',
+                                style: GoogleFonts.ibmPlexSansThai().copyWith(
+                                    fontSize: 15, fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                              child: Form(
+                                  autovalidateMode: AutovalidateMode.always,
+                                  onChanged: () {
+                                    Form.of(primaryFocus!.context!).save();
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(color: Colors.grey)),
+                                    height: 35,
+                                    width: 60,
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        textAlign: ui.TextAlign.center,
+                                        style: GoogleFonts.ibmPlexSansThai()
+                                            .copyWith(
+                                          fontSize: 12,
+                                        ),
+                                        onSaved: (String? value) {
+                                          if (value != null) {
+                                            _kg[index] = value;
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  )),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, bottom: 10),
+                              child: Text(
+                                'kg',
+                                style: GoogleFonts.ibmPlexSansThai().copyWith(
+                                    fontSize: 15, fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(right: 10.0, bottom: 10),
+                          child: Text(
+                            'ภาพขยะของฉัน',
+                            style: GoogleFonts.ibmPlexSansThai().copyWith(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: greenMain2),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
+          );
+>>>>>>> 5b5aa6b48cd4109e678faebc409b2ac7655ee79d
         });
   }
 }
@@ -296,12 +424,10 @@ class _selectionTrashState extends State<selectionTrash> {
   @override
   void initState() {
     super.initState();
-    bool isSelected = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isSelected;
     return GridView.builder(
       itemCount: trashTypes.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import 'package:binny_application/data/models/shopModel.dart';
+=======
+import 'package:binny_application/pages/selltrash/seller_detail.dart';
+>>>>>>> 5b5aa6b48cd4109e678faebc409b2ac7655ee79d
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +23,8 @@ class bkrccgroup extends StatefulWidget {
   @override
   State<bkrccgroup> createState() => _bkrccgroupState();
 }
+
+///////////////////////////class for trash///////////////////////////////////////////////
 
 class _bkrccgroupState extends State<bkrccgroup> {
   List<String> _trashList = [
@@ -223,7 +229,10 @@ class _bkrccgroupState extends State<bkrccgroup> {
             bottom: 0,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: nextButton(title: 'ถัดไป'),
+              child: nextButton(
+                title: 'ถัดไป',
+                link: detailseller(shopName: widget.shopName),
+              ),
             )),
       ]),
     );
