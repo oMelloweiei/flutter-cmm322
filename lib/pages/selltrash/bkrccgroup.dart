@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class bkrccgroup extends StatefulWidget {
-  ShopModel shop;
-  String imageUrl;
+  final ShopModel shop;
+  final String imageUrl;
 
   bkrccgroup({Key? key, required this.shop, required this.imageUrl})
       : super(key: key);
@@ -242,6 +242,8 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       onPressed: () {
                         Get.to(detailseller(
                           shop: widget.shop,
+                          imageUrl: widget.imageUrl,
+                          trashList: _trashList,
                         ));
                       },
                       child: Text(

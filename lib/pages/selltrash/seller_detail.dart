@@ -1,6 +1,7 @@
 import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/selltrash/sell_info.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/class/Color.dart';
@@ -12,7 +13,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class detailseller extends StatefulWidget {
   final ShopModel shop;
-  const detailseller({super.key, required this.shop});
+  final String imageUrl;
+  List<String> trashList;
+  detailseller(
+      {super.key,
+      required this.shop,
+      required this.imageUrl,
+      required this.trashList});
 
   @override
   State<detailseller> createState() => _detailsellerState();
@@ -21,6 +28,12 @@ class detailseller extends StatefulWidget {
 final usercontroller = UserController.instance;
 
 class _detailsellerState extends State<detailseller> {
+  @override
+  void initState() {
+    // widget.trashList.removeAt(0);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,7 +58,13 @@ class _detailsellerState extends State<detailseller> {
                       child: TextButton(
                         style: TextButton.styleFrom(
                             backgroundColor: Ticolor.greenMain3),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(SellInfo(
+                            shop: widget.shop,
+                            imageUrl: widget.imageUrl,
+                            trashList: widget.trashList,
+                          ));
+                        },
                         child: Text(
                           'ถัดไป',
                           style: GoogleFonts.ibmPlexSansThai().copyWith(
