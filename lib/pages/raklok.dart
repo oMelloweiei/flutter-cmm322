@@ -1,4 +1,3 @@
-import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/class/Color.dart';

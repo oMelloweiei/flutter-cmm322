@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/selltrash/model/sellermodel.dart';
 import 'package:binny_application/pages/selltrash/sum.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/theme/color.dart';
@@ -26,17 +29,34 @@ class detailseller extends StatefulWidget {
   final ShopModel shop;
   UserModel user;
   String imageUrl;
+  List<String> trashlist;
   detailseller(
       {super.key,
       required this.shop,
       required this.imageUrl,
-      required this.user});
+      required this.user,
+      required this.trashlist});
 
   @override
   State<detailseller> createState() => _detailsellerState();
 }
 
 class _detailsellerState extends State<detailseller> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+
+  String _jsonString = '';
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the JSON string with the initial data
+    _updateJsonString();
+  }
+
+  // Method to update the JSON string dynamically
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -144,9 +164,19 @@ class _detailsellerState extends State<detailseller> {
                                   width: 100,
                                   padding: EdgeInsets.only(right: 5),
                                   child: TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter a name';
+                                      }
+                                      return null;
+                                    },
+                                    controller: _nameController,
                                     style: GoogleFonts.ibmPlexSansThai()
                                         .copyWith(
                                             fontSize: 16, color: Colors.black),
+                                    onChanged: (value) {
+                                      _updateJsonString();
+                                    },
                                   )))
                         ],
                       ),
@@ -171,9 +201,19 @@ class _detailsellerState extends State<detailseller> {
                                   width: 100,
                                   padding: EdgeInsets.only(right: 5),
                                   child: TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter a name';
+                                      }
+                                      return null;
+                                    },
+                                    controller: _numberController,
                                     style: GoogleFonts.ibmPlexSansThai()
                                         .copyWith(
                                             fontSize: 16, color: Colors.black),
+                                    onChanged: (value) {
+                                      _updateJsonString();
+                                    },
                                   )))
                         ],
                       ),
@@ -244,6 +284,8 @@ class _detailsellerState extends State<detailseller> {
                                         shop: widget.shop,
                                         imageUrl: widget.imageUrl,
                                         user: widget.user,
+                                        jsonString: _jsonString,
+                                        trashlist: widget.trashlist,
                                       )));
                         },
                         child: Text(
@@ -258,5 +300,14 @@ class _detailsellerState extends State<detailseller> {
         ],
       ),
     );
+  }
+
+  void _updateJsonString() {
+    setState(() {
+      _jsonString = jsonEncode({
+        'name': _nameController.text,
+        'number': _numberController.text,
+      });
+    });
   }
 }

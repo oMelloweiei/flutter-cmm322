@@ -1,5 +1,3 @@
-import 'package:binny_application/features/authentication/screens/login/login.dart';
-import 'package:binny_application/features/authentication/screens/signup/widgets/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

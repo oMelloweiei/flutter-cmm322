@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/features/personalization/controllers/user_controller.dart';
@@ -395,14 +397,53 @@ class TrashObject extends StatelessWidget {
 //Mark page//
 //////////////////////////////////////////////////////////////////////////////////////
 
-class Jadewidget extends StatelessWidget {
+class Jadewidget extends StatefulWidget {
+  final String jsonString;
   Jadewidget({
     super.key,
+    required this.jsonString,
   });
 
   @override
+  State<Jadewidget> createState() => _JadewidgetState();
+}
+
+class _JadewidgetState extends State<Jadewidget> {
+  String _name = '';
+  String _number = '';
+  @override
+  void initState() {
+    super.initState();
+    // Extract name from jsonString when page initializes
+    _extractName();
+  }
+
+  void _extractName() {
+    if (widget.jsonString.isEmpty) {
+      return;
+    }
+    try {
+      final Map<String, dynamic> jsonMap = jsonDecode(widget.jsonString);
+      _name = jsonMap['name'] ?? '';
+    } catch (e) {
+      print('Error extracting name: $e');
+    }
+  }
+
+  void _extractNumber() {
+    if (widget.jsonString.isEmpty) {
+      return;
+    }
+    try {
+      final Map<String, dynamic> jsonMap = jsonDecode(widget.jsonString);
+      _number = jsonMap['number'] ?? '';
+    } catch (e) {
+      print('Error extracting name: $e');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
     return SingleChildScrollView(
       child: Container(
           decoration: BoxDecoration(),
@@ -503,7 +544,8 @@ class Jadewidget extends StatelessWidget {
                       const ListTile(
                         leading: Icon(
                           Icons.location_pin,
-                          color: Colors.blue,
+                          color: greenMain2,
+                          size: 30,
                         ),
                         title: Text(
                           "668/222 การินรูหนู ถนน เสื่อมโทรม",
@@ -513,18 +555,20 @@ class Jadewidget extends StatelessWidget {
                       ListTile(
                         leading: Icon(
                           Icons.man,
-                          color: Colors.blue,
+                          color: greenMain2,
+                          size: 30,
                         ),
-                        title: Text(controller.user.value.firstname,
+                        title: Text(_name,
                             style:
                                 TextStyle(fontSize: 14, color: Colors.black)),
                       ),
                       ListTile(
                         leading: Icon(
                           Icons.phone,
-                          color: Colors.blue,
+                          color: greenMain2,
+                          size: 30,
                         ),
-                        title: Text(controller.user.value.number,
+                        title: Text(_number,
                             style:
                                 TextStyle(fontSize: 14, color: Colors.black)),
                       )

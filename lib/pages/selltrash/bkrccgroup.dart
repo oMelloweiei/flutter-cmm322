@@ -250,6 +250,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                           shop: widget.shop,
                           imageUrl: widget.imageUrl,
                           user: widget.user,
+                          trashlist: _trashList,
                         ));
                       },
                       child: Text(
