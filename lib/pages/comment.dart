@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final _topicController = TopicController.instance;
 
@@ -89,7 +90,7 @@ class _QAPageState extends State<QAPage> {
             )),
 
         Container(
-          height: 190,
+          height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,

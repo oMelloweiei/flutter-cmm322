@@ -18,8 +18,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #Font
+  #Font 
   google_fonts: ^6.2.1
+  
+    
 
   #Firebase
   firebase_core: ^2.30.1

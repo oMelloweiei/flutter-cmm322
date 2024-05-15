@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Donation extends StatelessWidget {
   const Donation({Key? key});
@@ -84,10 +85,11 @@ class Donation extends StatelessWidget {
                                   horizontal: 22, vertical: 10),
                               child: Text(
                                 'ขยะกำพร้าไปไหนดี?',
-                                style: TextStyle(
+                                style: GoogleFonts.ibmPlexSansThai().copyWith(
                                   color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
+                                  letterSpacing: -0.5,
                                 ),
                               ),
                             ),
@@ -100,7 +102,7 @@ class Donation extends StatelessWidget {
                                   horizontal: 22, vertical: 10),
                               child: Text(
                                 'N15 Technology',
-                                style: TextStyle(
+                                style: GoogleFonts.ibmPlexSansThai().copyWith(
                                   color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
                                   fontSize: 17,
@@ -113,13 +115,13 @@ class Donation extends StatelessWidget {
                             bottom: 0,
                             child: Container(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 22, vertical: 10),
+                                  horizontal: 22, vertical: 20),
                               child: Text(
                                 '#ประเภทขยะกำพร้า',
-                                style: TextStyle(
+                                style: GoogleFonts.ibmPlexSansThai().copyWith(
                                   color: Ticolor.whiteMain1,
                                   fontWeight: FontWeight.w300,
-                                  fontSize: 17,
+                                  fontSize: 12,
                                 ),
                               ),
                             ),
