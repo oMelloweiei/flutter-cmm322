@@ -227,6 +227,7 @@ class addTrashIcon extends StatelessWidget {
   }
 }
 
+
 Future<void> openList(
     BuildContext context,
     void Function(String) addToTrashList,

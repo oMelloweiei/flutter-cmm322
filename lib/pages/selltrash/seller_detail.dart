@@ -156,6 +156,48 @@ class _detailsellerState extends State<detailseller> {
                                   )))
                         ],
                       ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20),
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                              flex: 1,
+                              child: Icon(
+                                Icons.calendar_month_outlined,
+                                color: greenMain2,
+                                size: 35,
+                              )),
+                          Expanded(
+                              flex: 5,
+                              child: Stack(children: [
+                                Container(
+                                  padding: EdgeInsets.only(right: 5),
+                                  child: TextFormField(
+                                    style: GoogleFonts.ibmPlexSansThai()
+                                        .copyWith(
+                                            fontSize: 16, color: Colors.black),
+                                  ),
+                                ),
+                                Positioned(
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: 8.0, right: 5.0),
+                                      child: IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: greenMain2,
+                                        ),
+                                      ),
+                                    ))
+                              ]))
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -166,7 +208,7 @@ class _detailsellerState extends State<detailseller> {
               bottom: 0,
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: nextButton(title: 'next page', link: homePage())))
+                  child: nextButton(title: 'ถัดไป', link: homePage())))
         ],
       ),
     );
