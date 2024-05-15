@@ -228,7 +228,10 @@ class _bkrccgroupState extends State<bkrccgroup> {
               padding: const EdgeInsets.all(8.0),
               child: nextButton(
                 title: 'ถัดไป',
-                link: detailseller(shopName: widget.shop.shopname),
+                link: detailseller(
+                  shopName: widget.shop.shopname,
+                  shopPic: widget.imageUrl,
+                ),
               ),
             )),
       ]),

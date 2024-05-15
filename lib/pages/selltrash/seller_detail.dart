@@ -1,4 +1,5 @@
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/selltrash/sum.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/widgets/appbar.dart';
@@ -18,8 +19,10 @@ void openGoogleCalendar() async {
 }
 
 class detailseller extends StatefulWidget {
+  final String shopPic;
   final String shopName;
-  const detailseller({super.key, required this.shopName});
+  const detailseller(
+      {super.key, required this.shopName, required this.shopPic});
 
   @override
   State<detailseller> createState() => _detailsellerState();
@@ -198,7 +201,9 @@ class _detailsellerState extends State<detailseller> {
                                       padding: EdgeInsets.only(
                                           bottom: 8.0, right: 5.0),
                                       child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          openGoogleCalendar();
+                                        },
                                         icon: Icon(
                                           Icons.arrow_forward_ios_rounded,
                                           color: greenMain2,
@@ -218,7 +223,10 @@ class _detailsellerState extends State<detailseller> {
               bottom: 0,
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: nextButton(title: 'ถัดไป', link: homePage())))
+                  child: nextButton(
+                      title: 'ถัดไป',
+                      link: summary(
+                          shopName: widget.shopName, shopPic: widget.shopPic))))
         ],
       ),
     );
