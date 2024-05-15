@@ -7,7 +7,6 @@ import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/pages/donationpage.dart';
 import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/pages/howto.dart';
-import 'package:binny_application/pages/manual.dart';
 import 'package:binny_application/pages/myGarden.dart';
 import 'package:binny_application/pages/pointpage.dart';
 import 'package:binny_application/pages/profile.dart';
@@ -15,13 +14,13 @@ import 'package:binny_application/pages/raklok.dart';
 import 'package:binny_application/pages/scan/scanpage.dart';
 import 'package:binny_application/pages/selltrash/sell.dart';
 import 'package:binny_application/welcome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+
 Future<void> main() async {
   //Widget Binding
   final WidgetsBinding widgetsBinding =

@@ -1,6 +1,4 @@
-import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
-import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/pages/comment_detail.dart';
 import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
