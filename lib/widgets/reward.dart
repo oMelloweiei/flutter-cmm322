@@ -81,6 +81,8 @@ class Tab2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width / 3.2;
+    final height = MediaQuery.of(context).size.width / 4.8;
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.black87,
@@ -204,72 +206,8 @@ class Tab2 extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   var item = data[index];
-                  var name = item['name'] as String;
-                  var imgpath = item['imgpath'];
-                  var score = item['score'] as String;
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: MediaQuery.of(context).size.width / 4.8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.whiteMain2,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: imgpath is Image
-                                  ? imgpath.image
-                                  : AssetImage(
-                                      'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                            ),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(6),
-                                topRight: Radius.circular(6)),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.addon,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(6),
-                                bottomRight: Radius.circular(6)),
-                          ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  name,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  score,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Ticolor.greenMain8,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return _itemList(item, width, height);
                 },
               ),
             ),
@@ -299,72 +237,8 @@ class Tab2 extends StatelessWidget {
                 itemCount: data1.length,
                 itemBuilder: (context, index) {
                   var item = data1[index];
-                  var name = item['name'] as String;
-                  var imgpath = item['imgpath'];
-                  var score = item['score'] as String;
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: MediaQuery.of(context).size.width / 4.8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.whiteMain2,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: imgpath is Image
-                                  ? imgpath.image
-                                  : AssetImage(
-                                      'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                            ),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(6),
-                                topRight: Radius.circular(6)),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.addon,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(6),
-                                bottomRight: Radius.circular(6)),
-                          ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  name,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  score,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Ticolor.greenMain8,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return _itemList(item, width, height);
                 },
               ),
             ),
@@ -394,72 +268,8 @@ class Tab2 extends StatelessWidget {
                 itemCount: data2.length,
                 itemBuilder: (context, index) {
                   var item = data2[index];
-                  var name = item['name'] as String;
-                  var imgpath = item['imgpath'];
-                  var score = item['score'] as String;
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: MediaQuery.of(context).size.width / 4.8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.whiteMain2,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: imgpath is Image
-                                  ? imgpath.image
-                                  : AssetImage(
-                                      'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                            ),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(6),
-                                topRight: Radius.circular(6)),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.addon,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(6),
-                                bottomRight: Radius.circular(6)),
-                          ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  name,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  score,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Ticolor.greenMain8,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return _itemList(item, width, height);
                 },
               ),
             ),
@@ -489,73 +299,75 @@ class Tab2 extends StatelessWidget {
                 itemCount: data3.length,
                 itemBuilder: (context, index) {
                   var item = data3[index];
-                  var name = item['name'] as String;
-                  var imgpath = item['imgpath'];
-                  var score = item['score'] as String;
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: MediaQuery.of(context).size.width / 4.8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.whiteMain2,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: imgpath is Image
-                                  ? imgpath.image
-                                  : AssetImage(
-                                      'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                            ),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(6),
-                                topRight: Radius.circular(6)),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 3.2,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Ticolor.addon,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(6),
-                                bottomRight: Radius.circular(6)),
-                          ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  name,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  score,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Ticolor.greenMain8,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return _itemList(item, width, height);
                 },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _itemList(Map<String, dynamic> item, double width, double height) {
+    String name = item['name'] as String;
+    String score = item['score'] as String;
+    dynamic imgpath = item['imgpath'];
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Column(
+        children: [
+          Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: Ticolor.whiteMain2,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: imgpath is Image
+                    ? imgpath.image
+                    : AssetImage(
+                        'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
+              ),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(6), topRight: Radius.circular(6)),
+            ),
+          ),
+          Container(
+            width: width,
+            height: 30,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: Ticolor.addon,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(6),
+                  bottomRight: Radius.circular(6)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    name,
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    score,
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: Ticolor.greenMain8,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

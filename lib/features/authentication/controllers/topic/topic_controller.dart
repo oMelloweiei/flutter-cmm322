@@ -1,15 +1,12 @@
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/data/repositories/topic_repository.dart';
-import 'package:binny_application/data/repositories/user_repository.dart';
 import 'package:binny_application/widgets/loaders/snackbar.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TopicController extends GetxController {
   static TopicController get instance => Get.find();
 
-  final _userRepository = Get.put(UserRepository());
   final _topicRepository = Get.put(TopicRepository());
 
   final isLoading = false.obs;

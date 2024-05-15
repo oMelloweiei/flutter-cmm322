@@ -1,58 +1,40 @@
-import 'package:binny_application/pages/map_screen.dart';
+import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/features/authentication/controllers/shop/shop_controller.dart';
 import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 var topics = [
   {'topic': 'ร้านรับซื้อใกล้ฉัน', 'icon': Icons.near_me_outlined, 'init': true},
   {'topic': 'ตำแหน่งของฉัน', 'icon': Icons.place, 'init': false},
 ];
 
-var stores = [
-  {
-    'name': 'BK Recycle Group',
-    'image': 'assets/shop/SHOP_01.webp',
-    'price': 10,
-    'distance': 0.5,
-  },
-  {
-    'name': 'ร้านล้อชัยเส็จ (รับซื้อขยะรีไซเคิ้ล)',
-    'image': 'assets/shop/SHOP_02.webp',
-    'price': 30,
-    'distance': 1.0,
-  },
-  {
-    'name': 'วิชิต รับซื้อและประมูลของเก่า',
-    'image': 'assets/shop/SHOP_03.webp',
-    'price': 33,
-    'distance': 1.2,
-  },
-  {
-    'name': 'ร้านรับซื้อของเก่า สาธุประดิษฐ์(ตั้งเจริญ)',
-    'image': 'assets/shop/SHOP_04.webp',
-    'price': 35,
-    'distance': 1.4,
-  },
-  {
-    'name':
-        'รับซื้อของเก่า(ร้านสีเชียงโค้งวัดช่องนนทรี) ของรีไซเคิ้ล ให้ราคาสูง',
-    'image': 'assets/shop/SHOP_05.webp',
-    'price': 40,
-    'distance': 2.0,
-  },
-  {
-    'name': 'แจ่มใสรีไซเคิล สาขา2 รับของเก่าทุกชนิด',
-    'image': 'assets/shop/SHOP_06.webp',
-    'price': 40,
-    'distance': 2.0,
-  },
-];
+final controller = Get.put(ShopController());
 
 class SellPage extends StatelessWidget {
   SellPage({super.key});
+
+  Future<String> getImage(String imgName) async {
+    try {
+      final imageUrl = await controller.getImageUrl(imgName);
+      return imageUrl;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  void openGoogleMaps() async {
+    try {
+      const url = 'https://maps.google.com/';
+      await launch(url);
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,9 +99,9 @@ class SellPage extends StatelessWidget {
                   ],
                 ),
                 child: ListView.builder(
-                  itemCount: stores.length,
+                  itemCount: controller.allShop.length,
                   itemBuilder: (context, index) {
-                    var store = stores[index];
+                    var store = controller.allShop[index];
                     return GestureDetector(
                         onTap: () {
                           // Navigator.push(
@@ -152,10 +134,7 @@ class SellPage extends StatelessWidget {
         child: TextButton(
             onPressed: () {
               if (init != true) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapScreen()),
-                );
+                openGoogleMaps();
               }
             },
             style: ElevatedButton.styleFrom(
@@ -183,85 +162,107 @@ class SellPage extends StatelessWidget {
             )));
   }
 
-  Widget _storeContainer(var store, BuildContext context) {
-    int price = store['price'];
-    double distance = store['distance'];
-    String storeName = store['name'];
-    String storePic = store['image'];
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => bkrccgroup(
-                      shopName: storeName,
-                      shopPic: storePic,
-                    )));
-      },
-      child: Container(
-        padding: EdgeInsets.all(6),
-        color: Ticolor.no,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              child: Image.asset(
-                store['image'],
-                fit: BoxFit.cover,
-                width: 130,
-                height: 130,
-              ),
-            ),
-            SizedBox(width: 16),
-            Expanded(
-                child: Container(
-                    height: 130,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
+  Widget _storeContainer(ShopModel store, BuildContext context) {
+    return FutureBuilder<String>(
+      future: controller.getImageUrl(store.shopImg),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Return a placeholder widget while waiting for the image URL
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          // Return an error message if there is an error
+          return Text('Error loading image');
+        } else {
+          // If the image URL is fetched successfully, build the image widget
+          final imageUrl = snapshot.data!;
+          final imageWidget = imageUrl.isNotEmpty
+              ? Image.network(
+                  imageUrl,
+                  width: 130,
+                  height: 130,
+                  fit: BoxFit.cover,
+                )
+              : Image.asset(
+                  'assets/placeholder_image.png', // Use a placeholder image
+                  width: 130,
+                  height: 130,
+                  fit: BoxFit.cover,
+                );
+
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => bkrccgroup(
+                    shop: store,
+                    imageUrl: snapshot.data!,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(6),
+              color: Ticolor.no,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    child: imageWidget,
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                      child: Container(
+                          height: 130,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                  child: Text(
-                                store['name'],
-                                softWrap: true,
-                                maxLines: 3,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              )),
-                              SizedBox(height: 5),
-                              _detail(price, distance),
-                            ]),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.swap_vert_rounded,
-                              size: 20,
-                              color: Ticolor.greenMain3,
-                              weight: 600,
-                            ),
-                            SizedBox(width: 2),
-                            Text(
-                              'ราคารับซื้อขยะ',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Ticolor.greenMain3,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    )))
-          ],
-        ),
-      ),
+                              Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                        child: Text(
+                                      store.shopname,
+                                      softWrap: true,
+                                      maxLines: 3,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    )),
+                                    SizedBox(height: 5),
+                                    _detail(store.price, store.distance),
+                                  ]),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.swap_vert_rounded,
+                                    size: 20,
+                                    color: Ticolor.greenMain3,
+                                    weight: 600,
+                                  ),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    'ราคารับซื้อขยะ',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Ticolor.greenMain3,
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          )))
+                ],
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:binny_application/widgets/listbox.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<Map<String, String>> data = [
   {
@@ -127,6 +128,14 @@ var data2 = [
 
 class Tab1 extends StatelessWidget {
   const Tab1({Key? key}) : super(key: key);
+
+  void openLink(String url) async {
+    try {
+      await launch(url);
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -311,39 +320,8 @@ class Tab1 extends StatelessWidget {
                     itemCount: data0.length,
                     itemBuilder: (context, index) {
                       var item = data0[index];
-                      var name = item['name'] as String;
-                      var imgpath = item['imgpath'];
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 55,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Ticolor.whiteMain1,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: imgpath is Image
-                                      ? imgpath.image
-                                      : AssetImage(
-                                          'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return _itemList(item);
                     },
                   ),
                 )
@@ -378,39 +356,8 @@ class Tab1 extends StatelessWidget {
                     itemCount: data1.length,
                     itemBuilder: (context, index) {
                       var item = data1[index];
-                      var name = item['name'] as String;
-                      var imgpath = item['imgpath'];
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 55,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Ticolor.whiteMain1,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: imgpath is Image
-                                      ? imgpath.image
-                                      : AssetImage(
-                                          'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return _itemList(item);
                     },
                   ),
                 )
@@ -418,7 +365,7 @@ class Tab1 extends StatelessWidget {
             ),
           ),
           Container(
-            height: 230,
+            height: 141,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: data.length,
@@ -463,39 +410,8 @@ class Tab1 extends StatelessWidget {
                     itemCount: data2.length,
                     itemBuilder: (context, index) {
                       var item = data2[index];
-                      var name = item['name'] as String;
-                      var imgpath = item['imgpath'];
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 55,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Ticolor.whiteMain1,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: imgpath is Image
-                                      ? imgpath.image
-                                      : AssetImage(
-                                          'assets/images/placeholder_image.png'), // ใช้รูปภาพจาก imgpath หรือรูปภาพเริ่มต้นในกรณีที่ไม่มีรูปภาพ
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return _itemList(item);
                     },
                   ),
                 )
@@ -503,6 +419,45 @@ class Tab1 extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _itemList(Map<String, dynamic> item) {
+    String name = item['name'] as String;
+    dynamic imgpath = item['imgpath'];
+    String url = item['url'];
+
+    return GestureDetector(
+      onTap: () => openLink(url),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Container(
+              width: 55,
+              height: 55,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Ticolor.whiteMain1,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: imgpath is Image
+                      ? imgpath.image
+                      : AssetImage('assets/images/placeholder_image.png'),
+                ),
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              name,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

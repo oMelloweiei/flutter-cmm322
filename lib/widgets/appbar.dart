@@ -39,13 +39,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: _color,
-              size: 35,
-            )),
-        IconButton(
             onPressed: () => AuthenticationRepository.instance.logout(),
             icon: Icon(
               Icons.person,

@@ -1,3 +1,5 @@
+import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/pages/selltrash/seller_detail.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,24 +11,30 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class bkrccgroup extends StatefulWidget {
-  late String shopName;
-  late String shopPic;
+  ShopModel shop;
+  String imageUrl;
 
-  bkrccgroup({Key? key, required this.shopName, required this.shopPic})
+  bkrccgroup({Key? key, required this.shop, required this.imageUrl})
       : super(key: key);
 
   @override
   State<bkrccgroup> createState() => _bkrccgroupState();
 }
 
+///////////////////////////class for trash///////////////////////////////////////////////
+
 class _bkrccgroupState extends State<bkrccgroup> {
   List<String> _trashList = [
     'เพิ่มรายการ',
   ];
 
+  bool _show = false;
+
   void addToTrashList(String trashItem) {
     setState(() {
-      _trashList.add(trashItem);
+      if (!_trashList.contains(trashItem)) {
+        _trashList.add(trashItem);
+      }
     });
   }
 
@@ -36,13 +44,19 @@ class _bkrccgroupState extends State<bkrccgroup> {
     });
   }
 
+  void toggle(bool show) {
+    setState(() {
+      show = !show;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Ticolor.whiteMain1,
-      appBar: appBarSellpage(shopName: widget.shopName),
+      appBar: appBarSellpage(shopName: widget.shop.shopname),
       body: Stack(alignment: Alignment.center, children: [
         SingleChildScrollView(
           child: Column(
@@ -50,8 +64,8 @@ class _bkrccgroupState extends State<bkrccgroup> {
               Container(
                 child: Stack(
                   children: [
-                    Image.asset(
-                      widget.shopPic,
+                    Image.network(
+                      widget.imageUrl,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.width * 0.62,
@@ -72,14 +86,14 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       ),
                     ),
                     Positioned(
-                      top: 218,
+                      top: 200,
                       left: 13,
                       child: Container(
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                         color: blackMain2,
                         child: Text(
-                          widget.shopName,
+                          widget.shop.shopname,
                           style: GoogleFonts.ibmPlexSansThai().copyWith(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -92,7 +106,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 13, right: 13, top: 15),
+                padding: EdgeInsets.only(left: 13, right: 13, top: 40),
                 child: Column(
                   children: [
                     Row(
@@ -207,18 +221,39 @@ class _bkrccgroupState extends State<bkrccgroup> {
                 alignment: Alignment.topCenter,
                 width: size.width,
                 height: size.height * 0.5,
-                color: Colors.red,
-                child: Sellform(type: _trashList),
-              )
+                color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Sellform(type: _trashList),
+                ),
+              ),
             ],
           ),
         ),
         Positioned(
-            bottom: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: nextButton(title: 'ถัดไป'),
-            )),
+            bottom: 5,
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Ticolor.greenMain3),
+                      onPressed: () {
+                        Get.to(detailseller(
+                          shop: widget.shop,
+                        ));
+                      },
+                      child: Text(
+                        'ถัดไป',
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    )))),
+        // Visibility(visible: _showpopup ,child: child)
       ]),
     );
   }

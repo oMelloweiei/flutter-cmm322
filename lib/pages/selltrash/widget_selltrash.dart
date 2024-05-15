@@ -2,10 +2,15 @@ import 'package:binny_application/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+List<String> _kg = [
+  '',
+];
+
 class nextButton extends StatefulWidget {
   final String title;
+  final Widget link;
 
-  nextButton({super.key, required this.title});
+  nextButton({super.key, required this.title, required this.link});
 
   @override
   State<nextButton> createState() => _nextButtonState();
@@ -19,7 +24,10 @@ class _nextButtonState extends State<nextButton> {
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(greenSub),
             fixedSize: MaterialStateProperty.all(Size(size.width - 20, 60))),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => widget.link)));
+        },
         child: Text(
           widget.title,
           style: GoogleFonts.ibmPlexSansThai().copyWith(
@@ -59,32 +67,49 @@ class _SellformState extends State<Sellform> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          widget.type[index + 1],
-                          style: GoogleFonts.ibmPlexSansThai().copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -0.4,
-                          ),
+                      Text(
+                        widget.type[index + 1],
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -0.4,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'ราคา/กก. 5 บาท',
-                          style: GoogleFonts.ibmPlexSansThai().copyWith(
-                            color: Colors.grey,
-                            letterSpacing: -0.4,
-                          ),
+                      Text(
+                        'ราคา/กก. 5 บาท',
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          color: Colors.grey,
+                          letterSpacing: -0.4,
                         ),
-                      )
+                      ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                    child: Divider(),
+                  Divider(),
+                  Form(
+                      child: Row(
+                    children: [
+                      Text('น้ำหนัก'),
+                      SizedBox(width: 10),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.12,
+                        child: TextFormField(
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 5),
+                                filled: true,
+                                // fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide.none,
+                                ))),
+                      ),
+                      SizedBox(width: 10),
+                      Text('kg')
+                    ],
+                  )),
+                  SizedBox(
+                    height: 10,
                   ),
                 ],
               ));
@@ -147,6 +172,8 @@ Future<void> openList(
     void Function(String) deleteTrashList) async {
   final size = MediaQuery.of(context).size;
   showDialog(
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
     context: context,
     builder: (context) => AlertDialog(
       actions: [
@@ -279,12 +306,10 @@ class _selectionTrashState extends State<selectionTrash> {
   @override
   void initState() {
     super.initState();
-    bool isSelected = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isSelected;
     return GridView.builder(
       itemCount: trashTypes.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

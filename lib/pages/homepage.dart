@@ -1,3 +1,4 @@
+import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
 import 'package:binny_application/features/authentication/controllers/topic/topic_controller.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/bottomnavbar.dart';
@@ -10,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 final topicController = Get.put(TopicController());
+final ReplyController replyController = Get.put(ReplyController());
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -253,6 +254,10 @@ class HomePagecontent extends StatelessWidget {
                           itemCount: topicController.allTopic.length,
                           itemBuilder: (context, index) {
                             final topic = topicController.allTopic[index];
+                            replyController.fetchReplies(topic.id);
+                            String comment = replyController.replies.isNotEmpty
+                                ? replyController.replies[0].text
+                                : 'No comments';
                             String formattedDate = DateFormat.yMMMd()
                                 .add_Hm()
                                 .format(topic.timeStamp);
@@ -260,7 +265,7 @@ class HomePagecontent extends StatelessWidget {
                             return squareBox(
                               topic: topic,
                               boxTitle: topic.text,
-                              comment: 'comment',
+                              comment: comment,
                               username: topic.userName,
                               formattedDate: formattedDate,
                             );

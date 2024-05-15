@@ -6,6 +6,7 @@ import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:binny_application/widgets/class/Color.dart';
@@ -34,8 +35,7 @@ class TopicContainer extends StatelessWidget {
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
-              border: Border.all(
-                  color: Ticolor.blackSup1, width: 2)),
+              border: Border.all(color: Ticolor.blackSup1, width: 2)),
           child: Column(
             children: [
               Row(
@@ -58,7 +58,8 @@ class TopicContainer extends StatelessWidget {
                       ),
                     ]),
                   ),
-                  Icon(Icons.book),
+                  Icon(Icons.bookmark_border_outlined,
+                      color: Color(0xFFCFCFCF)),
                 ],
               ),
               SizedBox(
@@ -73,7 +74,7 @@ class TopicContainer extends StatelessWidget {
                 children: [
                   Container(
                     child: Row(children: [
-                      Icon(Icons.heart_broken_rounded),
+                      FaIcon(FontAwesomeIcons.heart),
                       SizedBox(width: 6),
                       Text(topic.likeCount.toString())
                     ]),
@@ -83,7 +84,7 @@ class TopicContainer extends StatelessWidget {
                   ),
                   Container(
                     child: Row(children: [
-                      Icon(Icons.chat),
+                      FaIcon(FontAwesomeIcons.comment),
                       SizedBox(width: 6),
                       Text(topic.replyCount.toString())
                     ]),

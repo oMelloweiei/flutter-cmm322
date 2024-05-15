@@ -1,4 +1,3 @@
-import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
 import 'package:binny_application/features/authentication/controllers/signup/create_comment_controller.dart';
@@ -6,11 +5,11 @@ import 'package:binny_application/features/personalization/controllers/user_cont
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
-import 'package:binny_application/widgets/topic_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -191,7 +190,8 @@ class Postbox extends StatelessWidget {
                             ),
                           ]),
                         ),
-                        Icon(Icons.book),
+                        Icon(Icons.bookmark_border_outlined,
+                            color: Color(0xFFCFCFCF)),
                       ],
                     ),
                     SizedBox(
@@ -206,7 +206,7 @@ class Postbox extends StatelessWidget {
                       children: [
                         Container(
                           child: Row(children: [
-                            Icon(Icons.heart_broken_rounded),
+                            FaIcon(FontAwesomeIcons.heart),
                             SizedBox(width: 6),
                             Text(topic.likeCount.toString())
                           ]),
@@ -216,7 +216,7 @@ class Postbox extends StatelessWidget {
                         ),
                         Container(
                           child: Row(children: [
-                            Icon(Icons.chat),
+                            FaIcon(FontAwesomeIcons.comment),
                             SizedBox(width: 6),
                             Text(topic.replyCount.toString())
                           ]),

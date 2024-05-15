@@ -1,9 +1,6 @@
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
-import 'package:binny_application/data/repositories/authentication_repository.dart';
 import 'package:binny_application/data/repositories/topic_repository.dart';
-import 'package:binny_application/data/repositories/user_repository.dart';
-import 'package:binny_application/features/authentication/screens/verify_email/verify_email.dart';
 import 'package:binny_application/network_manager.dart';
 import 'package:binny_application/pages/comment.dart';
 import 'package:binny_application/utils/popups/full_screen_loader.dart';
@@ -24,8 +21,8 @@ class CreatePostController extends GetxController {
   // SignUp
   void creatpost(UserModel user) async {
     try {
-      FullScreenLoader.openLoadingDialog(
-          'We are processing your information', 'assets/lottie/loading.json');
+      // FullScreenLoader.openLoadingDialog(
+      //     'We are processing your information', 'assets/lottie/loading.json');
 
       //Form validation
       final isConnected = await NetworkManager.instance.isConnected();
@@ -62,7 +59,7 @@ class CreatePostController extends GetxController {
       await topicRepository.saveTopicRecord(newTopic);
 
       //Remove loader
-      FullScreenLoader.stopLoading();
+      // FullScreenLoader.stopLoading();
 
       //Show success
       Loaders.successSnackBar(

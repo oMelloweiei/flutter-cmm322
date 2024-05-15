@@ -1,7 +1,5 @@
 import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/repositories/reply_repository.dart';
-import 'package:binny_application/data/repositories/topic_repository.dart';
-import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:get/get.dart';
 
 class ReplyController extends GetxController {

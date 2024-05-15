@@ -1,4 +1,3 @@
-import 'package:binny_application/data/models/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TopicModel {

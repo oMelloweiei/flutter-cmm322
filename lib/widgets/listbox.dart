@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const TextStyle topCommentText = TextStyle(
-  fontFamily: 'IBMPlexSansThai',
   fontWeight: FontWeight.w400,
   fontSize: 12,
   color: Ticolor.addon4, // Use direct color value instead of Color.fromRGBO()
@@ -184,8 +183,7 @@ class carpet extends StatelessWidget {
             height: 200, // Set the height as needed
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    picture), // Replace 'demoTrash.png' with your image asset path
+                image: AssetImage(picture),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(10),
