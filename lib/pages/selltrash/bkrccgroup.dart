@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'package:binny_application/data/models/shopModel.dart';
-=======
 import 'package:binny_application/pages/selltrash/seller_detail.dart';
->>>>>>> 5b5aa6b48cd4109e678faebc409b2ac7655ee79d
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -231,7 +228,7 @@ class _bkrccgroupState extends State<bkrccgroup> {
               padding: const EdgeInsets.all(8.0),
               child: nextButton(
                 title: 'ถัดไป',
-                link: detailseller(shopName: widget.shopName),
+                link: detailseller(shopName: widget.shop.shopname),
               ),
             )),
       ]),

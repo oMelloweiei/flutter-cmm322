@@ -1,14 +1,12 @@
 import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/features/authentication/controllers/shop/shop_controller.dart';
-import 'package:binny_application/pages/map_screen.dart';
 import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
-import 'package:binny_application/utils/helper/getUrlimage.dart';
 import 'package:binny_application/widgets/class/Image.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 var topics = [
   {'topic': 'ร้านรับซื้อใกล้ฉัน', 'icon': Icons.near_me_outlined, 'init': true},
@@ -26,6 +24,15 @@ class SellPage extends StatelessWidget {
       return imageUrl;
     } catch (e) {
       return '';
+    }
+  }
+
+  void openGoogleMaps() async {
+    try {
+      const url = 'https://maps.google.com/';
+      await launch(url);
+    } catch (e) {
+      throw "Something went wrong. Please try again";
     }
   }
 
@@ -127,10 +134,7 @@ class SellPage extends StatelessWidget {
         child: TextButton(
             onPressed: () {
               if (init != true) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapScreen()),
-                );
+                openGoogleMaps();
               }
             },
             style: ElevatedButton.styleFrom(
