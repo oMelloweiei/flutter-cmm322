@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:binny_application/pages/scan/scanpagelist.dart';
-import 'package:binny_application/theme/color.dart';
-import 'package:binny_application/utils/camera/camera.dart';
+import 'package:binny_application/utils/helper/camera.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

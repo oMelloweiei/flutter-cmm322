@@ -418,7 +418,7 @@ class Tab1 extends StatelessWidget {
             ),
           ),
           Container(
-            height: 230,
+            height: 141,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: data.length,

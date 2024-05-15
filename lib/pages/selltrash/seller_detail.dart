@@ -6,6 +6,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void openGoogleCalendar() async {
+  try {
+    const url = 'https://calendar.google.com/';
+    await launch(url);
+  } catch (e) {
+    throw "Something went wrong. Please try again";
+  }
+}
 
 class detailseller extends StatefulWidget {
   final String shopName;

@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:binny_application/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,121 +57,62 @@ class _SellformState extends State<Sellform> {
         scrollDirection: Axis.vertical,
         itemCount: widget.type.length - 1,
         itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            widget.type[index + 1],
-                            style: GoogleFonts.ibmPlexSansThai().copyWith(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: -0.4,
-                            ),
-                          ),
+          return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.type[index + 1],
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: -0.4,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'ราคา/กก. 5 บาท',
-                            style: GoogleFonts.ibmPlexSansThai().copyWith(
-                              color: Colors.grey,
-                              letterSpacing: -0.4,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                      child: Divider(),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 10.0, bottom: 10),
-                              child: Text(
-                                'น้ำหนัก',
-                                style: GoogleFonts.ibmPlexSansThai().copyWith(
-                                    fontSize: 15, fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                              child: Form(
-                                  autovalidateMode: AutovalidateMode.always,
-                                  onChanged: () {
-                                    Form.of(primaryFocus!.context!).save();
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(color: Colors.grey)),
-                                    height: 35,
-                                    width: 60,
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: TextFormField(
-                                        keyboardType: TextInputType.number,
-                                        textAlign: ui.TextAlign.center,
-                                        style: GoogleFonts.ibmPlexSansThai()
-                                            .copyWith(
-                                          fontSize: 12,
-                                        ),
-                                        onSaved: (String? value) {
-                                          if (value != null) {
-                                            _kg[index] = value;
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                  )),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 10.0, bottom: 10),
-                              child: Text(
-                                'kg',
-                                style: GoogleFonts.ibmPlexSansThai().copyWith(
-                                    fontSize: 15, fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                          ],
+                      ),
+                      Text(
+                        'ราคา/กก. 5 บาท',
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          color: Colors.grey,
+                          letterSpacing: -0.4,
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(right: 10.0, bottom: 10),
-                          child: Text(
-                            'ภาพขยะของฉัน',
-                            style: GoogleFonts.ibmPlexSansThai().copyWith(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: greenMain2),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
-          );
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Form(
+                      child: Row(
+                    children: [
+                      Text('น้ำหนัก'),
+                      SizedBox(width: 10),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.12,
+                        child: TextFormField(
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 5),
+                                filled: true,
+                                // fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide.none,
+                                ))),
+                      ),
+                      SizedBox(width: 10),
+                      Text('kg')
+                    ],
+                  )),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ));
         });
   }
 }

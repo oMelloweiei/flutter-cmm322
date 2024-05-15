@@ -1,4 +1,3 @@
-import 'package:binny_application/data/models/replyModel.dart';
 import 'package:binny_application/data/models/topicModel.dart';
 import 'package:binny_application/features/authentication/controllers/reply/reply_controller.dart';
 import 'package:binny_application/features/authentication/controllers/signup/create_comment_controller.dart';
@@ -6,7 +5,6 @@ import 'package:binny_application/features/personalization/controllers/user_cont
 import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/circular_image.dart';
 import 'package:binny_application/widgets/class/Image.dart';
-import 'package:binny_application/widgets/topic_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
