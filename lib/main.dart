@@ -22,6 +22,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:binny_application/widgets/class/Color.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 Future<void> main() async {
   //Widget Binding
   final WidgetsBinding widgetsBinding =
@@ -48,6 +50,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.ibmPlexSansThaiTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
       getPages: [
         GetPage(name: '/welcome', page: () => WelcomePage()),
         GetPage(name: '/login', page: () => LoginForm()),

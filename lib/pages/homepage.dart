@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:binny_application/data/models/replyModel.dart';
 
 final topicController = Get.put(TopicController());
 final ReplyController replyController = Get.put(ReplyController());

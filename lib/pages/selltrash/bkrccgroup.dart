@@ -28,6 +28,8 @@ class _bkrccgroupState extends State<bkrccgroup> {
     'เพิ่มรายการ',
   ];
 
+  bool _show = false;
+
   void addToTrashList(String trashItem) {
     setState(() {
       if (!_trashList.contains(trashItem)) {
@@ -39,6 +41,12 @@ class _bkrccgroupState extends State<bkrccgroup> {
   void deleteTrashList(String trashItem) {
     setState(() {
       _trashList.remove(trashItem);
+    });
+  }
+
+  void toggle(bool show) {
+    setState(() {
+      show = !show;
     });
   }
 
@@ -218,19 +226,34 @@ class _bkrccgroupState extends State<bkrccgroup> {
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Sellform(type: _trashList),
                 ),
-              )
+              ),
             ],
           ),
         ),
         Positioned(
-            bottom: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: nextButton(
-                title: 'ถัดไป',
-                link: detailseller(shopName: widget.shop.shopname),
-              ),
-            )),
+            bottom: 5,
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Ticolor.greenMain3),
+                      onPressed: () {
+                        Get.to(detailseller(
+                          shop: widget.shop,
+                        ));
+                      },
+                      child: Text(
+                        'ถัดไป',
+                        style: GoogleFonts.ibmPlexSansThai().copyWith(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    )))),
+        // Visibility(visible: _showpopup ,child: child)
       ]),
     );
   }
