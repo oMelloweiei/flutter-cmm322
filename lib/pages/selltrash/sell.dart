@@ -1,7 +1,10 @@
 import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/features/authentication/controllers/shop/shop_controller.dart';
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/pages/selltrash/bkrccgroup.dart';
 import 'package:binny_application/widgets/class/Image.dart';
+import 'package:binny_application/widgets/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/widgets/class/Color.dart';
@@ -14,6 +17,7 @@ var topics = [
 ];
 
 final controller = Get.put(ShopController());
+final userController = Get.put(UserController());
 
 class SellPage extends StatelessWidget {
   SellPage({super.key});
@@ -102,6 +106,7 @@ class SellPage extends StatelessWidget {
                   itemCount: controller.allShop.length,
                   itemBuilder: (context, index) {
                     var store = controller.allShop[index];
+                    UserModel user = userController.user.value!;
                     return GestureDetector(
                         onTap: () {
                           // Navigator.push(
@@ -113,7 +118,7 @@ class SellPage extends StatelessWidget {
                           padding:
                               EdgeInsets.only(left: 8, right: 8, bottom: 4),
                           child: Column(children: [
-                            _storeContainer(store, context),
+                            _storeContainer(store, context, user),
                             Divider(
                               thickness: 1,
                               color: Ticolor.blackSup1.withOpacity(0.3),
@@ -162,7 +167,8 @@ class SellPage extends StatelessWidget {
             )));
   }
 
-  Widget _storeContainer(ShopModel store, BuildContext context) {
+  Widget _storeContainer(
+      ShopModel store, BuildContext context, UserModel user) {
     return FutureBuilder<String>(
       future: controller.getImageUrl(store.shopImg),
       builder: (context, snapshot) {
@@ -197,6 +203,7 @@ class SellPage extends StatelessWidget {
                   builder: (context) => bkrccgroup(
                     shop: store,
                     imageUrl: snapshot.data!,
+                    user: user,
                   ),
                 ),
               );

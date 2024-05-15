@@ -1,4 +1,5 @@
 import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/pages/selltrash/seller_detail.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
@@ -13,8 +14,13 @@ import 'package:google_fonts/google_fonts.dart';
 class bkrccgroup extends StatefulWidget {
   ShopModel shop;
   String imageUrl;
+  UserModel user;
 
-  bkrccgroup({Key? key, required this.shop, required this.imageUrl})
+  bkrccgroup(
+      {Key? key,
+      required this.shop,
+      required this.imageUrl,
+      required this.user})
       : super(key: key);
 
   @override
@@ -242,6 +248,8 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       onPressed: () {
                         Get.to(detailseller(
                           shop: widget.shop,
+                          imageUrl: widget.imageUrl,
+                          user: widget.user,
                         ));
                       },
                       child: Text(

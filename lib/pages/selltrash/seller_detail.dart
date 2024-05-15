@@ -1,5 +1,7 @@
 import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/pages/homepage.dart';
+import 'package:binny_application/pages/selltrash/sum.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/widgets/appbar.dart';
@@ -22,7 +24,13 @@ void openGoogleCalendar() async {
 
 class detailseller extends StatefulWidget {
   final ShopModel shop;
-  const detailseller({super.key, required this.shop});
+  UserModel user;
+  String imageUrl;
+  detailseller(
+      {super.key,
+      required this.shop,
+      required this.imageUrl,
+      required this.user});
 
   @override
   State<detailseller> createState() => _detailsellerState();
@@ -169,6 +177,50 @@ class _detailsellerState extends State<detailseller> {
                                   )))
                         ],
                       ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20),
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                              flex: 1,
+                              child: Icon(
+                                Icons.calendar_month_outlined,
+                                color: greenMain2,
+                                size: 35,
+                              )),
+                          Expanded(
+                              flex: 5,
+                              child: Stack(children: [
+                                Container(
+                                  padding: EdgeInsets.only(right: 5),
+                                  child: TextFormField(
+                                    style: GoogleFonts.ibmPlexSansThai()
+                                        .copyWith(
+                                            fontSize: 16, color: Colors.black),
+                                  ),
+                                ),
+                                Positioned(
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: 8.0, right: 5.0),
+                                      child: IconButton(
+                                        onPressed: () {
+                                          openGoogleCalendar();
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: greenMain2,
+                                        ),
+                                      ),
+                                    ))
+                              ]))
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -185,7 +237,14 @@ class _detailsellerState extends State<detailseller> {
                         style: TextButton.styleFrom(
                             backgroundColor: Ticolor.greenMain3),
                         onPressed: () {
-                          Get.to(HomePage());
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => summary(
+                                        shop: widget.shop,
+                                        imageUrl: widget.imageUrl,
+                                        user: widget.user,
+                                      )));
                         },
                         child: Text(
                           'ถัดไป',

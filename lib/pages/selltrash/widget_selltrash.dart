@@ -1,6 +1,11 @@
+import 'package:binny_application/data/models/shopModel.dart';
+import 'package:binny_application/data/models/userModel.dart';
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/theme/color.dart';
+import 'package:binny_application/widgets/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 List<String> _kg = [
   '',
@@ -9,7 +14,6 @@ List<String> _kg = [
 class nextButton extends StatefulWidget {
   final String title;
   final Widget link;
-
   nextButton({super.key, required this.title, required this.link});
 
   @override
@@ -383,6 +387,231 @@ class TrashObject extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+//Mark page//
+//////////////////////////////////////////////////////////////////////////////////////
+
+class Jadewidget extends StatelessWidget {
+  Jadewidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = UserController.instance;
+    return SingleChildScrollView(
+      child: Container(
+          decoration: BoxDecoration(),
+          child: Column(children: [
+            Container(
+                margin: const EdgeInsets.all(30),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Column(children: [
+                  Container(
+                    decoration: BoxDecoration(),
+                    width: 340,
+                    child: Column(children: [
+                      Container(
+                        decoration: const BoxDecoration(),
+                        height: 50,
+                        width: 320,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text("  ประเภทขยะรีไซเคิล",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                              // jade ปุ่มมุงอยู่นี้นะ
+                              Container(
+                                margin: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(),
+                                child: const Row(
+                                  children: [Icon(Icons.edit), Text("แก้ไข")],
+                                ),
+                              ),
+                            ]),
+                      ),
+                      ////list list
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 77, 218, 89)),
+                        height: 50,
+                        width: 320,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 163, 46, 181)),
+                        height: 50,
+                        width: 320,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 77, 218, 89)),
+                        height: 50,
+                        width: 320,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 163, 46, 181)),
+                        height: 50,
+                        width: 320,
+                      ),
+
+                      ////listview listkind
+                    ]),
+                  ),
+
+                  //// divider----------------------------------
+                  ///
+                  ///
+                  ///
+                  Divider(
+                    indent: 20,
+                    endIndent: 20,
+                  ),
+
+                  ///
+                  ///
+                  ///
+                  ///
+                  ///
+                  Container(
+                    height: 220,
+                    width: 320,
+                    child: Column(children: [
+                      Container(
+                        decoration: const BoxDecoration(),
+                        height: 30,
+                        child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("  รายละเอียดผู้ส่ง",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                            ]),
+                      ),
+                      const ListTile(
+                        leading: Icon(
+                          Icons.location_pin,
+                          color: Colors.blue,
+                        ),
+                        title: Text(
+                          "668/222 การินรูหนู ถนน เสื่อมโทรม",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.man,
+                          color: Colors.blue,
+                        ),
+                        title: Text(controller.user.value.firstname,
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.black)),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.phone,
+                          color: Colors.blue,
+                        ),
+                        title: Text(controller.user.value.number,
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.black)),
+                      )
+                      ////listview listkind
+                      ///
+                      ///new text info
+                      ///
+                    ]),
+                  )
+                ])),
+            /////   container ก้อนใหญ่ อันล่าง
+            Container(
+              width: 340,
+              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    height: 30,
+                    width: 300,
+                    decoration: BoxDecoration(),
+                    child: const Text("  ทั้งหมด",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      height: 30,
+                      width: 300,
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                      child: (const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("  ค่าบริการ",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.normal)),
+                          Text(
+                            "฿20",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ))),
+                  /////////----------------------------------------
+                  const Divider(
+                    indent: 20,
+                    endIndent: 20,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    height: 30,
+                    width: 300,
+                    decoration: BoxDecoration(),
+                    child: const Text("  ชำระเงินโดย",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      height: 30,
+                      width: 300,
+                      decoration: BoxDecoration(),
+                      child: (const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("  เงินสด/ชำระเงินปลายทาง",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.normal)),
+                          Icon(Icons.arrow_right)
+                        ],
+                      ))),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
+              ),
+            )
+          ])),
     );
   }
 }
