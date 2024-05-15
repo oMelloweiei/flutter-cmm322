@@ -177,8 +177,7 @@ class carpet extends StatelessWidget {
             height: 200, // Set the height as needed
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    picture), // Replace 'demoTrash.png' with your image asset path
+                image: AssetImage(picture),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(10),

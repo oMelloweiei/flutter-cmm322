@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -189,7 +190,8 @@ class Postbox extends StatelessWidget {
                             ),
                           ]),
                         ),
-                        Icon(Icons.book),
+                        Icon(Icons.bookmark_border_outlined,
+                            color: Color(0xFFCFCFCF)),
                       ],
                     ),
                     SizedBox(
@@ -204,7 +206,7 @@ class Postbox extends StatelessWidget {
                       children: [
                         Container(
                           child: Row(children: [
-                            Icon(Icons.heart_broken_rounded),
+                            FaIcon(FontAwesomeIcons.heart),
                             SizedBox(width: 6),
                             Text(topic.likeCount.toString())
                           ]),
@@ -214,7 +216,7 @@ class Postbox extends StatelessWidget {
                         ),
                         Container(
                           child: Row(children: [
-                            Icon(Icons.chat),
+                            FaIcon(FontAwesomeIcons.comment),
                             SizedBox(width: 6),
                             Text(topic.replyCount.toString())
                           ]),

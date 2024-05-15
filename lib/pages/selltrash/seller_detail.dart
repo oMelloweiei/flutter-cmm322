@@ -1,15 +1,18 @@
+import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/theme/color.dart';
 import 'package:binny_application/widgets/appbar.dart';
+import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class detailseller extends StatefulWidget {
-  final String shopName;
-  const detailseller({super.key, required this.shopName});
+  final ShopModel shop;
+  const detailseller({super.key, required this.shop});
 
   @override
   State<detailseller> createState() => _detailsellerState();
@@ -22,7 +25,7 @@ class _detailsellerState extends State<detailseller> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: appBarSellpage(shopName: widget.shopName),
+      appBar: appBarSellpage(shopName: widget.shop.shopname),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -163,10 +166,26 @@ class _detailsellerState extends State<detailseller> {
             ),
           ),
           Positioned(
-              bottom: 0,
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: nextButton(title: 'next page', link: homePage())))
+              bottom: 5,
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            backgroundColor: Ticolor.greenMain3),
+                        onPressed: () {
+                          Get.to(HomePage());
+                        },
+                        child: Text(
+                          'ถัดไป',
+                          style: GoogleFonts.ibmPlexSansThai().copyWith(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      )))),
         ],
       ),
     );

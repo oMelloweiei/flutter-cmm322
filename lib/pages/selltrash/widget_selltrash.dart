@@ -172,6 +172,8 @@ Future<void> openList(
     void Function(String) deleteTrashList) async {
   final size = MediaQuery.of(context).size;
   showDialog(
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
     context: context,
     builder: (context) => AlertDialog(
       actions: [
