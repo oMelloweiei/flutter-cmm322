@@ -56,70 +56,67 @@ class Sellform extends StatefulWidget {
 class _SellformState extends State<Sellform> {
   @override
   Widget build(BuildContext context) {
-    // Assuming you want to display the first type in the list
-
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        scrollDirection: Axis.vertical,
-        itemCount: widget.type.length - 1,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
-              ),
-              child: Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: widget.type.skip(1).map((type) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        widget.type[index + 1],
-                        style: GoogleFonts.ibmPlexSansThai().copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: -0.4,
-                        ),
-                      ),
-                      Text(
-                        'ราคา/กก. 5 บาท',
-                        style: GoogleFonts.ibmPlexSansThai().copyWith(
-                          color: Colors.grey,
-                          letterSpacing: -0.4,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    type,
+                    style: GoogleFonts.ibmPlexSansThai().copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.4,
+                    ),
                   ),
-                  Divider(),
-                  Form(
-                      child: Row(
-                    children: [
-                      Text('น้ำหนัก'),
-                      SizedBox(width: 10),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                        width: MediaQuery.of(context).size.width * 0.12,
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.symmetric(vertical: 5),
-                                filled: true,
-                                // fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide.none,
-                                ))),
-                      ),
-                      SizedBox(width: 10),
-                      Text('kg')
-                    ],
-                  )),
-                  SizedBox(
-                    height: 10,
+                  Text(
+                    'ราคา/กก. 5 บาท',
+                    style: GoogleFonts.ibmPlexSansThai().copyWith(
+                      color: Colors.grey,
+                      letterSpacing: -0.4,
+                    ),
                   ),
                 ],
-              ));
-        });
+              ),
+              Divider(),
+              Form(
+                child: Row(
+                  children: [
+                    Text('น้ำหนัก'),
+                    SizedBox(width: 10),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.12,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 5),
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text('kg'),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
+        );
+      }).toList(),
+    );
   }
 }
 

@@ -17,7 +17,6 @@ var topics = [
 ];
 
 final controller = Get.put(ShopController());
-final userController = Get.put(UserController());
 
 class SellPage extends StatelessWidget {
   SellPage({super.key});
@@ -45,6 +44,11 @@ class SellPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Ticolor.whiteMain2,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Get.offAllNamed('/home');
+            },
+            icon: Icon(Icons.arrow_back_ios_rounded)),
         backgroundColor: Ticolor.no,
         title: Image.asset(
           TImages.logoblack,
@@ -106,7 +110,7 @@ class SellPage extends StatelessWidget {
                   itemCount: controller.allShop.length,
                   itemBuilder: (context, index) {
                     var store = controller.allShop[index];
-                    UserModel user = userController.user.value!;
+
                     return GestureDetector(
                         onTap: () {
                           // Navigator.push(
@@ -118,7 +122,7 @@ class SellPage extends StatelessWidget {
                           padding:
                               EdgeInsets.only(left: 8, right: 8, bottom: 4),
                           child: Column(children: [
-                            _storeContainer(store, context, user),
+                            _storeContainer(store, context),
                             Divider(
                               thickness: 1,
                               color: Ticolor.blackSup1.withOpacity(0.3),
@@ -167,8 +171,7 @@ class SellPage extends StatelessWidget {
             )));
   }
 
-  Widget _storeContainer(
-      ShopModel store, BuildContext context, UserModel user) {
+  Widget _storeContainer(ShopModel store, BuildContext context) {
     return FutureBuilder<String>(
       future: controller.getImageUrl(store.shopImg),
       builder: (context, snapshot) {
@@ -203,7 +206,6 @@ class SellPage extends StatelessWidget {
                   builder: (context) => bkrccgroup(
                     shop: store,
                     imageUrl: snapshot.data!,
-                    user: user,
                   ),
                 ),
               );

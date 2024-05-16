@@ -3,6 +3,7 @@ import 'package:binny_application/data/models/userModel.dart';
 import 'package:binny_application/pages/selltrash/seller_detail.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/widgets/appbar.dart';
+import 'package:binny_application/widgets/loaders/snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:binny_application/theme/color.dart';
@@ -14,14 +15,12 @@ import 'package:google_fonts/google_fonts.dart';
 class bkrccgroup extends StatefulWidget {
   ShopModel shop;
   String imageUrl;
-  UserModel user;
 
-  bkrccgroup(
-      {Key? key,
-      required this.shop,
-      required this.imageUrl,
-      required this.user})
-      : super(key: key);
+  bkrccgroup({
+    Key? key,
+    required this.shop,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
   State<bkrccgroup> createState() => _bkrccgroupState();
@@ -224,9 +223,9 @@ class _bkrccgroupState extends State<bkrccgroup> {
                 ),
               ),
               Container(
+                margin: EdgeInsets.only(bottom: 100),
                 alignment: Alignment.topCenter,
                 width: size.width,
-                height: size.height * 0.5,
                 color: Colors.transparent,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -246,12 +245,18 @@ class _bkrccgroupState extends State<bkrccgroup> {
                       style: TextButton.styleFrom(
                           backgroundColor: Ticolor.greenMain3),
                       onPressed: () {
-                        Get.to(detailseller(
-                          shop: widget.shop,
-                          imageUrl: widget.imageUrl,
-                          user: widget.user,
-                          trashlist: _trashList,
-                        ));
+                        if (_trashList.length > 1) {
+                          Get.to(detailseller(
+                            shop: widget.shop,
+                            imageUrl: widget.imageUrl,
+                            trashlist: _trashList,
+                          ));
+                        } else {
+                          Loaders.errorSnackBar(
+                              title: 'Error',
+                              message:
+                                  'Please add at least one item to the trash list.');
+                        }
                       },
                       child: Text(
                         'ถัดไป',

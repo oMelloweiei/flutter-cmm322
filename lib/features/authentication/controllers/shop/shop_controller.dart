@@ -45,4 +45,14 @@ class ShopController extends GetxController {
       throw e.toString();
     }
   }
+
+  Future<String> getownerImageUrl(String imgName) async {
+    try {
+      final ref = storage.ref().child('Shop/img/usershop/$imgName');
+      final url = await ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }

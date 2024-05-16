@@ -35,11 +35,13 @@ class Loaders {
         backgroundColor: Ticolor.greenMain10,
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
-        margin: EdgeInsets.all(10),
-        icon: FaIcon(
-          FontAwesomeIcons.check,
-          color: Ticolor.whiteMain1,
-        ));
+        margin: EdgeInsets.all(20),
+        icon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: FaIcon(
+              FontAwesomeIcons.check,
+              color: Ticolor.whiteMain1,
+            )));
   }
 
   static warningSnackBar({required String title, String message = ''}) {
@@ -51,10 +53,13 @@ class Loaders {
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
         margin: EdgeInsets.all(20),
-        icon: FaIcon(
-          FontAwesomeIcons.bell,
-          color: Ticolor.whiteMain1,
-        ));
+        // padding: EdgeInsets.symmetric(horizontal: 10),
+        icon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: FaIcon(
+              FontAwesomeIcons.bell,
+              color: Ticolor.whiteMain1,
+            )));
   }
 
   static errorSnackBar({required String title, String message = ''}) {
@@ -66,9 +71,12 @@ class Loaders {
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 3),
         margin: EdgeInsets.all(20),
-        icon: FaIcon(
-          FontAwesomeIcons.bell,
-          color: Ticolor.whiteMain1,
-        ));
+        // padding: EdgeInsets.symmetric(horizontal: 10),
+        icon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: FaIcon(
+              FontAwesomeIcons.bell,
+              color: Ticolor.whiteMain1,
+            )));
   }
 }

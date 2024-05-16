@@ -2,11 +2,13 @@ import 'dart:convert';
 
 import 'package:binny_application/data/models/shopModel.dart';
 import 'package:binny_application/data/models/userModel.dart';
+import 'package:binny_application/features/personalization/controllers/user_controller.dart';
 import 'package:binny_application/pages/homepage.dart';
 import 'package:binny_application/pages/selltrash/model/sellermodel.dart';
 import 'package:binny_application/pages/selltrash/sum.dart';
 import 'package:binny_application/pages/selltrash/widget_selltrash.dart';
 import 'package:binny_application/theme/color.dart';
+import 'package:binny_application/utils/validators/validations.dart';
 import 'package:binny_application/widgets/appbar.dart';
 import 'package:binny_application/widgets/class/Color.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +17,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+final usercontroller = UserController.instance;
 
 void openGoogleCalendar() async {
   try {
@@ -27,14 +31,13 @@ void openGoogleCalendar() async {
 
 class detailseller extends StatefulWidget {
   final ShopModel shop;
-  UserModel user;
+
   String imageUrl;
   List<String> trashlist;
   detailseller(
       {super.key,
       required this.shop,
       required this.imageUrl,
-      required this.user,
       required this.trashlist});
 
   @override
@@ -75,9 +78,7 @@ class _detailsellerState extends State<detailseller> {
           Container(
             child: SizedBox(
                 width: size.width,
-                child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: Image.asset('assets/shop/SHOP_LOCATION.png'))),
+                child: Image.asset('assets/shop/SHOP_LOCATION.png')),
           ),
           Container(
             width: size.width,
@@ -164,12 +165,9 @@ class _detailsellerState extends State<detailseller> {
                                   width: 100,
                                   padding: EdgeInsets.only(right: 5),
                                   child: TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter a name';
-                                      }
-                                      return null;
-                                    },
+                                    validator: (value) =>
+                                        Validator.validateEmptyText(
+                                            'Name', value),
                                     controller: _nameController,
                                     style: GoogleFonts.ibmPlexSansThai()
                                         .copyWith(
@@ -201,13 +199,10 @@ class _detailsellerState extends State<detailseller> {
                                   width: 100,
                                   padding: EdgeInsets.only(right: 5),
                                   child: TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter a name';
-                                      }
-                                      return null;
-                                    },
-                                    controller: _numberController,
+                                    validator: (value) =>
+                                        Validator.validateEmptyText(
+                                            'Name', value),
+                                    controller: _nameController,
                                     style: GoogleFonts.ibmPlexSansThai()
                                         .copyWith(
                                             fontSize: 16, color: Colors.black),
@@ -283,7 +278,6 @@ class _detailsellerState extends State<detailseller> {
                                   builder: (context) => summary(
                                         shop: widget.shop,
                                         imageUrl: widget.imageUrl,
-                                        user: widget.user,
                                         jsonString: _jsonString,
                                         trashlist: widget.trashlist,
                                       )));

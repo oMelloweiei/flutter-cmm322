@@ -16,7 +16,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class summary extends StatefulWidget {
   final ShopModel shop;
-  UserModel user;
+
   String imageUrl;
   String jsonString;
   List<String> trashlist;
@@ -24,7 +24,6 @@ class summary extends StatefulWidget {
       {super.key,
       required this.shop,
       required this.imageUrl,
-      required this.user,
       required this.jsonString,
       required this.trashlist});
 
